@@ -1,0 +1,23 @@
+export const Theme = {
+  color: {
+    red: '#FF622B',
+    orange: '#FF8B37',
+    yellow: '#F7C73D',
+    green: '#35AF63',
+    lightRed: '#ffebee',
+    lightGreen: '#f8f9e0',
+    blue: '#4CB1F8',
+    purple: '#A771FE',
+    indigo: '#7180FE',
+    white: '#FFFFFF',
+    black: '#2D2D2D',
+    lightGray: '#FAFAFA',
+    gray: '#4B4B4B',
+    darkGray: '#3B3B3B',
+    textGray: '#8A8A8A',
+    borderGray: '#D5D5D5',
+    dragGray: '#eeeeee',
+    alabaster: '#F9F9F9',
+    headerGray: '#e9e9e9',
+  },
+};
