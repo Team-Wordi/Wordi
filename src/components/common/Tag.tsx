@@ -6,8 +6,8 @@ const Container = styled.div`
   font-family: 'Pretendard';
   font-weight: 400;
   display: inline-block;
-  padding: 6px 16px;
-  border: 2px solid ${COLORS.primary};
+  padding: 3px 8px;
+  border: 1px solid ${COLORS.primary};
   color: ${COLORS.primary};
   border-radius: 6px;
 `;
