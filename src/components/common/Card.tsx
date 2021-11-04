@@ -2,13 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
 
-const Container = styled.div`
-  font-family: 'Pretendard';
+const Container = styled.div<{ color: string | undefined }>`
   display: inline-block;
-  width: 176px;
-  height: 110px;
+  min-width: 176px;
   padding: 14px 14px 24px 14px;
-  background-color: ${COLORS.yellow};
+  background-color: ${({ color }) => (color ? color : 'white')};
   border: none;
   border-radius: 10px;
 `;
@@ -25,18 +23,20 @@ const Description = styled.p`
   font-weight: 400;
   font-size: 10px;
   line-height: 18px;
+  white-space: normal;
 `;
 
 interface CardProps {
   title?: string | null;
   description?: string | null;
+  color?: string | undefined;
 }
 
-const Card = ({ title, description }: CardProps) => {
+const Card = ({ title, description, color }: CardProps) => {
   return (
     <>
       {title && description && (
-        <Container>
+        <Container color={color}>
           <Title>{title}</Title>
           <Description>{description}</Description>
         </Container>
