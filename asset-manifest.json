@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/Wordi/static/js/main.7116ce0e.chunk.js",
-    "main.js.map": "/Wordi/static/js/main.7116ce0e.chunk.js.map",
+    "main.js": "/Wordi/static/js/main.002bbaa1.chunk.js",
+    "main.js.map": "/Wordi/static/js/main.002bbaa1.chunk.js.map",
     "runtime-main.js": "/Wordi/static/js/runtime-main.290a97c6.js",
     "runtime-main.js.map": "/Wordi/static/js/runtime-main.290a97c6.js.map",
     "static/js/2.c231990a.chunk.js": "/Wordi/static/js/2.c231990a.chunk.js",
@@ -17,6 +17,6 @@
   "entrypoints": [
     "static/js/runtime-main.290a97c6.js",
     "static/js/2.c231990a.chunk.js",
-    "static/js/main.7116ce0e.chunk.js"
+    "static/js/main.002bbaa1.chunk.js"
   ]
 }
