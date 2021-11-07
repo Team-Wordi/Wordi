@@ -2,6 +2,6 @@ export const ROUTES = {
   ROOT: '/Wordi/',
 
   // temporary route
-  REVEIWS: '/Wordi/reviews/',
+  REVIEWS: '/Wordi/reviews/',
   APPLICATION: '/Wordi/application/',
 };

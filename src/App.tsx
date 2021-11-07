@@ -9,8 +9,9 @@ import ApplicationPage from 'pages/ApplicationPage';
 const App: React.FC<any> = () => {
   return (
     <Switch>
+      {console.log(ROUTES.REVIEWS)}
       <Route exact path={ROUTES.ROOT} component={MainPage} />
-      <Route exact path={ROUTES.REVEIWS} component={MentorReviewPage} />
+      <Route exact path={ROUTES.REVIEWS} component={MentorReviewPage} />
       <Route exact path={ROUTES.APPLICATION} component={ApplicationPage} />
     </Switch>
   );
