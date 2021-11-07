@@ -1,21 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
 import LeftIcon from 'components/icon/LeftIcon';
-import Header from 'components/Header';
-import Review from 'components/Review';
-import Introduction from 'components/Introduction';
+import Header from 'components/MentorReview/Header';
+import Review from 'components/MentorReview/Review';
+import Introduction from 'components/MentorReview/Introduction';
 import { mentorData } from 'constants/dummy';
-
-const Container = styled.div`
-  padding: 30px 30px 40px 30px;
-  min-height: 100vh;
-
-  & > hr {
-    border-width: 0.5px;
-    background-color: ${COLORS.lightblue};
-  }
-`;
+import { Container } from 'styles/GlobalStyles';
 
 const MentorReviewPage = ({ history }: any) => {
   const [mentorDetail, setMentorDetail] = useState<any>('');

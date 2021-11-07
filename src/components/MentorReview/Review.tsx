@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import ReviewCard from 'components/ReviewCard';
+import ReviewCard from 'components/common/ReviewCard';
 import { reviewData } from 'constants/dummy';
 import { COLORS } from 'styles/Theme';
 
@@ -27,7 +27,7 @@ const ReviewContainer = styled.div`
   }
 
   & > div {
-    margin-right: 36px;
+    margin-right: 24px;
   }
 `;
 

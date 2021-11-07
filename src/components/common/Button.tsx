@@ -14,10 +14,10 @@ const Container = styled.button<ButtonProps>`
   width: ${({ size }) => size}%;
 
   /* font */
+  font-family: 'Pretendard';
   font-weight: 700;
   font-size: 14px;
   line-height: 18px;
-  letter-spacing: -1px;
 
   /* color */
   color: ${({ textColor }) => (textColor ? textColor : COLORS.black)};
@@ -26,15 +26,15 @@ const Container = styled.button<ButtonProps>`
 `;
 
 interface ButtonProps {
+  size: number;
   text?: string | null;
-  size?: number | null;
   textColor?: string | undefined;
   fill?: string | undefined;
   border?: string | undefined;
   onClick: () => void;
 }
 
-const Button = ({ text, size, textColor, fill, border, onClick }: ButtonProps) => {
+const Button = ({ size, text, textColor, fill, border, onClick }: ButtonProps) => {
   return (
     <Container size={size} textColor={textColor} fill={fill} border={border} onClick={onClick}>
       {text}
