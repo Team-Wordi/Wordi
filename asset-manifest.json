@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.js": "/Wordi/static/js/main.7116ce0e.chunk.js",
+    "main.js.map": "/Wordi/static/js/main.7116ce0e.chunk.js.map",
+    "runtime-main.js": "/Wordi/static/js/runtime-main.290a97c6.js",
+    "runtime-main.js.map": "/Wordi/static/js/runtime-main.290a97c6.js.map",
+    "static/js/2.c231990a.chunk.js": "/Wordi/static/js/2.c231990a.chunk.js",
+    "static/js/2.c231990a.chunk.js.map": "/Wordi/static/js/2.c231990a.chunk.js.map",
+    "index.html": "/Wordi/index.html",
+    "static/js/2.c231990a.chunk.js.LICENSE.txt": "/Wordi/static/js/2.c231990a.chunk.js.LICENSE.txt",
+    "static/media/UK.05ff7b03.svg": "/Wordi/static/media/UK.05ff7b03.svg",
+    "static/media/hambuger.9f11000e.svg": "/Wordi/static/media/hambuger.9f11000e.svg",
+    "static/media/left.9af6da36.svg": "/Wordi/static/media/left.9af6da36.svg",
+    "static/media/market.6fcaa43c.svg": "/Wordi/static/media/market.6fcaa43c.svg",
+    "static/media/message.880a7e66.svg": "/Wordi/static/media/message.880a7e66.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.290a97c6.js",
+    "static/js/2.c231990a.chunk.js",
+    "static/js/main.7116ce0e.chunk.js"
+  ]
+}
