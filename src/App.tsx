@@ -10,8 +10,8 @@ const App: React.FC<any> = () => {
   return (
     <Switch>
       <Route exact path={ROUTES.ROOT} component={MainPage} />
-      <Route path={ROUTES.REVEIWS} component={MentorReviewPage} />
-      <Route path={ROUTES.APPLICATION} component={ApplicationPage} />
+      <Route exact path={ROUTES.REVEIWS} component={MentorReviewPage} />
+      <Route exact path={ROUTES.APPLICATION} component={ApplicationPage} />
     </Switch>
   );
 };
