@@ -1,5 +1,6 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import { reset } from 'styled-reset';
+import { COLORS } from './Theme';
 
 const GlobalStyles = createGlobalStyle`
 ${reset}
@@ -28,6 +29,20 @@ a {
   text-decoration: none;
   color: inherit;
 }
+`;
+
+export const Container = styled.div`
+  padding: 8px 16px 24px 16px;
+  height: 100vh;
+
+  & > hr {
+    border-width: 0.5px;
+    background-color: ${COLORS.primary};
+  }
+
+  & > .application_1 {
+    margin-top: 4px;
+  }
 `;
 
 export default GlobalStyles;
