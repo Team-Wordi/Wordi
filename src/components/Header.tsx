@@ -11,7 +11,6 @@ const HeaderContainer = styled.div`
 `;
 
 const HeaderInfo = styled.div`
-  width: 60%;
   margin-right: 30px;
 
   & > h2 {

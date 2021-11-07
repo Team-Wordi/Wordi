@@ -10,6 +10,7 @@ const Container = styled.div`
   border: 1px solid ${COLORS.primary};
   color: ${COLORS.primary};
   border-radius: 6px;
+  margin-right: 9px;
 `;
 
 interface TagProps {
