@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
-import Tag from './common/Tag';
+import Tag from '../common/Tag';
 
 const HeaderContainer = styled.div`
   display: flex;
