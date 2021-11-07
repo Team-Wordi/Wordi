@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 ReactDOM.render(
   <React.StrictMode>
     <GlobalStyles />
-    <BrowserRouter>
+    <BrowserRouter basename="http://tTab1204.github.io/Wordi">
       <App />
     </BrowserRouter>
   </React.StrictMode>,
