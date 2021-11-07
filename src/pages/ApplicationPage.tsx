@@ -1,7 +1,19 @@
 import React from 'react';
+import { Container } from 'styles/GlobalStyles';
+import Header from 'components/Application/Header';
+import ScheduleApplication from 'components/Application/ScheduleApplication';
+import Bottom from 'components/Application/Bottom';
 
 const ApplicationPage = () => {
-  return <div>ApplicationPage</div>;
+  return (
+    <Container>
+      <Header />
+      <hr className="application_1" />
+      <ScheduleApplication />
+      <hr />
+      <Bottom />
+    </Container>
+  );
 };
 
 export default ApplicationPage;

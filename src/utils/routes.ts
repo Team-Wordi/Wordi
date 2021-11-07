@@ -7,4 +7,5 @@ export const ROUTES = {
   },
   // temporary route
   REVEIWS: '/reviews',
+  APPLICATION: '/application',
 };
