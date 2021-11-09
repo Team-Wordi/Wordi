@@ -10,10 +10,15 @@ const MainPage = ({ history }: any) => {
     history.push(`${ROUTES.APPLICATION}`);
   };
 
+  const goMentorColumnPage = () => {
+    history.push(`${ROUTES.MENTOR_COLUMN}`);
+  };
+
   return (
     <>
-      <button onClick={goReviewPage}>리뷰 페이지 이동</button>
+      <button onClick={goReviewPage}>멘토 프로필 페이지</button>
       <button onClick={goApplicationPage}>멘토링 신청 페이지</button>
+      <button onClick={goMentorColumnPage}>멘토 칼럼 페이지</button>
     </>
   );
 };
