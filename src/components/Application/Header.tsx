@@ -60,7 +60,7 @@ const Header = () => {
       <HeaderInfo>
         <TextBox text="워디멘토" color={COLORS.gray_04} />
         <FlagBox>
-          <UKIcon size={16} color={COLORS.primary} />
+          <UKIcon size={16} />
           <TextBox text="워홀매니아" color={COLORS.black} />
         </FlagBox>
       </HeaderInfo>
