@@ -5,4 +5,5 @@ export const ROUTES = {
   REVIEWS: '/Wordi/reviews',
   APPLICATION: '/Wordi/application',
   MENTOR_COLUMN: '/Wordi/mentor_column',
+  MY: '/Wordi/my',
 };
