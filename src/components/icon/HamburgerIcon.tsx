@@ -8,7 +8,7 @@ interface HambugerIconProps {
 }
 
 function HambuguerIcon({ size, color, onClick }: HambugerIconProps): JSX.Element {
-  return <HambugerSVG width={size} height={size} fill={color} stroke={color} onClick={onClick} />;
+  return <HambugerSVG width={size} height={size} stroke={color} onClick={onClick} />;
 }
 
 export default HambuguerIcon;
