@@ -19,14 +19,14 @@ const MentorReviewPage = ({ history }: any) => {
   }, []);
 
   return (
-    <Container>
+    <>
       <LeftIcon size={24} color={COLORS.gray_03} onClick={goBack} />
       <Header mentorDetail={mentorDetail} />
       <hr />
       <Introduction introduction={mentorDetail.introduction} />
       <Review />
       <hr />
-    </Container>
+    </>
   );
 };
 
