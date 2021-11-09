@@ -29,16 +29,15 @@ a {
   text-decoration: none;
   color: inherit;
 }
+hr {
+  // border-color: ${COLORS.primary};
+  background-color: ${COLORS.primary};
+}
 `;
 
 export const Container = styled.div`
   padding: 8px 16px 24px 16px;
-  height: 100vh;
-
-  & > hr {
-    border-width: 0.5px;
-    background-color: ${COLORS.primary};
-  }
+  min-height: 100vh;
 
   & > .application_1 {
     margin-top: 4px;
