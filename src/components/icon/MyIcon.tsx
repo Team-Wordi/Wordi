@@ -1,13 +1,14 @@
 import React from 'react';
 import { ReactComponent as MySVG } from 'assets/icons/my.svg';
+import { COLORS } from 'styles/Theme';
 
 interface MyIconProps {
   size?: number;
-  color?: string;
+  isActive?: boolean | null;
 }
 
-function MyIcon({ size, color }: MyIconProps): JSX.Element {
-  return <MySVG width={size} height={size} stroke={color} />;
+function MyIcon({ size, isActive }: MyIconProps): JSX.Element {
+  return <MySVG width={size} height={size} stroke={isActive ? COLORS.primary : COLORS.gray_03} />;
 }
 
 export default MyIcon;
