@@ -6,13 +6,13 @@ import Bottom from 'components/Application/Bottom';
 
 const ApplicationPage = () => {
   return (
-    <Container>
+    <>
       <Header />
       <hr className="application_1" />
       <ScheduleApplication />
       <hr />
       <Bottom />
-    </Container>
+    </>
   );
 };
 

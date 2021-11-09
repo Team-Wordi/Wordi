@@ -6,7 +6,7 @@ interface DotIconProps {
   color?: string;
 }
 
-function DotIcon({ size = 24, color = '#929292' }: DotIconProps): JSX.Element {
+function DotIcon({ size, color }: DotIconProps): JSX.Element {
   return <DotSvg width={size} height={size} stroke={color} />;
 }
 
