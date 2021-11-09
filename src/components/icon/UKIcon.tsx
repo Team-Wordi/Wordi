@@ -3,11 +3,10 @@ import { ReactComponent as UKSVG } from 'assets/icons/UK.svg';
 
 interface UKIconProps {
   size?: number;
-  color?: string;
 }
 
-function UKIcon({ size, color }: UKIconProps): JSX.Element {
-  return <UKSVG width={size} height={size} stroke={color} />;
+function UKIcon({ size }: UKIconProps): JSX.Element {
+  return <UKSVG width={size} height={size} />;
 }
 
 export default UKIcon;

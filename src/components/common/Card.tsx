@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
 
-const Container = styled.div<{ color: string | undefined }>`
+const Container = styled.div<CardProps>`
   display: inline-block;
   min-width: 176px;
   padding: 14px 14px 24px 14px;

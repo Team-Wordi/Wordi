@@ -29,6 +29,10 @@ const HeaderInfo = styled.div`
 const TagsContainer = styled.div`
   display: flex;
   justify-content: space-between;
+
+  & > div {
+    margin-right: 9px;
+  }
 `;
 
 const HeaderImg = styled.div`

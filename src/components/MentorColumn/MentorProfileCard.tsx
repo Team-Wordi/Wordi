@@ -4,10 +4,6 @@ import UKIcon from 'components/icon/UKIcon';
 import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
 
-const Container = styled.div`
-  margin-top: 21px;
-`;
-
 const CardHeader = styled.div`
   display: flex;
   align-items: center;
@@ -66,7 +62,7 @@ const MentorTitle = styled.div`
 
 const MentorProfileCard = () => {
   return (
-    <Container>
+    <>
       <CardHeader>
         <Img />
         <MentorInfo>
@@ -87,7 +83,7 @@ const MentorProfileCard = () => {
         설렘 반 걱정 반으로 무작정 간 영국 워킹 홀리데이로 고생 좀 하고 지금은 워디로 광명찾고
         다양한 경험을 영국에서 하고 있습니다.
       </Description>
-    </Container>
+    </>
   );
 };
 
