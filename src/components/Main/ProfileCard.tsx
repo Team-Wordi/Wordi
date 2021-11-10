@@ -17,6 +17,7 @@ const Container = styled.div`
 
   border: none;
   border-radius: 8px;
+  box-shadow: 0 2px 0px 0px ${COLORS.gray_02};
 `;
 
 const MentorInfoWrapper = styled.div`
