@@ -7,8 +7,8 @@ interface HambugerIconProps {
   onClick: () => void;
 }
 
-function HambuguerIcon({ size, color, onClick }: HambugerIconProps): JSX.Element {
+function HamburgerIcon({ size, color, onClick }: HambugerIconProps): JSX.Element {
   return <HambugerSVG width={size} height={size} stroke={color} onClick={onClick} />;
 }
 
-export default HambuguerIcon;
+export default HamburgerIcon;
