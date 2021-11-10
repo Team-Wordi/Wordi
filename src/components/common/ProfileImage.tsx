@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import { COLORS } from 'styles/Theme';
 import example from 'assets/img/example_profile_img.png';
 
 const Container = styled.div<ProfileImgProps>`
   & > img {
     width: ${({ size }) => (size ? `${size}px` : '72px')};
     width: ${({ size }) => (size ? `${size}px` : '72px')};
-    margin-bottom: 10px;
     border-radius: 28px 28px 10px 10px;
   }
 `;
