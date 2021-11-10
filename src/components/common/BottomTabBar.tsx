@@ -48,7 +48,6 @@ const BottomTabBar = () => {
   const currentPath = history.location.pathname;
 
   const [activeTab, setActiveTab] = useState(currentPath);
-  console.log('activeTab: ', activeTab);
 
   return (
     <Container>
