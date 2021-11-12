@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { COLORS } from 'styles/Theme';
+import Title from 'components/common/Title';
+import MessageIcon from 'components/icon/MessageIcon';
 import MentiReviewCard from './MentiReviewCard';
 
 const Container = styled.div`
@@ -20,13 +23,22 @@ const Container = styled.div`
   margin-top: 16px;
 `;
 
+const Wrapper = styled.div`
+  padding: 0px 16px;
+`;
+
 const MentiReviews = () => {
   return (
-    <Container>
-      <MentiReviewCard />
-      <MentiReviewCard />
-      <MentiReviewCard />
-    </Container>
+    <>
+      <Wrapper>
+        <Title text="리얼 멘토링 후기" icon={<MessageIcon size={18} color={COLORS.primary} />} />
+      </Wrapper>
+      <Container>
+        <MentiReviewCard />
+        <MentiReviewCard />
+        <MentiReviewCard />
+      </Container>
+    </>
   );
 };
 
