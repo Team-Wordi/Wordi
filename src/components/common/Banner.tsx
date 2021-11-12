@@ -3,16 +3,29 @@ import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
 
 const Container = styled.div<CardProps>`
+  z-index: 3;
+  position: relative;
   display: inline-block;
   min-width: 184px;
   height: 112px;
-  padding: 14px 14px 24px 14px;
+  padding: 18px 14px 8px 18px;
   background-color: ${({ color }) => (color ? color : 'white')};
   border: none;
   border-radius: 10px;
+
+  & > img {
+    position: absolute;
+    z-index: 2;
+    bottom: 8px;
+    right: 14px;
+  }
 `;
 
 const Title = styled.h1`
+  position: relative;
+  z-index: 1;
+  max-width: 120px;
+  white-space: pre-line;
   font-weight: 500;
   font-size: 16px;
   line-height: 23px;
@@ -20,6 +33,7 @@ const Title = styled.h1`
 `;
 
 const Description = styled.p`
+  position: relative;
   color: ${COLORS.gray_04};
   font-weight: 400;
   font-size: 10px;
@@ -31,19 +45,22 @@ interface CardProps {
   title?: string | null;
   description?: string | null;
   color?: string | undefined;
+  image?: string | undefined;
 }
 
-const Card = ({ title, description, color }: CardProps) => {
+const Banner = ({ title, description, color, image }: CardProps) => {
+  console.log('image: ', image);
   return (
     <>
       {title && description && (
         <Container color={color}>
           <Title>{title}</Title>
           <Description>{description}</Description>
+          <img src={image} alt={image} />
         </Container>
       )}
     </>
   );
 };
 
-export default Card;
+export default Banner;
