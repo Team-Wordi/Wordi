@@ -6,11 +6,11 @@ import Footer from 'components/MentorColumn/Footer';
 
 const MentorColumnPage = () => {
   return (
-    <>
+    <Container>
       <Header />
       <ColumnDetail />
       <Footer />
-    </>
+    </Container>
   );
 };
 
