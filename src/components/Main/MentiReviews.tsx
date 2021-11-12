@@ -1,11 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { COLORS } from 'styles/Theme';
 import MentiReviewCard from './MentiReviewCard';
 
 const Container = styled.div`
   display: flex;
-  justify-content: space-between;
   overflow: auto;
   white-space: nowrap;
 
