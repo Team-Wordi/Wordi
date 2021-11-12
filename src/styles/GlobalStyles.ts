@@ -38,10 +38,6 @@ hr {
 export const Container = styled.div`
   padding: 8px 16px 24px 16px;
   min-height: 100vh;
-
-  & > .application_1 {
-    margin-top: 4px;
-  }
 `;
 
 export default GlobalStyles;
