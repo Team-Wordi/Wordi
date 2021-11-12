@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { COLORS } from 'styles/Theme';
 import example from 'assets/img/example_profile_img.png';
 
 const Container = styled.div<ProfileImgProps>`

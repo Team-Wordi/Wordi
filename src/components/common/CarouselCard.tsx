@@ -11,6 +11,7 @@ const Container = styled.div<CarouselCardProps>`
   border-radius: 8px;
 
   margin-right: 8px;
+
   padding: 21px;
 `;
 
