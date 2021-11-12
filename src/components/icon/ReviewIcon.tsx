@@ -6,8 +6,8 @@ interface ReviewIconProps {
   color?: string;
 }
 
-function ActiveReviewIcon({ size, color }: ReviewIconProps): JSX.Element {
+function ReviewIcon({ size, color }: ReviewIconProps): JSX.Element {
   return <ReviewSVG width={size} height={size} stroke={color} />;
 }
 
-export default ActiveReviewIcon;
+export default ReviewIcon;
