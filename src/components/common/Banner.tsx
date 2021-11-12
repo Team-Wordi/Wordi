@@ -4,7 +4,8 @@ import { COLORS } from 'styles/Theme';
 
 const Container = styled.div<CardProps>`
   display: inline-block;
-  min-width: 176px;
+  min-width: 184px;
+  height: 112px;
   padding: 14px 14px 24px 14px;
   background-color: ${({ color }) => (color ? color : 'white')};
   border: none;

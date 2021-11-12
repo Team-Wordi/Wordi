@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
 import HomeIcon from 'components/icon/HomeIcon';
-import ReviewIcon from 'components/icon/ReviewIcon';
+import ActiveReviewIcon from 'components/icon/ActiveReviewIcon';
 import MentorIcon from 'components/icon/MentorIcon';
 import OrderIcon from 'components/icon/OrderIcon';
 import MyIcon from 'components/icon/MyIcon';
@@ -10,7 +10,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { ROUTES } from 'utils/routes';
 
 const Container = styled.div`
-  position: fixed;
+  position: sticky;
   bottom: 0;
   left: 0;
   right: 0;
@@ -23,6 +23,8 @@ const Container = styled.div`
   padding: 0 10px;
   background: ${COLORS.white};
   border-top: 1px solid ${COLORS.gray_01};
+
+  will-change: transform; // 확실한 이해가 필요한 속성
 `;
 
 const Tab = styled(Link)<{ isActive: boolean }>`
@@ -66,7 +68,7 @@ const BottomTabBar = () => {
         isActive={ROUTES.MENTOR_COLUMN === activeTab}
       >
         <Content>
-          <ReviewIcon size={22} isActive={ROUTES.MENTOR_COLUMN === activeTab} />
+          <ActiveReviewIcon size={22} isActive={ROUTES.MENTOR_COLUMN === activeTab} />
           칼럼
         </Content>
       </Tab>

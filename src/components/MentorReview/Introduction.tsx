@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Card from 'components/common/Card';
+import Banner from 'components/common/Banner';
 import { COLORS } from 'styles/Theme';
 
 const Intro = styled.div`
@@ -34,7 +34,7 @@ const CardContainer = styled.div`
   }
 
   & > div {
-    margin-right: 22px;
+    margin-right: 8px;
   }
 `;
 
@@ -45,18 +45,18 @@ const Introduction = ({ introduction }: any) => {
       <Description>{introduction}</Description>
       <CardContainer>
         {/* 데이터 들어오면 반복문으로 만들기 */}
-        <Card
+        <Banner
           title="워홀, 겁먹지 마세요!"
           description="걱정을 안고 떠난 영국 워킹 홀리데이, 
 지금은 괜한 걱정이었다 생각하죠!"
           color={COLORS.yellow}
         />
-        <Card
+        <Banner
           title="영국에서 집 쉽게 구하기"
           description="영국에서 집 구하기? 누워서 떡 먹기!"
           color={COLORS.lightGreen}
         />
-        <Card
+        <Banner
           title="영국에서 집 쉽게 구하기"
           description="영국에서 집 구하기? 누워서 떡 먹기!"
           color={COLORS.lightblue}

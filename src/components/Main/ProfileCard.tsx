@@ -10,14 +10,14 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
 
-  width: 121px;
+  min-width: 121px;
   height: 146px;
 
   background: ${COLORS.white};
 
   border: none;
   border-radius: 8px;
-  box-shadow: 0 2px 0px 0px ${COLORS.gray_02};
+  box-shadow: 1px 2px 0px 0px ${COLORS.lightGray};
 `;
 
 const MentorInfoWrapper = styled.div`
