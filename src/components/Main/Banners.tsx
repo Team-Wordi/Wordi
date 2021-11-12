@@ -25,9 +25,9 @@ const Container = styled.div`
 const Banners = () => {
   return (
     <Container>
-      <Banner title="응애" description="응애응애" color={COLORS.yellow_02} />
-      <Banner title="응애" description="응애응애" color={COLORS.skyblue} />
-      <Banner title="응애" description="응애응애" color={COLORS.yellow_02} />
+      <Banner title="1" description="예시입니다" color={COLORS.yellow_02} />
+      <Banner title="2" description="예시입니다" color={COLORS.skyblue} />
+      <Banner title="3" description="예시입니다" color={COLORS.yellow_02} />
     </Container>
   );
 };
