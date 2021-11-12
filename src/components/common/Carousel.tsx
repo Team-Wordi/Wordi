@@ -2,6 +2,7 @@ import React from 'react';
 import { COLORS } from 'styles/Theme';
 import Slider from 'react-slick';
 import CarouselCard from './CarouselCard';
+import MainCarouselCard from 'components/Main/MainCarouselCard';
 
 const Carousel = () => {
   const settings = {
@@ -17,9 +18,9 @@ const Carousel = () => {
 
   return (
     <Slider {...settings}>
-      <CarouselCard color={COLORS.lightYellow}>1</CarouselCard>
-      <CarouselCard color={COLORS.primary}>2</CarouselCard>
-      <CarouselCard color={COLORS.green}>3</CarouselCard>
+      <CarouselCard color={COLORS.lightYellow}>노란색</CarouselCard>
+      <MainCarouselCard />
+      <CarouselCard color={COLORS.green}>초록색</CarouselCard>
     </Slider>
   );
 };

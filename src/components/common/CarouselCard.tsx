@@ -4,15 +4,14 @@ import { COLORS } from 'styles/Theme';
 
 const Container = styled.div<CarouselCardProps>`
   display: flex;
+  justify-content: space-between;
   background: ${({ color }) => (color ? color : COLORS.primary)};
   height: 152px;
 
   border: none;
   border-radius: 8px;
-
   margin-right: 8px;
-
-  padding: 21px;
+  padding: 22px 31px 21px 31px;
 `;
 
 interface CarouselCardProps {
