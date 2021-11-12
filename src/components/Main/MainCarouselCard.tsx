@@ -1,9 +1,3 @@
-// 1.box
-// 2.border
-// 3.text
-// 4.background
-// 5.other
-
 import React from 'react';
 import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
