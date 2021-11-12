@@ -1,24 +1,16 @@
 import React from 'react';
-import { ROUTES } from 'utils/routes';
+import Header from 'components/Main/Header';
+import Body from 'components/Main/Body';
+import Footer from 'components/Main/Footer';
+import BottomTabBar from 'components/common/BottomTabBar';
 
-const MainPage = ({ history }: any) => {
-  const goReviewPage = () => {
-    history.push(`${ROUTES.REVIEWS}`);
-  };
-
-  const goApplicationPage = () => {
-    history.push(`${ROUTES.APPLICATION}`);
-  };
-
-  const goMentorColumnPage = () => {
-    history.push(`${ROUTES.MENTOR_COLUMN}`);
-  };
-
+const MainPage = () => {
   return (
     <>
-      <button onClick={goReviewPage}>멘토 프로필 페이지</button>
-      <button onClick={goApplicationPage}>멘토링 신청 페이지</button>
-      <button onClick={goMentorColumnPage}>멘토 칼럼 페이지</button>
+      <Header />
+      <Body />
+      <Footer />
+      <BottomTabBar />
     </>
   );
 };
