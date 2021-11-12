@@ -1,30 +1,38 @@
 {
   "files": {
-    "main.js": "/Wordi/static/js/main.717a6e25.chunk.js",
-    "main.js.map": "/Wordi/static/js/main.717a6e25.chunk.js.map",
+    "main.js": "/Wordi/static/js/main.4c0de426.chunk.js",
+    "main.js.map": "/Wordi/static/js/main.4c0de426.chunk.js.map",
     "runtime-main.js": "/Wordi/static/js/runtime-main.290a97c6.js",
     "runtime-main.js.map": "/Wordi/static/js/runtime-main.290a97c6.js.map",
-    "static/js/2.3fa14459.chunk.js": "/Wordi/static/js/2.3fa14459.chunk.js",
-    "static/js/2.3fa14459.chunk.js.map": "/Wordi/static/js/2.3fa14459.chunk.js.map",
+    "static/css/2.f43417c7.chunk.css": "/Wordi/static/css/2.f43417c7.chunk.css",
+    "static/js/2.692a2299.chunk.js": "/Wordi/static/js/2.692a2299.chunk.js",
+    "static/js/2.692a2299.chunk.js.map": "/Wordi/static/js/2.692a2299.chunk.js.map",
     "index.html": "/Wordi/index.html",
-    "static/js/2.3fa14459.chunk.js.LICENSE.txt": "/Wordi/static/js/2.3fa14459.chunk.js.LICENSE.txt",
+    "static/css/2.f43417c7.chunk.css.map": "/Wordi/static/css/2.f43417c7.chunk.css.map",
+    "static/js/2.692a2299.chunk.js.LICENSE.txt": "/Wordi/static/js/2.692a2299.chunk.js.LICENSE.txt",
     "static/media/UK.05ff7b03.svg": "/Wordi/static/media/UK.05ff7b03.svg",
     "static/media/dot.6ae51db3.svg": "/Wordi/static/media/dot.6ae51db3.svg",
+    "static/media/example_profile_img.a37f9ef1.png": "/Wordi/static/media/example_profile_img.a37f9ef1.png",
+    "static/media/flat_dot.36caa489.svg": "/Wordi/static/media/flat_dot.36caa489.svg",
     "static/media/hambuger.ea61682d.svg": "/Wordi/static/media/hambuger.ea61682d.svg",
     "static/media/home.23418ba4.svg": "/Wordi/static/media/home.23418ba4.svg",
     "static/media/left.9af6da36.svg": "/Wordi/static/media/left.9af6da36.svg",
+    "static/media/love.26502127.svg": "/Wordi/static/media/love.26502127.svg",
     "static/media/market.6fcaa43c.svg": "/Wordi/static/media/market.6fcaa43c.svg",
     "static/media/mentor.e1bcad62.svg": "/Wordi/static/media/mentor.e1bcad62.svg",
     "static/media/message.880a7e66.svg": "/Wordi/static/media/message.880a7e66.svg",
     "static/media/my.60c51c7e.svg": "/Wordi/static/media/my.60c51c7e.svg",
     "static/media/notification_off.77ae428e.svg": "/Wordi/static/media/notification_off.77ae428e.svg",
+    "static/media/notification_on.31f819b5.svg": "/Wordi/static/media/notification_on.31f819b5.svg",
     "static/media/order.b4e7dc40.svg": "/Wordi/static/media/order.b4e7dc40.svg",
     "static/media/review.34d527d2.svg": "/Wordi/static/media/review.34d527d2.svg",
-    "static/media/right.8c1dc3a0.svg": "/Wordi/static/media/right.8c1dc3a0.svg"
+    "static/media/right.8c1dc3a0.svg": "/Wordi/static/media/right.8c1dc3a0.svg",
+    "static/media/slick-theme.css": "/Wordi/static/media/slick.c94f7671.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.290a97c6.js",
-    "static/js/2.3fa14459.chunk.js",
-    "static/js/main.717a6e25.chunk.js"
+    "static/css/2.f43417c7.chunk.css",
+    "static/js/2.692a2299.chunk.js",
+    "static/js/main.4c0de426.chunk.js"
   ]
 }
