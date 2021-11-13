@@ -21,5 +21,4 @@
 
 ## 🔨 시스템 구성도
 저희의 서비스는 다음과 같은 구조로 동작하고 있습니다. 😚
-
-<img src="https://user-images.githubusercontent.com/66458836/141615413-f1343263-b1ec-49bd-a1ef-7b1a8c06760b.png" width="80%" height="20%" />
+<img src="https://user-images.githubusercontent.com/66458836/141615413-f1343263-b1ec-49bd-a1ef-7b1a8c06760b.png" width="60%" height="40%" />
