@@ -12,14 +12,14 @@
 
 
 
-### 👨🏻‍🏫 주요 기능 👩🏻‍🏫
+## 👨🏻‍🏫 주요 기능 👩🏻‍🏫
 #### ⏰ 멘토링 서비스
 
-### 🤹‍♂ Tech Stack
+## 🤹‍♂ Tech Stack
 저희는 프로젝트를 진행하며 다음과 같은 기술 스택을 사용했습니다. 😁
 
 
-### 🔨 Architecture - 이미지 크기 추후 조정
+## 🔨 시스템 구성도
 저희의 서비스는 다음과 같은 구조로 동작하고 있습니다. 😚
 
-![시스템 구성도](https://user-images.githubusercontent.com/66458836/141615413-f1343263-b1ec-49bd-a1ef-7b1a8c06760b.png){: width="100px" height="100px"}
+<img src="https://user-images.githubusercontent.com/66458836/141615413-f1343263-b1ec-49bd-a1ef-7b1a8c06760b.png" width="80%" height="20%" />
