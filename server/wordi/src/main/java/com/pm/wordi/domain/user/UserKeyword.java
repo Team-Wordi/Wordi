@@ -1,5 +1,6 @@
-package com.pm.wordi.domain;
+package com.pm.wordi.domain.user;
 
+import com.pm.wordi.domain.Keyword;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +17,7 @@ public class UserKeyword {
     @Column(name = "userKeywordId")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
     private User user;
 

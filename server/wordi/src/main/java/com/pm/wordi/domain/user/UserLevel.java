@@ -1,4 +1,4 @@
-package com.pm.wordi.domain;
+package com.pm.wordi.domain.user;
 
 public enum UserLevel {
     관리자, 일반, 블랙

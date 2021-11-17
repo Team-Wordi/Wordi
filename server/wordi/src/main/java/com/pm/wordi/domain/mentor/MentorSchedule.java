@@ -1,4 +1,4 @@
-package com.pm.wordi.domain;
+package com.pm.wordi.domain.mentor;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -16,7 +16,7 @@ public class MentorSchedule {
     @Column(name = "mentorScheduleId")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mentorId")
     private Mentor mentor;
 

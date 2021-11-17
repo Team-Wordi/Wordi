@@ -1,5 +1,8 @@
-package com.pm.wordi.domain;
+package com.pm.wordi.domain.mentoring;
 
+import com.pm.wordi.domain.BaseEntity;
+import com.pm.wordi.domain.mentor.Mentor;
+import com.pm.wordi.domain.user.User;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,22 +13,22 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Mentoring extends BaseEntity{
+public class Mentoring extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "mentoringId")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mentorId")
     private Mentor mentor;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "paymentId")
     private Payment payment;
 

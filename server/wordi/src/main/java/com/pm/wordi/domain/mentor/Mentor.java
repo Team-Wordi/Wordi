@@ -1,5 +1,7 @@
-package com.pm.wordi.domain;
+package com.pm.wordi.domain.mentor;
 
+import com.pm.wordi.domain.BaseEntity;
+import com.pm.wordi.domain.user.User;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,16 +12,16 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Mentor extends BaseEntity{
+public class Mentor extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "mentorId")
     private Long id;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
-    private User uesr;
+    private User user;
 
     @Column(name = "mentorNation")
     private String nation;
