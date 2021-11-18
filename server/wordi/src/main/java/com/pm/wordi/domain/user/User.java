@@ -2,6 +2,7 @@ package com.pm.wordi.domain.user;
 
 import com.pm.wordi.domain.BaseEntity;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -41,8 +42,21 @@ public class User extends BaseEntity {
 
     private boolean isOAuth2;
 
+    @Builder
+    public User(Long id, String email, String password, String phoneNumber, String nickname,
+                String nation1, String nation2, String nation3,
+                UserLevel userLevel, boolean isMentor, boolean isOAuth2) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.nickname = nickname;
+        this.nation1 = nation1;
+        this.nation2 = nation2;
+        this.nation3 = nation3;
+        this.userLevel = userLevel;
+        this.isMentor = isMentor;
+        this.isOAuth2 = isOAuth2;
 
-
-
-
+    }
 }
