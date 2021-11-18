@@ -41,4 +41,4 @@ src/main/resources/application.yml
 src/main/resources/logback-spring.xml
 
 ### 암호 파일 ###
-src/main/java/com/pm/wordi/commons/cretification/Secret.class
+src/main/java/com/pm/wordi/commons/utils/certification/
