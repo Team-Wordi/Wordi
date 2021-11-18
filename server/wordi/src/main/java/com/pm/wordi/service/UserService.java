@@ -18,6 +18,9 @@ public class UserService {
     private final JwtService jwtService;
 
     public ResponseTokens save(CreateRequest createRequest) {
+
+        createRequest.passwordEncryption();
+
         User user = userRepository.save(createRequest.toEntity());
         String jwt = jwtService.createJwt(user.getId());
         return new ResponseTokens(user.getId(), jwt);

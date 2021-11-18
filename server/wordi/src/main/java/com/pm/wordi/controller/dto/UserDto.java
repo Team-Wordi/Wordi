@@ -1,15 +1,13 @@
 package com.pm.wordi.controller.dto;
 
-import com.pm.wordi.commons.certification.AES128;
-import com.pm.wordi.commons.certification.Secret;
+import com.pm.wordi.commons.utils.certification.AES128;
+import com.pm.wordi.commons.utils.certification.Secret;
 import com.pm.wordi.domain.user.User;
 import com.pm.wordi.domain.user.UserLevel;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
 
 public class UserDto {
 
@@ -38,7 +36,9 @@ public class UserDto {
 
         private boolean isOAuth2;
 
-        //TODO: 비밀번호 암호화 처리 추가
+        public void passwordEncryption() {
+            this.password = new AES128(Secret.USER_INFO_PASSWORD_KEY).encrypt(this.password);
+        }
 
         public User toEntity() {
 
