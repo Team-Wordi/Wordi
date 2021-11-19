@@ -4,10 +4,7 @@ import com.pm.wordi.commons.utils.certification.AES128;
 import com.pm.wordi.commons.utils.certification.Secret;
 import com.pm.wordi.domain.user.User;
 import com.pm.wordi.domain.user.UserLevel;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 public class UserDto {
 
@@ -73,6 +70,16 @@ public class UserDto {
     public static class LoginReq {
         private String email;
         private String password;
+    }
+
+    @Builder
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class AccountRes {
+        private String email;
+        private String phoneNumber;
+
     }
 
 }

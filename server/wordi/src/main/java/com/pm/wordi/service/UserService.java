@@ -5,6 +5,7 @@ import com.pm.wordi.commons.utils.certification.Secret;
 import com.pm.wordi.domain.user.User;
 import com.pm.wordi.domain.user.UserRepository;
 import com.pm.wordi.exception.user.NoExistEmailException;
+import com.pm.wordi.exception.user.NoExistUserException;
 import com.pm.wordi.exception.user.NotMatchPasswordException;
 import com.pm.wordi.service.certification.JwtService;
 import lombok.RequiredArgsConstructor;
@@ -57,5 +58,10 @@ public class UserService {
     @Transactional(readOnly = true)
     public boolean checkNicknameDuplicate(String nickname) {
         return userRepository.existsByNickname(nickname);
+    }
+
+    public AccountRes getAccount(Long userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(()->new NoExistUserException("접속한 회원 정보아 일치하는 회원 정보가 없습니다.")).toAccountRes();
     }
 }

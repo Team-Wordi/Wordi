@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 import static com.pm.wordi.controller.dto.UserDto.*;
 
 
@@ -61,6 +63,17 @@ public class UserApiController {
     public ResponseEntity<Boolean> checkNicknameDuplicate(@PathVariable String nickname) {
         return ResponseEntity.ok(userService.checkNicknameDuplicate(nickname));
 
+    }
+
+    /**
+     * 개인정보 조회 API
+     * [GET] /app/users/account
+     * @return BaseResponse<Boolean>
+     */
+    @GetMapping("/account")
+    public ResponseEntity<AccountRes> getAccount(HttpServletRequest request) {
+        Long userId = (Long)request.getAttribute("userId");
+        return ResponseEntity.ok(userService.getAccount(userId));
     }
 
 

@@ -1,5 +1,6 @@
 package com.pm.wordi.domain.user;
 
+import com.pm.wordi.controller.dto.UserDto;
 import com.pm.wordi.domain.BaseEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -7,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
+import static com.pm.wordi.controller.dto.UserDto.*;
 
 @Entity
 @Getter
@@ -58,5 +61,12 @@ public class User extends BaseEntity {
         this.isMentor = isMentor;
         this.isOAuth2 = isOAuth2;
 
+    }
+
+    public AccountRes toAccountRes() {
+        return AccountRes.builder()
+                .email(this.email)
+                .phoneNumber(this.phoneNumber)
+                .build();
     }
 }
