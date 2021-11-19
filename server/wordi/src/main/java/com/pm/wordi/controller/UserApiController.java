@@ -4,10 +4,7 @@ import com.pm.wordi.controller.dto.UserDto;
 import com.pm.wordi.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import static com.pm.wordi.controller.dto.UserDto.*;
 
@@ -26,10 +23,7 @@ public class UserApiController {
      */
     @PostMapping("/account/signup")
     public ResponseEntity<ResponseTokens> createUser(@RequestBody CreateRequest createRequest) {
-
-        ResponseTokens responseTokens = userService.save(createRequest);
-        return ResponseEntity.ok(responseTokens);
-
+        return ResponseEntity.ok(userService.save(createRequest));
     }
 
     /**
@@ -39,9 +33,17 @@ public class UserApiController {
      */
     @PostMapping("/account/login")
     public ResponseEntity<ResponseTokens> login(@RequestBody LoginReq loginReq) {
+        return ResponseEntity.ok(userService.login(loginReq));
+    }
 
-        ResponseTokens responseTokens = userService.login(loginReq);
-        return ResponseEntity.ok(responseTokens);
+    /**
+     * 이메일 중복체크 API
+     * [GET] /app/users/account/check-duplicate/{email}
+     * @return BaseResponse<Boolean>
+     */
+    @GetMapping("/account/check-duplicate/{email}")
+    public ResponseEntity<Boolean> checkEmailDuplicate(@PathVariable String email) {
+        return ResponseEntity.ok(userService.checkEmailDuplicate(email));
 
     }
 

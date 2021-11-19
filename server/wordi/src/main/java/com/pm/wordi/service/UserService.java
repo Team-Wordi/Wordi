@@ -23,6 +23,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final JwtService jwtService;
 
+    @Transactional
     public ResponseTokens save(CreateRequest createRequest) {
 
         createRequest.passwordEncryption();
@@ -32,6 +33,7 @@ public class UserService {
         return new ResponseTokens(user.getId(), jwt);
     }
 
+    @Transactional(readOnly = true)
     public ResponseTokens login(LoginReq loginReq) {
         User user = userRepository.findByEmail(loginReq.getEmail())
                 .orElseThrow(() -> new NoExistEmailException("이메일과 일치하는 회원이 없습니다."));
@@ -45,5 +47,10 @@ public class UserService {
         String jwt = jwtService.createJwt(user.getId());
 
         return new ResponseTokens(id, jwt);
+    }
+
+    @Transactional(readOnly = true)
+    public boolean checkEmailDuplicate(String email) {
+        return userRepository.existsByEmail(email);
     }
 }
