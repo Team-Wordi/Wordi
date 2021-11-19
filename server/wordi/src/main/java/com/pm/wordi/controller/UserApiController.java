@@ -70,7 +70,7 @@ public class UserApiController {
     /**
      * 개인정보 조회 API
      * [GET] /app/users/account
-     * @return BaseResponse<Boolean>
+     * @return BaseResponse<AccountRes>
      */
     @GetMapping("/account")
     public ResponseEntity<AccountRes> getAccount(HttpServletRequest request) {
@@ -81,13 +81,27 @@ public class UserApiController {
     /**
      * 개인정보 수정 API
      * [PATCH] /app/users/account
-     * @return BaseResponse<Boolean>
+     * @return BaseResponse<HttpStatus>
      */
     @PatchMapping("/account")
     public ResponseEntity<HttpStatus> updateAccount(@RequestBody AccountReq accountReq,
                                                     HttpServletRequest request) {
         Long userId = (Long)request.getAttribute("userId");
         userService.updateAccount(userId, accountReq);
+        return RESPONSE_OK;
+    }
+
+
+    /**
+     * 비밀번호 수정 API
+     * [PATCH] /app/users/account/password
+     * @return BaseResponse<HttpStatus>
+     */
+    @PatchMapping("/account/password")
+    public ResponseEntity<HttpStatus> updatePassword(@RequestBody changePasswordReq changePasswordReq,
+                                                    HttpServletRequest request) {
+        Long userId = (Long)request.getAttribute("userId");
+        userService.updatePassword(userId, changePasswordReq);
         return RESPONSE_OK;
     }
 

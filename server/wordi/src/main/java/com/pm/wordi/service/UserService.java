@@ -75,4 +75,21 @@ public class UserService {
                 accountReq.getEmail(),
                 accountReq.getPhoneNumber());
     }
+
+    public void updatePassword(Long userId, changePasswordReq changePasswordReq) {
+
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new NoExistUserException("접속한 회원 정보아 일치하는 회원 정보가 없습니다."));
+
+        changePasswordReq.passwordEncryption();
+        String beforePassword = changePasswordReq.getBeforePassword();
+        String afterPassword = changePasswordReq.getAfterPassword();
+
+        if(!user.getPassword().equals(beforePassword)) {
+            throw new NotMatchPasswordException("현재 비밀번호와 일치하지 않습니다.");
+        }
+
+        user.updatePassword(afterPassword);
+
+    }
 }

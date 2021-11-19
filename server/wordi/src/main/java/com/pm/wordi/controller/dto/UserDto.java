@@ -82,7 +82,6 @@ public class UserDto {
 
     }
 
-    @Builder
     @Getter
     @AllArgsConstructor
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -91,5 +90,23 @@ public class UserDto {
         private String phoneNumber;
 
     }
+
+    @Builder
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class changePasswordReq {
+
+        private String beforePassword;
+        private String afterPassword;
+
+        public void passwordEncryption() {
+            this.beforePassword = new AES128(Secret.USER_INFO_PASSWORD_KEY).encrypt(this.beforePassword);
+            this.afterPassword = new AES128(Secret.USER_INFO_PASSWORD_KEY).encrypt(this.afterPassword);
+        }
+
+    }
+
+
 
 }
