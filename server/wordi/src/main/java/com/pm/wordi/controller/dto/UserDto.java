@@ -4,10 +4,7 @@ import com.pm.wordi.commons.utils.certification.AES128;
 import com.pm.wordi.commons.utils.certification.Secret;
 import com.pm.wordi.domain.user.User;
 import com.pm.wordi.domain.user.UserLevel;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 public class UserDto {
 
@@ -74,5 +71,42 @@ public class UserDto {
         private String email;
         private String password;
     }
+
+    @Builder
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class AccountRes {
+        private String email;
+        private String phoneNumber;
+
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class AccountReq {
+        private String email;
+        private String phoneNumber;
+
+    }
+
+    @Builder
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class changePasswordReq {
+
+        private String beforePassword;
+        private String afterPassword;
+
+        public void passwordEncryption() {
+            this.beforePassword = new AES128(Secret.USER_INFO_PASSWORD_KEY).encrypt(this.beforePassword);
+            this.afterPassword = new AES128(Secret.USER_INFO_PASSWORD_KEY).encrypt(this.afterPassword);
+        }
+
+    }
+
+
 
 }

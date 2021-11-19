@@ -4,9 +4,13 @@ import com.pm.wordi.commons.annotation.UnAuth;
 import com.pm.wordi.controller.dto.UserDto;
 import com.pm.wordi.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
+import static com.pm.wordi.commons.utils.constants.ResponseConstants.RESPONSE_OK;
 import static com.pm.wordi.controller.dto.UserDto.*;
 
 
@@ -61,6 +65,44 @@ public class UserApiController {
     public ResponseEntity<Boolean> checkNicknameDuplicate(@PathVariable String nickname) {
         return ResponseEntity.ok(userService.checkNicknameDuplicate(nickname));
 
+    }
+
+    /**
+     * 개인정보 조회 API
+     * [GET] /app/users/account
+     * @return BaseResponse<AccountRes>
+     */
+    @GetMapping("/account")
+    public ResponseEntity<AccountRes> getAccount(HttpServletRequest request) {
+        Long userId = (Long)request.getAttribute("userId");
+        return ResponseEntity.ok(userService.getAccount(userId));
+    }
+
+    /**
+     * 개인정보 수정 API
+     * [PATCH] /app/users/account
+     * @return BaseResponse<HttpStatus>
+     */
+    @PatchMapping("/account")
+    public ResponseEntity<HttpStatus> updateAccount(@RequestBody AccountReq accountReq,
+                                                    HttpServletRequest request) {
+        Long userId = (Long)request.getAttribute("userId");
+        userService.updateAccount(userId, accountReq);
+        return RESPONSE_OK;
+    }
+
+
+    /**
+     * 비밀번호 수정 API
+     * [PATCH] /app/users/account/password
+     * @return BaseResponse<HttpStatus>
+     */
+    @PatchMapping("/account/password")
+    public ResponseEntity<HttpStatus> updatePassword(@RequestBody changePasswordReq changePasswordReq,
+                                                    HttpServletRequest request) {
+        Long userId = (Long)request.getAttribute("userId");
+        userService.updatePassword(userId, changePasswordReq);
+        return RESPONSE_OK;
     }
 
 

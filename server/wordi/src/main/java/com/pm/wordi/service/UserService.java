@@ -5,6 +5,7 @@ import com.pm.wordi.commons.utils.certification.Secret;
 import com.pm.wordi.domain.user.User;
 import com.pm.wordi.domain.user.UserRepository;
 import com.pm.wordi.exception.user.NoExistEmailException;
+import com.pm.wordi.exception.user.NoExistUserException;
 import com.pm.wordi.exception.user.NotMatchPasswordException;
 import com.pm.wordi.service.certification.JwtService;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +18,7 @@ import static com.pm.wordi.controller.dto.UserDto.*;
 
 @Service
 @RequiredArgsConstructor
-@Transactional // 차후에 readonly 조건 부여
+@Transactional
 public class UserService {
 
     private final UserRepository userRepository;
@@ -57,5 +58,38 @@ public class UserService {
     @Transactional(readOnly = true)
     public boolean checkNicknameDuplicate(String nickname) {
         return userRepository.existsByNickname(nickname);
+    }
+
+    @Transactional(readOnly = true)
+    public AccountRes getAccount(Long userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(()->new NoExistUserException("접속한 회원 정보아 일치하는 회원 정보가 없습니다.")).toAccountRes();
+    }
+
+    @Transactional
+    public void updateAccount(Long userId, AccountReq accountReq) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new NoExistUserException("접속한 회원 정보아 일치하는 회원 정보가 없습니다."));
+
+        user.updateAccount(
+                accountReq.getEmail(),
+                accountReq.getPhoneNumber());
+    }
+
+    public void updatePassword(Long userId, changePasswordReq changePasswordReq) {
+
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new NoExistUserException("접속한 회원 정보아 일치하는 회원 정보가 없습니다."));
+
+        changePasswordReq.passwordEncryption();
+        String beforePassword = changePasswordReq.getBeforePassword();
+        String afterPassword = changePasswordReq.getAfterPassword();
+
+        if(!user.getPassword().equals(beforePassword)) {
+            throw new NotMatchPasswordException("현재 비밀번호와 일치하지 않습니다.");
+        }
+
+        user.updatePassword(afterPassword);
+
     }
 }
