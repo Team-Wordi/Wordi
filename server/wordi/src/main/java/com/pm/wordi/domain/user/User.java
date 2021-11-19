@@ -69,4 +69,9 @@ public class User extends BaseEntity {
                 .phoneNumber(this.phoneNumber)
                 .build();
     }
+
+    public void updateAccount(String email, String phoneNumber) {
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
 }

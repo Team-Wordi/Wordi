@@ -4,11 +4,13 @@ import com.pm.wordi.commons.annotation.UnAuth;
 import com.pm.wordi.controller.dto.UserDto;
 import com.pm.wordi.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
+import static com.pm.wordi.commons.utils.constants.ResponseConstants.RESPONSE_OK;
 import static com.pm.wordi.controller.dto.UserDto.*;
 
 
@@ -74,6 +76,19 @@ public class UserApiController {
     public ResponseEntity<AccountRes> getAccount(HttpServletRequest request) {
         Long userId = (Long)request.getAttribute("userId");
         return ResponseEntity.ok(userService.getAccount(userId));
+    }
+
+    /**
+     * 개인정보 수정 API
+     * [PATCH] /app/users/account
+     * @return BaseResponse<Boolean>
+     */
+    @PatchMapping("/account")
+    public ResponseEntity<HttpStatus> updateAccount(@RequestBody AccountReq accountReq,
+                                                    HttpServletRequest request) {
+        Long userId = (Long)request.getAttribute("userId");
+        userService.updateAccount(userId, accountReq);
+        return RESPONSE_OK;
     }
 
 

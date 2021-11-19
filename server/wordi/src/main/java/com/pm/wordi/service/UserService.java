@@ -18,7 +18,7 @@ import static com.pm.wordi.controller.dto.UserDto.*;
 
 @Service
 @RequiredArgsConstructor
-@Transactional // 차후에 readonly 조건 부여
+@Transactional
 public class UserService {
 
     private final UserRepository userRepository;
@@ -60,8 +60,19 @@ public class UserService {
         return userRepository.existsByNickname(nickname);
     }
 
+    @Transactional(readOnly = true)
     public AccountRes getAccount(Long userId) {
         return userRepository.findById(userId)
                 .orElseThrow(()->new NoExistUserException("접속한 회원 정보아 일치하는 회원 정보가 없습니다.")).toAccountRes();
+    }
+
+    @Transactional
+    public void updateAccount(Long userId, AccountReq accountReq) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new NoExistUserException("접속한 회원 정보아 일치하는 회원 정보가 없습니다."));
+
+        user.updateAccount(
+                accountReq.getEmail(),
+                accountReq.getPhoneNumber());
     }
 }

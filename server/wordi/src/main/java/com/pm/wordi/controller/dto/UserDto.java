@@ -82,4 +82,14 @@ public class UserDto {
 
     }
 
+    @Builder
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class AccountReq {
+        private String email;
+        private String phoneNumber;
+
+    }
+
 }
