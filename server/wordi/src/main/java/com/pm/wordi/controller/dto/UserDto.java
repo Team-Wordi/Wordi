@@ -66,4 +66,13 @@ public class UserDto {
         private Long userId;
         private String jwt;
     }
+
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class LoginReq {
+        private String email;
+        private String password;
+    }
+
 }

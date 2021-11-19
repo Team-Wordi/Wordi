@@ -19,6 +19,11 @@ public class UserApiController {
 
     private final UserService userService;
 
+    /**
+     * 회원가입 API
+     * [POST] /app/users/account/signup
+     * @return BaseResponse<ResponseTokens>
+     */
     @PostMapping("/account/signup")
     public ResponseEntity<ResponseTokens> createUser(@RequestBody CreateRequest createRequest) {
 
@@ -26,4 +31,19 @@ public class UserApiController {
         return ResponseEntity.ok(responseTokens);
 
     }
+
+    /**
+     * 로그인 API
+     * [POST] /app/users/account/login
+     * @return BaseResponse<ResponseTokens>
+     */
+    @PostMapping("/account/login")
+    public ResponseEntity<ResponseTokens> login(@RequestBody LoginReq loginReq) {
+
+        ResponseTokens responseTokens = userService.login(loginReq);
+        return ResponseEntity.ok(responseTokens);
+
+    }
+
+
 }
