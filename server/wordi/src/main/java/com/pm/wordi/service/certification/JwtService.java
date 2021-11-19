@@ -3,7 +3,7 @@ package com.pm.wordi.service.certification;
 
 
 import com.pm.wordi.commons.utils.certification.Secret;
-import com.pm.wordi.exception.user.NotAuthorizedException;
+import com.pm.wordi.exception.user.CertifiedException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
@@ -53,7 +53,7 @@ public class JwtService {
         //1. JWT 추출
         String accessToken = getJwt();
         if(accessToken == null || accessToken.length() == 0){
-            throw new NotAuthorizedException("토큰이 존재하지 않습니다.");
+            throw new CertifiedException("토큰이 존재하지 않습니다.");
         }
         // 2. JWT parsing
         Jws<Claims> claims;
@@ -62,7 +62,7 @@ public class JwtService {
                     .setSigningKey(Secret.JWT_SECRET_KEY)
                     .parseClaimsJws(accessToken);
         } catch (Exception ignored) {
-            throw new NotAuthorizedException("유효하지 않은 토큰입니다.");
+            throw new CertifiedException("유효하지 않은 토큰입니다.");
         }
         // 3. userId 추출
         return claims.getBody().get("userId", Long.class);
