@@ -3,7 +3,7 @@ package com.pm.wordi.service.certification;
 
 
 import com.pm.wordi.commons.utils.certification.Secret;
-import com.pm.wordi.exception.user.certification.NotAuthorizedException;
+import com.pm.wordi.exception.user.NotAuthorizedException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;

@@ -2,7 +2,9 @@ package com.pm.wordi.commons.advice;
 
 import com.pm.wordi.exception.DecryptException;
 import com.pm.wordi.exception.EncryptException;
-import com.pm.wordi.exception.user.certification.NotAuthorizedException;
+import com.pm.wordi.exception.user.NoExistEmailException;
+import com.pm.wordi.exception.user.NotAuthorizedException;
+import com.pm.wordi.exception.user.NotMatchPasswordException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +17,7 @@ public class ExceptionAdvice {
 
     @ExceptionHandler(NotAuthorizedException.class)
     public ResponseEntity<String> notAuthorizedException(NotAuthorizedException e) {
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.FORBIDDEN);
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler(EncryptException.class)
@@ -24,8 +26,18 @@ public class ExceptionAdvice {
     }
 
     @ExceptionHandler(DecryptException.class)
-    public ResponseEntity<String> encryptException(DecryptException e) {
+    public ResponseEntity<String> decryptException(DecryptException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(NoExistEmailException.class)
+    public ResponseEntity<String> noExistEmailException(NoExistEmailException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(NotMatchPasswordException.class)
+    public ResponseEntity<String> notMatchPasswordException(NotMatchPasswordException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.UNAUTHORIZED);
     }
 
 }
