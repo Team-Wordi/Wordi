@@ -1,5 +1,6 @@
 package com.pm.wordi.controller;
 
+import com.pm.wordi.commons.annotation.UnAuth;
 import com.pm.wordi.controller.dto.UserDto;
 import com.pm.wordi.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,7 @@ public class UserApiController {
      * [POST] /app/users/account/signup
      * @return BaseResponse<ResponseTokens>
      */
+    @UnAuth
     @PostMapping("/account/signup")
     public ResponseEntity<ResponseTokens> createUser(@RequestBody CreateRequest createRequest) {
         return ResponseEntity.ok(userService.save(createRequest));
@@ -31,6 +33,7 @@ public class UserApiController {
      * [POST] /app/users/account/login
      * @return BaseResponse<ResponseTokens>
      */
+    @UnAuth
     @PostMapping("/account/login")
     public ResponseEntity<ResponseTokens> login(@RequestBody LoginReq loginReq) {
         return ResponseEntity.ok(userService.login(loginReq));
@@ -41,6 +44,7 @@ public class UserApiController {
      * [GET] /app/users/account/check-duplicate/{email}
      * @return BaseResponse<Boolean>
      */
+    @UnAuth
     @GetMapping("/account/check-duplicate/{email}")
     public ResponseEntity<Boolean> checkEmailDuplicate(@PathVariable String email) {
         return ResponseEntity.ok(userService.checkEmailDuplicate(email));
@@ -52,6 +56,7 @@ public class UserApiController {
      * [GET] /app/users/profile/check-duplicate/{nickname}
      * @return BaseResponse<Boolean>
      */
+    @UnAuth
     @GetMapping("/profile/check-duplicate/{nickname}")
     public ResponseEntity<Boolean> checkNicknameDuplicate(@PathVariable String nickname) {
         return ResponseEntity.ok(userService.checkNicknameDuplicate(nickname));
