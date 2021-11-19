@@ -47,5 +47,16 @@ public class UserApiController {
 
     }
 
+    /**
+     * 닉네임 중복체크 API
+     * [GET] /app/users/profile/check-duplicate/{nickname}
+     * @return BaseResponse<Boolean>
+     */
+    @GetMapping("/profile/check-duplicate/{nickname}")
+    public ResponseEntity<Boolean> checkNicknameDuplicate(@PathVariable String nickname) {
+        return ResponseEntity.ok(userService.checkNicknameDuplicate(nickname));
+
+    }
+
 
 }
