@@ -73,12 +73,12 @@ const BottomTabBar = () => {
         </Content>
       </Tab>
       <Tab
-        to={ROUTES.REVIEWS}
-        onClick={() => setActiveTab(ROUTES.REVIEWS)}
-        isActive={ROUTES.REVIEWS === activeTab}
+        to={ROUTES.MENTOR_LIST}
+        onClick={() => setActiveTab(ROUTES.MENTOR_LIST)}
+        isActive={ROUTES.MENTOR_LIST === activeTab}
       >
         <Content>
-          <MentorIcon size={22} isActive={ROUTES.REVIEWS === activeTab} />
+          <MentorIcon size={22} isActive={ROUTES.MENTOR_LIST === activeTab} />
           멘토
         </Content>
       </Tab>
