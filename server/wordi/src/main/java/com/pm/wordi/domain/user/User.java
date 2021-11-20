@@ -1,7 +1,7 @@
 package com.pm.wordi.domain.user;
 
-import com.pm.wordi.controller.dto.UserDto;
-import com.pm.wordi.domain.BaseEntity;
+import com.pm.wordi.domain.BaseStatus;
+import com.pm.wordi.domain.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,7 +14,7 @@ import static com.pm.wordi.controller.dto.UserDto.*;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class User extends BaseEntity {
+public class User extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,10 +45,13 @@ public class User extends BaseEntity {
 
     private boolean isOAuth2;
 
+    @Enumerated(EnumType.STRING)
+    private BaseStatus status;
+
     @Builder
     public User(Long id, String email, String password, String phoneNumber, String nickname,
                 String nation1, String nation2, String nation3,
-                UserLevel userLevel, boolean isMentor, boolean isOAuth2) {
+                UserLevel userLevel, boolean isMentor, boolean isOAuth2, BaseStatus baseStatus) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -60,6 +63,7 @@ public class User extends BaseEntity {
         this.userLevel = userLevel;
         this.isMentor = isMentor;
         this.isOAuth2 = isOAuth2;
+        this.status = baseStatus;
 
     }
 

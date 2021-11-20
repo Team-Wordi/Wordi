@@ -1,6 +1,7 @@
 package com.pm.wordi.domain.mentoring;
 
-import com.pm.wordi.domain.BaseEntity;
+import com.pm.wordi.domain.BaseStatus;
+import com.pm.wordi.domain.BaseTimeEntity;
 import com.pm.wordi.domain.mentor.Mentor;
 import com.pm.wordi.domain.user.User;
 import lombok.AccessLevel;
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Mentoring extends BaseEntity {
+public class Mentoring extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,6 +45,9 @@ public class Mentoring extends BaseEntity {
     private MentoringStatus mentoringStatus;
 
     private String refusalMessage;
+
+    @Enumerated(EnumType.STRING)
+    private BaseStatus status;
 
 
 
