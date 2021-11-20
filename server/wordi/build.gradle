@@ -26,12 +26,13 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation ('org.springframework.boot:spring-boot-starter-validation')
 
 	// Security, Authentication
 	implementation('org.springframework.boot:spring-boot-starter-security')
 	implementation('io.jsonwebtoken:jjwt:0.9.1')
 
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
 	runtimeOnly 'com.h2database:h2'
 }
