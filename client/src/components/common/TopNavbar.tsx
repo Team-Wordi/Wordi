@@ -4,9 +4,9 @@ import { COLORS } from 'styles/Theme';
 import HamburgerIcon from 'components/icon/HamburgerIcon';
 import ActiveNotificationIcon from 'components/icon/ActiveNoficiationIcon';
 
-const Container = styled.div`
+const Container = styled.div<{ logo: any }>`
   display: flex;
-  justify-content: space-between;
+  justify-content: ${({ logo }) => (logo ? 'space-between' : 'flex-end')};
   align-items: center;
 
   background: transparent;
@@ -26,15 +26,22 @@ const RightBox = styled.div`
   }
 `;
 
-const TopNavbar = () => {
+const LogoBox = styled.div``;
+
+interface TopNavbarProps {
+  logo?: boolean;
+  color: string | undefined;
+}
+
+const TopNavbar = ({ logo, color }: TopNavbarProps) => {
   const onHandleMenu = () => {};
 
   return (
-    <Container>
-      워디
+    <Container logo={logo}>
+      {logo && <LogoBox>워디</LogoBox>}
       <RightBox>
-        <ActiveNotificationIcon size={24} />
-        <HamburgerIcon size={24} color={COLORS.gray_03} onClick={onHandleMenu} />
+        <ActiveNotificationIcon size={24} color={color} />
+        <HamburgerIcon size={24} color={color} onClick={onHandleMenu} />
       </RightBox>
     </Container>
   );

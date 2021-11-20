@@ -3,10 +3,11 @@ import { ReactComponent as ActiveNotificationSVG } from 'assets/icons/notificati
 
 interface ActiveNotificationIconProps {
   size?: number;
+  color?: string;
 }
 
-function ActiveNotificationIcon({ size }: ActiveNotificationIconProps): JSX.Element {
-  return <ActiveNotificationSVG width={size} height={size} />;
+function ActiveNotificationIcon({ size, color }: ActiveNotificationIconProps): JSX.Element {
+  return <ActiveNotificationSVG width={size} height={size} stroke={color} />;
 }
 
 export default ActiveNotificationIcon;
