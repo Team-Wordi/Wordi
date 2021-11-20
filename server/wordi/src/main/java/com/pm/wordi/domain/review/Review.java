@@ -1,6 +1,7 @@
 package com.pm.wordi.domain.review;
 
-import com.pm.wordi.domain.BaseEntity;
+import com.pm.wordi.domain.BaseStatus;
+import com.pm.wordi.domain.BaseTimeEntity;
 import com.pm.wordi.domain.mentor.Mentor;
 import com.pm.wordi.domain.user.User;
 import lombok.AccessLevel;
@@ -12,7 +13,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Review extends BaseEntity {
+public class Review extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +29,9 @@ public class Review extends BaseEntity {
     private Mentor mentor;
 
     private String content;
+
+    @Enumerated(EnumType.STRING)
+    private BaseStatus status;
 
 
 }

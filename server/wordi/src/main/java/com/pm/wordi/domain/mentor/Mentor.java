@@ -1,6 +1,7 @@
 package com.pm.wordi.domain.mentor;
 
-import com.pm.wordi.domain.BaseEntity;
+import com.pm.wordi.domain.BaseStatus;
+import com.pm.wordi.domain.BaseTimeEntity;
 import com.pm.wordi.domain.user.User;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Mentor extends BaseEntity {
+public class Mentor extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,6 +48,8 @@ public class Mentor extends BaseEntity {
 
     private boolean isOpen;
 
+    @Enumerated(EnumType.STRING)
+    private BaseStatus status;
 
 
 

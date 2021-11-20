@@ -1,5 +1,6 @@
 package com.pm.wordi.domain;
 
+import com.pm.wordi.domain.BaseStatus;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public abstract class BaseEntity {
+public abstract class BaseTimeEntity {
 
     @CreatedDate
     @Column(updatable = false)
@@ -19,9 +20,6 @@ public abstract class BaseEntity {
 
     @LastModifiedDate
     private LocalDateTime updated;
-
-    @Enumerated(EnumType.STRING)
-    private BaseStatus status;
 
 
 }
