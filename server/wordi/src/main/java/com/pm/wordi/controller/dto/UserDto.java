@@ -2,9 +2,15 @@ package com.pm.wordi.controller.dto;
 
 import com.pm.wordi.commons.utils.certification.AES128;
 import com.pm.wordi.commons.utils.certification.Secret;
+import com.pm.wordi.domain.BaseStatus;
 import com.pm.wordi.domain.user.User;
 import com.pm.wordi.domain.user.UserLevel;
 import lombok.*;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 public class UserDto {
 
@@ -13,25 +19,29 @@ public class UserDto {
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class CreateRequest {
 
+        @NotBlank(message = "이메일 주소를 입력해주세요.")
+        @Email(message = "올바른 이메일 주소를 입력해주세요.")
         private String email;
 
+        @NotBlank(message = "비밀번호를 입력해주세요.")
+        @Size(min = 8, max = 20, message = "비밀번호는 8자 이상 20자 이하로 입력해주세요.")
         private String password;
 
+        @NotBlank(message = "휴대폰 번호를 입력해주세요.")
+        @Pattern(regexp = "(?:(010-\\d{4})|(01[1|6|7|8|9]-\\d{3,4}))-(\\d{4})", message = "올바른 휴대폰 번호를 입력해주세요.")
         private String phoneNumber;
 
+        @NotBlank(message = "닉네임을 입력해주세요.")
+        @Size(min = 2, max = 10, message = "닉네임은 2자 이상 10자 이하로 입력해주세요.")
         private String nickname;
 
+        @NotBlank(message = "첫 번째 관심 국가를 입력해주세요.")
         private String nation1;
 
         private String nation2;
 
         private String nation3;
 
-        private UserLevel userLevel;
-
-        private boolean isMentor;
-
-        private boolean isOAuth2;
 
         public void passwordEncryption() {
             this.password = new AES128(Secret.USER_INFO_PASSWORD_KEY).encrypt(this.password);
@@ -50,6 +60,7 @@ public class UserDto {
                     .userLevel(UserLevel.일반)
                     .isMentor(false)
                     .isOAuth2(false)
+                    .baseStatus(BaseStatus.ACTIVE)
                     .build();
         }
 
@@ -86,7 +97,13 @@ public class UserDto {
     @AllArgsConstructor
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class AccountReq {
+
+        @NotBlank(message = "이메일 주소를 입력해주세요.")
+        @Email(message = "올바른 이메일 주소를 입력해주세요.")
         private String email;
+
+        @NotBlank(message = "휴대폰 번호를 입력해주세요.")
+        @Pattern(regexp = "(?:(010-\\d{4})|(01[1|6|7|8|9]-\\d{3,4}))-(\\d{4})", message = "올바른 휴대폰 번호를 입력해주세요.")
         private String phoneNumber;
 
     }
@@ -98,6 +115,9 @@ public class UserDto {
     public static class changePasswordReq {
 
         private String beforePassword;
+
+        @NotBlank(message = "비밀번호를 입력해주세요.")
+        @Size(min = 8, max = 20, message = "비밀번호는 8자 이상 20자 이하로 입력해주세요.")
         private String afterPassword;
 
         public void passwordEncryption() {

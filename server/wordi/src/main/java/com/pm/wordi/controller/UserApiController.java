@@ -6,9 +6,11 @@ import com.pm.wordi.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import static com.pm.wordi.commons.utils.constants.ResponseConstants.RESPONSE_OK;
 import static com.pm.wordi.controller.dto.UserDto.*;
@@ -28,7 +30,7 @@ public class UserApiController {
      */
     @UnAuth
     @PostMapping("/account/signup")
-    public ResponseEntity<ResponseTokens> createUser(@RequestBody CreateRequest createRequest) {
+    public ResponseEntity<ResponseTokens> createUser(@Validated @RequestBody CreateRequest createRequest) {
         return ResponseEntity.ok(userService.save(createRequest));
     }
 
@@ -84,7 +86,7 @@ public class UserApiController {
      * @return BaseResponse<HttpStatus>
      */
     @PatchMapping("/account")
-    public ResponseEntity<HttpStatus> updateAccount(@RequestBody AccountReq accountReq,
+    public ResponseEntity<HttpStatus> updateAccount(@Validated @RequestBody AccountReq accountReq,
                                                     HttpServletRequest request) {
         Long userId = (Long)request.getAttribute("userId");
         userService.updateAccount(userId, accountReq);
@@ -98,7 +100,7 @@ public class UserApiController {
      * @return BaseResponse<HttpStatus>
      */
     @PatchMapping("/account/password")
-    public ResponseEntity<HttpStatus> updatePassword(@RequestBody changePasswordReq changePasswordReq,
+    public ResponseEntity<HttpStatus> updatePassword(@Validated @RequestBody changePasswordReq changePasswordReq,
                                                     HttpServletRequest request) {
         Long userId = (Long)request.getAttribute("userId");
         userService.updatePassword(userId, changePasswordReq);

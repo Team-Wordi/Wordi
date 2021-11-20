@@ -37,7 +37,7 @@ public class UserService {
     @Transactional(readOnly = true)
     public ResponseTokens login(LoginReq loginReq) {
         User user = userRepository.findByEmail(loginReq.getEmail())
-                .orElseThrow(() -> new NoExistEmailException("이메일과 일치하는 회원이 없습니다."));
+                .orElseThrow(() -> new NoExistEmailException("이메일을 확인해주세요."));
 
         String password = new AES128(Secret.USER_INFO_PASSWORD_KEY).decrypt(user.getPassword());
         if(!password.equals(loginReq.getPassword())) {

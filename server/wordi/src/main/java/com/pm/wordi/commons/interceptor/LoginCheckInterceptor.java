@@ -7,6 +7,7 @@ import com.pm.wordi.exception.user.NotAuthorizedException;
 import com.pm.wordi.service.certification.JwtService;
 import com.pm.wordi.service.certification.SessionLoginService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -32,7 +33,7 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
         // === 비로그인 시, 인가 처리 ===
         if(request.getHeader("X-ACCESS-TOKEN")==null) {
             if(checkAnnotation(handler, UnAuth.class)) {
-                request.setAttribute("userId", 0);
+                request.setAttribute("userId", 0L);
                 return true;
             }
             // TODO: request URI을 바탕으로 redirect 경로 추가.
