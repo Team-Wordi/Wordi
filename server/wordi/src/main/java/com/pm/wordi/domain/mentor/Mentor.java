@@ -1,5 +1,6 @@
 package com.pm.wordi.domain.mentor;
 
+import com.pm.wordi.controller.dto.MentorDto;
 import com.pm.wordi.domain.BaseStatus;
 import com.pm.wordi.domain.BaseTimeEntity;
 import com.pm.wordi.domain.mentoring.Mentoring;
@@ -17,6 +18,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.pm.wordi.controller.dto.MentorDto.*;
 
 @Entity
 @Getter
@@ -108,5 +111,14 @@ public class Mentor extends BaseTimeEntity {
         this.certification = certification;
         this.mentorLevel = mentorLevel;
         this.status = status;
+    }
+
+    public void updateProfile(ProfileReq profileReq) {
+        this.nation = profileReq.getMentorNation();
+        this.startDate = profileReq.getStartDate();
+        this.endDate = profileReq.getEndDate();
+        this.isProgress = profileReq.isProgress();
+        this.introduction = profileReq.getIntroduction();
+        this.price = profileReq.getPrice();
     }
 }

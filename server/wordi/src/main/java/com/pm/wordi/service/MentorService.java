@@ -48,4 +48,24 @@ public class MentorService {
                 .orElseThrow(() -> new NoExistMentorException("해당 회원의 멘토 정보가 존재하지 않습니다."));
 
     }
+
+    @Transactional
+    public void updateProfile(Long userId, ProfileReq profileReq) {
+
+        Mentor mentor = mentorRepository.findProfileByUserIdAndStatus(userId, ACTIVE)
+                .orElseThrow(() -> new NoExistMentorException("해당 회원의 멘토 정보가 존재하지 않습니다."));
+
+        mentor.updateProfile(profileReq);
+
+        // 키워드 업데이트
+        mentorKeywordRepository.deleteByMentor(mentor);
+        profileReq.getKeywordList().stream()
+                .forEach(k -> mentorKeywordRepository.save(new MentorKeyword(mentor, k)));
+
+        // 일정 업데이트
+        mentorScheduleRepository.deleteByMentor(mentor);
+        profileReq.getScheduleList().stream()
+                .forEach(s -> mentorScheduleRepository.save(s.toMentorSchedule(mentor)));
+
+    }
 }

@@ -115,4 +115,23 @@ public class MentorDto {
         }
     }
 
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class ProfileReq {
+
+        private String mentorNation;
+        private LocalDate startDate;
+        private LocalDate endDate;
+        private boolean isProgress;
+        private List<String> keywordList = new ArrayList<>();
+        private String introduction;
+        private List<ScheduleDTO> scheduleList = new ArrayList<>();
+        private Long price;
+
+
+
+    }
+
+
 }

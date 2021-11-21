@@ -39,12 +39,25 @@ public class MentorApiController {
     /**
      * 멘토 프로필 관리 조회 API
      * [GET] /app/mentors/profile
-     * @return BaseResponse<>
+     * @return BaseResponse<ProfileRes>
      */
     @GetMapping("/profile")
     public ResponseEntity<ProfileRes> getProfile(HttpServletRequest request) {
         Long userId = (Long)request.getAttribute("userId");
         return ResponseEntity.ok(mentorService.getProfile(userId));
+    }
+
+    /**
+     * 멘토 프로필 수정 API
+     * [PATCH] /app/mentors/profile
+     * @return BaseResponse<HttpStatus>
+     */
+    @PatchMapping("/profile")
+    public ResponseEntity<HttpStatus> updateProfile(@Validated @RequestBody ProfileReq profileReq,
+                                                    HttpServletRequest request) {
+        Long userId = (Long)request.getAttribute("userId");
+        mentorService.updateProfile(userId, profileReq);
+        return RESPONSE_OK;
     }
 
 }
