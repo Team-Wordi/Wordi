@@ -107,18 +107,29 @@ public class UserApiController {
         return RESPONSE_OK;
     }
 
-//    /**
-//     * 프로필 조회 API
-//     * [GET] /app/users/profile
-//     * @return BaseResponse<HttpStatus>
-//     */
-//    @GetMapping("/profile")
-//    public ResponseEntity<HttpStatus> getProfile(@Validated @RequestBody changePasswordReq changePasswordReq,
-//                                                     HttpServletRequest request) {
-//        Long userId = (Long)request.getAttribute("userId");
-//        userService.updatePassword(userId, changePasswordReq);
-//        return RESPONSE_OK;
-//    }
+    /**
+     * 프로필 조회 API
+     * [GET] /app/users/profile
+     * @return BaseResponse<ProfileRes>
+     */
+    @GetMapping("/profile")
+    public ResponseEntity<ProfileRes> getProfile(HttpServletRequest request) {
+        Long userId = (Long)request.getAttribute("userId");
+        return ResponseEntity.ok(userService.getProfile(userId));
+    }
+
+    /**
+     * 프로필 수정 API
+     * [PATCH] /app/users/profile
+     * @return BaseResponse<HttpStatus>
+     */
+    @PatchMapping("/profile")
+    public ResponseEntity<HttpStatus> updateProfile(@Validated @RequestBody ProfileReq profileReq,
+                                                    HttpServletRequest request) {
+        Long userId = (Long)request.getAttribute("userId");
+        userService.updateProfile(userId, profileReq);
+        return RESPONSE_OK;
+    }
 
 
 }

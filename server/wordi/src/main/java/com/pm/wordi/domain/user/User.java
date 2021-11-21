@@ -100,9 +100,11 @@ public class User extends BaseTimeEntity {
         this.password = password;
     }
 
-    // == 메서드 ==
-    public void createUserKeyword(List<String> keywordList) {
-        keywordList.stream()
-                .forEach(k -> addKeyword(new UserKeyword(this, k)));
+    public void updateProfile(ProfileReq profileReq) {
+        this.nickname = profileReq.getNickname();
+        this.nation1 = profileReq.getNation1();
+        this.nation2 = profileReq.getNation2();
+        this.nation3 = profileReq.getNation3();
     }
+
 }

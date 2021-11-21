@@ -50,8 +50,6 @@ public class Mentor extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private MentorLevel mentorLevel;
 
-    private boolean isOpen;
-
     @Enumerated(EnumType.STRING)
     private BaseStatus status;
 
