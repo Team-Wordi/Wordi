@@ -1,6 +1,5 @@
 package com.pm.wordi.domain.mentor;
 
-import com.pm.wordi.domain.Keyword;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +20,6 @@ public class MentorKeyword {
     @JoinColumn(name = "mentorId")
     private Mentor mentor;
 
-    @Enumerated(EnumType.STRING)
-    private Keyword keyword;
+    private String keyword;
 
 }

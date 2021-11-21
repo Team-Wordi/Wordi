@@ -1,7 +1,7 @@
 package com.pm.wordi.domain.user;
 
-import com.pm.wordi.domain.Keyword;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -21,7 +21,15 @@ public class UserKeyword {
     @JoinColumn(name = "userId")
     private User user;
 
-    @Enumerated(EnumType.STRING)
-    private Keyword keyword;
+    private String keyword;
 
+    @Builder
+    public UserKeyword(User user, String keyword) {
+        this.user = user;
+        this.keyword = keyword;
+    }
+
+    public void updateKeyword(User user) {
+        this.user = user;
+    }
 }

@@ -11,6 +11,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDto {
 
@@ -42,10 +44,13 @@ public class UserDto {
 
         private String nation3;
 
+        private List<String> keywordList = new ArrayList<>();
+
 
         public void passwordEncryption() {
             this.password = new AES128(Secret.USER_INFO_PASSWORD_KEY).encrypt(this.password);
         }
+
 
         public User toEntity() {
 
@@ -108,7 +113,6 @@ public class UserDto {
 
     }
 
-    @Builder
     @Getter
     @AllArgsConstructor
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -126,6 +130,14 @@ public class UserDto {
         }
 
     }
+
+//    @Getter
+//    @AllArgsConstructor
+//    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+//    public static class ProfileRes {
+//
+//
+//    }
 
 
 
