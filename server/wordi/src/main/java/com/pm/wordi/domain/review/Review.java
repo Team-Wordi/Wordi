@@ -33,5 +33,9 @@ public class Review extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private BaseStatus status;
 
+    public void updateMentor(Mentor mentor) {
+        this.mentor = mentor;
+    }
+
 
 }

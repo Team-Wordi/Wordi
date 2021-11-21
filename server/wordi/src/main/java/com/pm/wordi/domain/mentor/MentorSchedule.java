@@ -1,6 +1,7 @@
 package com.pm.wordi.domain.mentor;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -20,8 +21,18 @@ public class MentorSchedule {
     @JoinColumn(name = "mentorId")
     private Mentor mentor;
 
-    @Enumerated(EnumType.STRING)
-    private Week week;
+    private String week;
 
     private String schedule;
+
+    public void updateMentor(Mentor mentor) {
+        this.mentor = mentor;
+    }
+
+    @Builder
+    public MentorSchedule(Mentor mentor, String week, String schedule) {
+        this.mentor = mentor;
+        this.week = week;
+        this.schedule = schedule;
+    }
 }

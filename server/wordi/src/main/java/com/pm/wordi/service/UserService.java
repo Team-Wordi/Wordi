@@ -34,7 +34,7 @@ public class UserService {
         User user = userRepository.save(createRequest.toEntity());
 
         // 키워드 저장
-        createRequest.getKeywordList()
+        createRequest.getUserKeywordList()
                 .stream().forEach(k -> userKeywordRepository.save(new UserKeyword(user, k)));
 
 
@@ -102,12 +102,14 @@ public class UserService {
 
     }
 
+    @Transactional(readOnly = true)
     public ProfileRes getProfile(Long userId) {
         return userRepository.findFetchByIdAndStatus(userId, ACTIVE)
                 .map(ProfileRes::new)
                 .orElseThrow(() -> new NoExistUserException("접속한 회원 정보와 일치하는 회원 정보가 없습니다."));
     }
 
+    @Transactional
     public void updateProfile(Long userId, ProfileReq profileReq) {
         User user = userRepository.findByIdAndStatus(userId, ACTIVE)
                 .orElseThrow(() -> new NoExistUserException("접속한 회원 정보와 일치하는 회원 정보가 없습니다."));
@@ -116,7 +118,7 @@ public class UserService {
 
         //키워드 업데이트
         userKeywordRepository.deleteByUser(user);
-        profileReq.getKeywordList()
+        profileReq.getUserKeywordList()
                 .stream().forEach(k -> userKeywordRepository.save(new UserKeyword(user, k)));
 
     }

@@ -9,6 +9,10 @@ public class ResponseConstants {
     public static final ResponseEntity<HttpStatus> RESPONSE_CREATED = ResponseEntity.status(HttpStatus.CREATED).build();
 
 
-//    public static final ResponseEntity<String> DUPLICATION_EMAIL =
-//            new ResponseEntity<>("중복된 이메일입니다.", HttpStatus.CONFLICT);
+    public static final ResponseEntity<String> MULTIPLE_BAG_FETCH =
+            new ResponseEntity<>("DB 에러입니다. MULTIPLE_BAG_FETCH.", HttpStatus.INTERNAL_SERVER_ERROR);
+
+    public static final ResponseEntity<String> BAD_JSON_GRAMMAR =
+            new ResponseEntity<>("JSON 문법 오류입니다. 잘못된 요청값 또는 타입 입력. ", HttpStatus.BAD_REQUEST);
+
 }

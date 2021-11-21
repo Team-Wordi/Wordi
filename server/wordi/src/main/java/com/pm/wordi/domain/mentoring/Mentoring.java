@@ -50,5 +50,7 @@ public class Mentoring extends BaseTimeEntity {
     private BaseStatus status;
 
 
-
+    public void updateMentor(Mentor mentor) {
+        this.mentor = mentor;
+    }
 }

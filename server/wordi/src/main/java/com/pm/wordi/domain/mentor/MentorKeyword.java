@@ -1,6 +1,8 @@
 package com.pm.wordi.domain.mentor;
 
+import com.pm.wordi.domain.user.User;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -21,5 +23,16 @@ public class MentorKeyword {
     private Mentor mentor;
 
     private String keyword;
+
+
+    @Builder
+    public MentorKeyword(Mentor mentor, String keyword) {
+        this.mentor = mentor;
+        this.keyword = keyword;
+    }
+
+    public void updateMentor(Mentor mentor) {
+        this.mentor = mentor;
+    }
 
 }
