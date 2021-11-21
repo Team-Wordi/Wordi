@@ -26,7 +26,7 @@ public class User extends BaseTimeEntity {
     private Long id;
 
     @OneToMany(mappedBy = "user")
-    private List<UserKeyword> keywordList = new ArrayList<>();
+    private List<UserKeyword> userKeywordList = new ArrayList<>();
 
     private String email;
 
@@ -58,8 +58,8 @@ public class User extends BaseTimeEntity {
 
     // == 연관관계 편의 메서드 ==
     public void addKeyword(UserKeyword userKeyword) {
-        userKeyword.updateKeyword(this);
-        keywordList.add(userKeyword);
+        userKeyword.updateUser(this);
+        userKeywordList.add(userKeyword);
     }
 
 

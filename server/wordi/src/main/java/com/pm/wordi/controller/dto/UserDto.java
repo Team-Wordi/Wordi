@@ -43,7 +43,7 @@ public class UserDto {
 
         private String nation3;
 
-        private List<String> keywordList = new ArrayList<>();
+        private List<String> userKeywordList = new ArrayList<>();
 
 
         public void passwordEncryption() {
@@ -138,7 +138,7 @@ public class UserDto {
         private String nation1;
         private String nation2;
         private String nation3;
-        private List<String> KeywordList;
+        private List<String> userKeywordList;
 
 
         public ProfileRes(User user) {
@@ -146,7 +146,7 @@ public class UserDto {
             this.nation1 = user.getNation1();
             this.nation2 = user.getNation2();
             this.nation3 = user.getNation3();
-            KeywordList = user.getKeywordList().stream()
+            userKeywordList = user.getUserKeywordList().stream()
                     .map(k -> k.getKeyword()).collect(Collectors.toList());
         }
     }
@@ -164,7 +164,7 @@ public class UserDto {
         private String nation2;
         private String nation3;
 
-        private List<String> KeywordList = new ArrayList<>();
+        private List<String> userKeywordList = new ArrayList<>();
 
     }
 

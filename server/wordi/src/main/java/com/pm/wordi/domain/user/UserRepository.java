@@ -16,7 +16,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> findByIdAndStatus(Long id, BaseStatus status);
 
-    @EntityGraph(attributePaths = {"keywordList"})
+    @EntityGraph(attributePaths = {"userKeywordList"})
     Optional<User> findFetchByIdAndStatus(Long id, BaseStatus status);
 
 }
