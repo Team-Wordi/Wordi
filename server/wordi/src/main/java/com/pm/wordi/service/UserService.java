@@ -107,4 +107,17 @@ public class UserService {
                 .map(ProfileRes::new)
                 .orElseThrow(() -> new NoExistUserException("접속한 회원 정보와 일치하는 회원 정보가 없습니다."));
     }
+
+    public void updateProfile(Long userId, ProfileReq profileReq) {
+        User user = userRepository.findByIdAndStatus(userId, ACTIVE)
+                .orElseThrow(() -> new NoExistUserException("접속한 회원 정보와 일치하는 회원 정보가 없습니다."));
+
+        user.updateProfile(profileReq);
+
+        //키워드 업데이트
+        userKeywordRepository.deleteByUser(user);
+        profileReq.getKeywordList()
+                .stream().forEach(k -> userKeywordRepository.save(new UserKeyword(user, k)));
+
+    }
 }

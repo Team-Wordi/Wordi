@@ -118,5 +118,18 @@ public class UserApiController {
         return ResponseEntity.ok(userService.getProfile(userId));
     }
 
+    /**
+     * 프로필 수정 API
+     * [PATCH] /app/users/profile
+     * @return BaseResponse<HttpStatus>
+     */
+    @PatchMapping("/profile")
+    public ResponseEntity<HttpStatus> updateProfile(@Validated @RequestBody ProfileReq profileReq,
+                                                    HttpServletRequest request) {
+        Long userId = (Long)request.getAttribute("userId");
+        userService.updateProfile(userId, profileReq);
+        return RESPONSE_OK;
+    }
+
 
 }
