@@ -1,9 +1,6 @@
 package com.pm.wordi.controller;
 
-import com.pm.wordi.commons.annotation.UnAuth;
-import com.pm.wordi.commons.utils.constants.ResponseConstants;
-import com.pm.wordi.controller.dto.MentorDto;
-import com.pm.wordi.controller.dto.UserDto;
+
 import com.pm.wordi.service.MentorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

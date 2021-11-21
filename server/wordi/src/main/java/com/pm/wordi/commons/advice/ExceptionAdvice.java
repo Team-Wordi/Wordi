@@ -8,10 +8,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import static com.pm.wordi.commons.utils.constants.ResponseConstants.BAD_JSON_GRAMMAR;
 import static com.pm.wordi.commons.utils.constants.ResponseConstants.MULTIPLE_BAG_FETCH;
 
 @Slf4j
@@ -65,6 +67,21 @@ public class ExceptionAdvice {
     }
 
 
+    // == client ==
+
+    // 검증 에러
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<String> methodArgumentNotValidException(MethodArgumentNotValidException e) {
+        return new ResponseEntity<>(e.getFieldError().getDefaultMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    // 잘못된 JSON 문법 요청 에러
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<String> httpMessageNotReadableException(HttpMessageNotReadableException e) {
+        return BAD_JSON_GRAMMAR;
+    }
+
+
     // == Server ==
 
     @ExceptionHandler(Exception.class)
@@ -74,19 +91,12 @@ public class ExceptionAdvice {
         return new ResponseEntity<>("등록되지 않은 에러입니다.", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    // 검증
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<String> methodArgumentNotValidException(MethodArgumentNotValidException e) {
-        return new ResponseEntity<>(e.getFieldError().getDefaultMessage(), HttpStatus.BAD_REQUEST);
-    }
 
     // DB
     @ExceptionHandler(InvalidDataAccessApiUsageException.class)
     public ResponseEntity<String> invalidDataAccessApiUsageException(InvalidDataAccessApiUsageException e) {
         return MULTIPLE_BAG_FETCH;
     }
-
-
 
 
 

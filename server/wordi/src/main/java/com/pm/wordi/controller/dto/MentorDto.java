@@ -11,6 +11,9 @@ import com.pm.wordi.domain.user.User;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -26,24 +29,32 @@ public class MentorDto {
 
         private String profileImageUrl;
 
+        @NotBlank(message = "멘토 관심 국가를 입력해 주세요.")
         private String mentorNation;
 
+        @NotNull(message = "워킹홀리데이 시작 날짜를 입력해 주세요.")
         private LocalDate startDate;
 
+        @NotNull(message = "워킹홀리데이 끝 날짜를 입력해 주세요.")
         private LocalDate endDate;
 
         private boolean isProgress;
 
         private List<String> keywordList = new ArrayList<>();
 
+        @NotBlank(message = "멘토 소개를 입력해주세요.")
         private String introduction;
 
+        @NotEmpty(message = "일정을 1개 이상 입력해 주세요.")
         private List<ScheduleDTO> scheduleList = new ArrayList<>();
 
+        @NotNull(message = "가격을 입력해 주세요.")
         private Long price;
 
+        @NotBlank(message = "워킹홀리데이 최종 비자 합격 증명서는 필수사항입니다.")
         private String entryCertification;
 
+        @NotBlank(message = "입국증명서는 필수사항입니다.")
         private String certification;
 
         public Mentor toEntity(User user) {
@@ -120,15 +131,27 @@ public class MentorDto {
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class ProfileReq {
 
+        @NotBlank(message = "멘토 관심 국가를 입력해 주세요.")
         private String mentorNation;
-        private LocalDate startDate;
-        private LocalDate endDate;
-        private boolean isProgress;
-        private List<String> keywordList = new ArrayList<>();
-        private String introduction;
-        private List<ScheduleDTO> scheduleList = new ArrayList<>();
-        private Long price;
 
+        @NotNull(message = "워킹홀리데이 시작 날짜를 입력해 주세요.")
+        private LocalDate startDate;
+
+        @NotNull(message = "워킹홀리데이 끝 날짜를 입력해 주세요.")
+        private LocalDate endDate;
+
+        private boolean isProgress;
+
+        private List<String> keywordList = new ArrayList<>();
+
+        @NotBlank(message = "멘토 소개를 입력해주세요.")
+        private String introduction;
+
+        @NotEmpty(message = "일정을 1개 이상 입력해 주세요.")
+        private List<ScheduleDTO> scheduleList = new ArrayList<>();
+
+        @NotNull(message = "가격을 입력해 주세요.")
+        private Long price;
 
 
     }
