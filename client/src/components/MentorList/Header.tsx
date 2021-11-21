@@ -4,6 +4,13 @@ import { COLORS } from 'styles/Theme';
 import TopNavbar from 'components/common/TopNavbar';
 import PinIcon from 'components/icon/PinIcon';
 
+const Container = styled.div`
+  padding: 8px 16px 16px 16px;
+  & > p {
+    color: ${COLORS.white};
+  }
+`;
+
 const TitleWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -25,7 +32,6 @@ const CardWrapper = styled.div`
   white-space: nowrap;
 
   margin-top: 16px;
-  margin-bottom: 17px;
 
   &::-webkit-scrollbar {
     display: none;
@@ -36,7 +42,7 @@ const CardWrapper = styled.div`
   }
 `;
 
-/* 디자인 쪽에서 이미지를 받으면 deprecated 될 스타일 컴포넌트입니다. */
+/* 디자인 쪽에서 이미지를 받으면 쓰지 않게 될 스타일 컴포넌트입니다. */
 const TempCard = styled.div`
   min-width: 184px;
   height: 112px;
@@ -46,7 +52,7 @@ const TempCard = styled.div`
 
 const Header = () => {
   return (
-    <>
+    <Container>
       <TopNavbar logo={false} color={COLORS.white} />
       <TitleWrapper>
         <PinIcon size={24} color={COLORS.white} />
@@ -58,7 +64,7 @@ const Header = () => {
         <TempCard />
         <TempCard />
       </CardWrapper>
-    </>
+    </Container>
   );
 };
 
