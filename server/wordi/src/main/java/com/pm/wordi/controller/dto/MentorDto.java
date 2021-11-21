@@ -161,6 +161,7 @@ public class MentorDto {
     @AllArgsConstructor
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class ProfileListRes {
+        private Long id;
         private String profileImageUrl;
         private String nickname;
         private String mentorNation;
@@ -168,6 +169,7 @@ public class MentorDto {
         private List<String> keywordList;
 
         public ProfileListRes(Mentor mentor) {
+            this.id = mentor.getId();
             this.profileImageUrl = mentor.getProfileImageUrl();
             this.nickname = mentor.getUser().getNickname();
             this.mentorNation = mentor.getNation();
