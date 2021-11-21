@@ -15,6 +15,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MentorDto {
 
@@ -78,6 +79,39 @@ public class MentorDto {
                     .schedule(this.schedule)
                     .build();
 
+        }
+
+        public ScheduleDTO(MentorSchedule mentorSchedule) {
+            this.week = mentorSchedule.getWeek();
+            this.schedule = mentorSchedule.getSchedule();
+        }
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class ProfileRes {
+
+        private String mentorNation;
+        private LocalDate startDate;
+        private LocalDate endDate;
+        private boolean isProgress;
+        private List<String> keywordList = new ArrayList<>();
+        private String introduction;
+        private List<ScheduleDTO> scheduleList = new ArrayList<>();
+        private Long price;
+
+        public ProfileRes(Mentor mentor) {
+            this.mentorNation = mentor.getNation();
+            this.startDate = mentor.getStartDate();
+            this.endDate = mentor.getEndDate();
+            this.isProgress = mentor.isProgress();
+            this.keywordList = mentor.getMentorKeywordList().stream()
+                    .map(k -> k.getKeyword()).collect(Collectors.toList());
+            this.introduction = mentor.getIntroduction();
+            this.scheduleList = mentor.getMentorScheduleList().stream()
+                    .map(ScheduleDTO::new).collect(Collectors.toList());
+            this.price = mentor.getPrice();
         }
     }
 

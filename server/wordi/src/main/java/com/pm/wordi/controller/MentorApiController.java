@@ -9,14 +9,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
 import static com.pm.wordi.commons.utils.constants.ResponseConstants.*;
+import static com.pm.wordi.controller.dto.MentorDto.*;
 
 @RestController
 @RequestMapping("/app/mentors")
@@ -28,14 +26,25 @@ public class MentorApiController {
     /**
      * 멘토등록 API
      * [POST] /app/mentors
-     * @return BaseResponse<ResponseTokens>
+     * @return BaseResponse<HttpStatus>
      */
     @PostMapping("")
-    public ResponseEntity<HttpStatus> createMentor(@Validated @RequestBody MentorDto.CreateRequest createRequest,
+    public ResponseEntity<HttpStatus> createMentor(@Validated @RequestBody CreateRequest createRequest,
                                                    HttpServletRequest request) {
         Long userId = (Long)request.getAttribute("userId");
         mentorService.createMentor(userId, createRequest);
         return RESPONSE_OK;
+    }
+
+    /**
+     * 멘토 프로필 관리 조회 API
+     * [GET] /app/mentors/profile
+     * @return BaseResponse<>
+     */
+    @GetMapping("/profile")
+    public ResponseEntity<ProfileRes> getProfile(HttpServletRequest request) {
+        Long userId = (Long)request.getAttribute("userId");
+        return ResponseEntity.ok(mentorService.getProfile(userId));
     }
 
 }

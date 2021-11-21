@@ -9,6 +9,6 @@ public class ResponseConstants {
     public static final ResponseEntity<HttpStatus> RESPONSE_CREATED = ResponseEntity.status(HttpStatus.CREATED).build();
 
 
-//    public static final ResponseEntity<String> DUPLICATION_EMAIL =
-//            new ResponseEntity<>("중복된 이메일입니다.", HttpStatus.CONFLICT);
+    public static final ResponseEntity<String> MULTIPLE_BAG_FETCH =
+            new ResponseEntity<>("DB 에러입니다. MULTIPLE_BAG_FETCH.", HttpStatus.BAD_REQUEST);
 }
