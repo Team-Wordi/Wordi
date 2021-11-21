@@ -16,6 +16,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -154,6 +155,27 @@ public class MentorDto {
         private Long price;
 
 
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class ProfileListRes {
+        private String profileImageUrl;
+        private String nickname;
+        private String mentorNation;
+        private Long monthPeriod;
+        private List<String> keywordList;
+
+        public ProfileListRes(Mentor mentor) {
+            this.profileImageUrl = mentor.getProfileImageUrl();
+            this.nickname = mentor.getUser().getNickname();
+            this.mentorNation = mentor.getNation();
+            this.monthPeriod = ChronoUnit.MONTHS.between(mentor.getStartDate(), mentor.getEndDate());
+            this.keywordList = mentor.getMentorKeywordList().stream()
+                    .map(k -> k.getKeyword())
+                    .collect(Collectors.toList());
+        }
     }
 
 
