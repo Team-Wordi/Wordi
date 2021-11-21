@@ -2,24 +2,23 @@ import React from 'react';
 import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
 import Header from 'components/MentorList/Header';
-import MentorListCard from 'components/MentorList/MentorListCard';
+import Body from 'components/MentorList/Body';
+import BottomTabBar from 'components/common/BottomTabBar';
 
 const Container = styled.div`
-  padding: 8px 16px 24px 16px;
   min-height: 100vh;
   background: ${COLORS.primary};
-
-  & > p {
-    color: ${COLORS.white};
-  }
 `;
 
 const MentorListPage = () => {
   return (
-    <Container>
-      <Header />
-      <MentorListCard />
-    </Container>
+    <>
+      <Container>
+        <Header />
+        <Body />
+      </Container>
+      <BottomTabBar />
+    </>
   );
 };
 
