@@ -2,8 +2,7 @@ package com.pm.wordi.service;
 
 import com.pm.wordi.commons.utils.certification.AES128;
 import com.pm.wordi.commons.utils.certification.Secret;
-import com.pm.wordi.domain.user.User;
-import com.pm.wordi.domain.user.UserRepository;
+import com.pm.wordi.domain.user.*;
 import com.pm.wordi.exception.user.NoExistEmailException;
 import com.pm.wordi.exception.user.NoExistUserException;
 import com.pm.wordi.exception.user.NotMatchPasswordException;
@@ -12,8 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
-
 import static com.pm.wordi.controller.dto.UserDto.*;
 
 @Service
@@ -21,15 +18,24 @@ import static com.pm.wordi.controller.dto.UserDto.*;
 @Transactional
 public class UserService {
 
-    private final UserRepository userRepository;
     private final JwtService jwtService;
+    private final UserRepository userRepository;
+    private final UserKeywordRepository userKeywordRepository;
+
 
     @Transactional
     public ResponseTokens save(CreateRequest createRequest) {
 
         createRequest.passwordEncryption();
 
+        // 유저 저장
         User user = userRepository.save(createRequest.toEntity());
+
+        // 키워드 저장
+        createRequest.getKeywordList()
+                .stream().forEach(k -> userKeywordRepository.save(new UserKeyword(user, k)));
+
+
         String jwt = jwtService.createJwt(user.getId());
         return new ResponseTokens(user.getId(), jwt);
     }
@@ -76,6 +82,7 @@ public class UserService {
                 accountReq.getPhoneNumber());
     }
 
+    @Transactional
     public void updatePassword(Long userId, changePasswordReq changePasswordReq) {
 
         User user = userRepository.findById(userId)

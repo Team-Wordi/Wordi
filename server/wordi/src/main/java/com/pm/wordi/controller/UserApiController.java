@@ -107,5 +107,18 @@ public class UserApiController {
         return RESPONSE_OK;
     }
 
+//    /**
+//     * 프로필 조회 API
+//     * [GET] /app/users/profile
+//     * @return BaseResponse<HttpStatus>
+//     */
+//    @GetMapping("/profile")
+//    public ResponseEntity<HttpStatus> getProfile(@Validated @RequestBody changePasswordReq changePasswordReq,
+//                                                     HttpServletRequest request) {
+//        Long userId = (Long)request.getAttribute("userId");
+//        userService.updatePassword(userId, changePasswordReq);
+//        return RESPONSE_OK;
+//    }
+
 
 }

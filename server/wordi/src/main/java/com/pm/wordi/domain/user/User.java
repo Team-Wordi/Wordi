@@ -9,7 +9,11 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.pm.wordi.controller.dto.UserDto.*;
+
 
 @Entity
 @Getter
@@ -20,6 +24,9 @@ public class User extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "userId")
     private Long id;
+
+    @OneToMany(mappedBy = "user")
+    private List<UserKeyword> keywordList = new ArrayList<>();
 
     private String email;
 
@@ -48,10 +55,20 @@ public class User extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private BaseStatus status;
 
+
+    // == 연관관계 편의 메서드 ==
+    public void addKeyword(UserKeyword userKeyword) {
+        userKeyword.updateKeyword(this);
+        keywordList.add(userKeyword);
+    }
+
+
+    // == 생성자 ==
+
     @Builder
     public User(Long id, String email, String password, String phoneNumber, String nickname,
-                String nation1, String nation2, String nation3,
-                UserLevel userLevel, boolean isMentor, boolean isOAuth2, BaseStatus baseStatus) {
+                String nation1, String nation2, String nation3, UserLevel userLevel,
+                boolean isMentor, boolean isOAuth2, BaseStatus baseStatus ) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -81,5 +98,11 @@ public class User extends BaseTimeEntity {
 
     public void updatePassword(String password) {
         this.password = password;
+    }
+
+    // == 메서드 ==
+    public void createUserKeyword(List<String> keywordList) {
+        keywordList.stream()
+                .forEach(k -> addKeyword(new UserKeyword(this, k)));
     }
 }

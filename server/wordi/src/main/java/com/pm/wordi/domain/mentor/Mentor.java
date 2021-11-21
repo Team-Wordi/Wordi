@@ -24,6 +24,10 @@ public class Mentor extends BaseTimeEntity {
     @JoinColumn(name = "userId")
     private User user;
 
+    //키워드 추가
+    //일정 추가
+    //후기 추가
+
     @Column(name = "mentorNation")
     private String nation;
 
