@@ -40,6 +40,8 @@ public class Mentoring extends BaseTimeEntity {
 
     private LocalDateTime requestSchedule2;
 
+    private LocalDateTime selectedSchedule;
+
     private String questions;
 
     @Enumerated(EnumType.STRING)

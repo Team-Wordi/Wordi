@@ -117,19 +117,23 @@ public class MentoringDto {
     @AllArgsConstructor
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class MentorMentoringRes {
-        private Long id;
+        private Long mentoringId;
+        private Long paymentId;
         private MentoringStatus mentoringStatus;
         private String userNickname;
         private LocalDateTime requestSchedule1;
         private LocalDateTime requestSchedule2;
+        private LocalDateTime selectedSchedule;
         private String questions;
 
         public MentorMentoringRes(Mentoring mentoring) {
-            this.id = mentoring.getId();
+            this.mentoringId = mentoring.getId();
+            this.paymentId = mentoring.getPayment().getId();
             this.mentoringStatus = mentoring.getMentoringStatus();
             this.userNickname = mentoring.getUser().getNickname();
             this.requestSchedule1 = mentoring.getRequestSchedule1();
             this.requestSchedule2 = mentoring.getRequestSchedule2();
+            this.selectedSchedule = mentoring.getSelectedSchedule();
             this.questions = mentoring.getQuestions();
         }
     }
@@ -146,7 +150,23 @@ public class MentoringDto {
         private List<String> keywords;
         private LocalDateTime requestSchedule1;
         private LocalDateTime requestSchedule2;
+        private LocalDateTime selectedSchedule;
         private String questions;
+
+        public UserMentoringRes(Mentoring mentoring) {
+            this.mentoringId = mentoring.getId();
+            this.paymentId = mentoring.getPayment().getId();
+            this.mentoringStatus = mentoring.getMentoringStatus();
+            this.mentorNickname = mentoring.getMentor().getUser().getNickname();
+            this.mentorNation = mentoring.getMentor().getNation();
+            this.keywords = mentoring.getMentor().getMentorKeywordList().stream()
+                    .map(k -> k.getKeyword())
+                    .collect(Collectors.toList());
+            this.requestSchedule1 = mentoring.getRequestSchedule1();
+            this.requestSchedule2 = mentoring.getRequestSchedule2();
+            this.selectedSchedule = mentoring.getSelectedSchedule();
+            this.questions = mentoring.getQuestions();
+        }
     }
 
 }

@@ -51,6 +51,7 @@ public class MentoringService {
 
     }
 
+    @Transactional(readOnly = true)
     public ApplicationRes getMentoring(Long mentorId, Long userId) {
 
         User user = userRepository.findByIdAndStatus(userId, ACTIVE)
@@ -66,6 +67,7 @@ public class MentoringService {
         return applicationRes;
     }
 
+    @Transactional(readOnly = true)
     public List<MentorMentoringRes> geMentoringListBytMentor(Long userId) {
 
         Mentor mentor = mentorRepository.findByUserIdAndStatus(userId, ACTIVE)
@@ -73,6 +75,13 @@ public class MentoringService {
 
         return mentoringRepository.findAllByMentorIdAndStatus(mentor.getId(), ACTIVE).stream()
                 .map(MentorMentoringRes::new)
+                .collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly = true)
+    public List<UserMentoringRes> geMentoringListByUser(Long userId) {
+        return mentoringRepository.findAllByUserIdAndStatus(userId, ACTIVE).stream()
+                .map(UserMentoringRes::new)
                 .collect(Collectors.toList());
     }
 }

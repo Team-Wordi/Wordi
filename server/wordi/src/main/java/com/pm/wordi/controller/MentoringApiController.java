@@ -58,6 +58,17 @@ public class MentoringApiController {
         return ResponseEntity.ok(mentoringService.geMentoringListBytMentor(userId));
     }
 
+    /**
+     * 유저 - 멘토링 내역 조회 API
+     * [GET] /app/users/mentorings
+     * @return BaseResponse<List<UserMentoringRes>>
+     */
+    @GetMapping("/app/users/mentorings")
+    public ResponseEntity<List<UserMentoringRes>> geMentoringListByUser(HttpServletRequest request) {
+        Long userId = (Long)request.getAttribute("userId");
+        return ResponseEntity.ok(mentoringService.geMentoringListByUser(userId));
+    }
+
 
 
 }
