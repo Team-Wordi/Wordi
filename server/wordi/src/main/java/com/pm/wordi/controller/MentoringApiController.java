@@ -1,8 +1,6 @@
 package com.pm.wordi.controller;
 
 
-import com.pm.wordi.controller.dto.MentorDto;
-import com.pm.wordi.controller.dto.MentoringDto;
 import com.pm.wordi.service.MentoringService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -12,11 +10,12 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
+import java.util.List;
+
 import static com.pm.wordi.commons.utils.constants.ResponseConstants.RESPONSE_CREATED;
 import static com.pm.wordi.controller.dto.MentoringDto.*;
 
 @RestController
-@RequestMapping("/app/mentors/{mentorId}/applications")
 @RequiredArgsConstructor
 public class MentoringApiController {
 
@@ -27,12 +26,12 @@ public class MentoringApiController {
      * [POST] /app/mentors/{mentorId}/applications
      * @return BaseResponse<HttpStatus>
      */
-    @PostMapping("")
-    public ResponseEntity<HttpStatus> createMentoring(@Validated @RequestBody CreateRequest createRequest,
+    @PostMapping("/app/mentors/{mentorId}/applications")
+    public ResponseEntity<HttpStatus> createMentoring(@Validated @RequestBody ApplicationReq applicationReq,
                                                       @PathVariable Long mentorId,
                                                       HttpServletRequest request) {
         Long userId = (Long)request.getAttribute("userId");
-        mentoringService.createMentoring(mentorId, userId, createRequest);
+        mentoringService.createMentoring(mentorId, userId, applicationReq);
         return RESPONSE_CREATED;
     }
 
@@ -41,11 +40,24 @@ public class MentoringApiController {
      * [GET] /app/mentors/{mentorId}/applications
      * @return BaseResponse<MentoringRes>
      */
-    @GetMapping("")
-    public ResponseEntity<MentoringRes> getMentoring(@PathVariable Long mentorId,
-                                                     HttpServletRequest request) {
+    @GetMapping("/app/mentors/{mentorId}/applications")
+    public ResponseEntity<ApplicationRes> getMentoring(@PathVariable Long mentorId,
+                                                       HttpServletRequest request) {
         Long userId = (Long)request.getAttribute("userId");
         return ResponseEntity.ok(mentoringService.getMentoring(mentorId, userId));
     }
+
+    /**
+     * 멘토 - 멘토링 내역 조회 API
+     * [GET] /app/mentors/mentorings
+     * @return BaseResponse<List<MentorMentoringRes>>
+     */
+    @GetMapping("/app/mentors/mentorings")
+    public ResponseEntity<List<MentorMentoringRes>> geMentoringListBytMentor(HttpServletRequest request) {
+        Long userId = (Long)request.getAttribute("userId");
+        return ResponseEntity.ok(mentoringService.geMentoringListBytMentor(userId));
+    }
+
+
 
 }

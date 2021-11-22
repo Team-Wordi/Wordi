@@ -30,7 +30,7 @@ public class MentoringDto {
     @Getter
     @AllArgsConstructor
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
-    public static class CreateRequest {
+    public static class ApplicationReq {
 
         @NotNull(message = "가격 정보가 입력되지 않았습니다.")
         private Long price;
@@ -97,13 +97,13 @@ public class MentoringDto {
     @Getter
     @AllArgsConstructor
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
-    public static class MentoringRes {
+    public static class ApplicationRes {
         private String nickname;
         private String mentorNation;
         private Long price;
         private List<ScheduleDTO> mentorScheduleList = new ArrayList<>();
 
-        public MentoringRes(Mentor mentor) {
+        public ApplicationRes(Mentor mentor) {
             this.nickname = mentor.getUser().getNickname();
             this.mentorNation = mentor.getNation();
             this.price = mentor.getPrice();
@@ -112,4 +112,41 @@ public class MentoringDto {
                     .collect(Collectors.toList());
         }
     }
+
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class MentorMentoringRes {
+        private Long id;
+        private MentoringStatus mentoringStatus;
+        private String userNickname;
+        private LocalDateTime requestSchedule1;
+        private LocalDateTime requestSchedule2;
+        private String questions;
+
+        public MentorMentoringRes(Mentoring mentoring) {
+            this.id = mentoring.getId();
+            this.mentoringStatus = mentoring.getMentoringStatus();
+            this.userNickname = mentoring.getUser().getNickname();
+            this.requestSchedule1 = mentoring.getRequestSchedule1();
+            this.requestSchedule2 = mentoring.getRequestSchedule2();
+            this.questions = mentoring.getQuestions();
+        }
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class UserMentoringRes {
+        private Long mentoringId;
+        private Long paymentId;
+        private MentoringStatus mentoringStatus;
+        private String mentorNickname;
+        private String mentorNation;
+        private List<String> keywords;
+        private LocalDateTime requestSchedule1;
+        private LocalDateTime requestSchedule2;
+        private String questions;
+    }
+
 }
