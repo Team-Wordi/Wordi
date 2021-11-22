@@ -14,6 +14,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -43,6 +44,7 @@ public class MentorDto {
 
         private List<String> keywordList = new ArrayList<>();
 
+        @Size(max = 100, message = "멘토 프로필 소개는 최대 100자입니다.")
         @NotBlank(message = "멘토 프로필 소개를 입력해주세요.")
         private String profileIntroduction;
 

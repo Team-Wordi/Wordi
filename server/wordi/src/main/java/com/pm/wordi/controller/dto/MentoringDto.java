@@ -1,7 +1,9 @@
 package com.pm.wordi.controller.dto;
 
+import com.pm.wordi.controller.dto.MentorDto.ScheduleDTO;
 import com.pm.wordi.domain.BaseStatus;
 import com.pm.wordi.domain.mentor.Mentor;
+import com.pm.wordi.domain.mentor.MentorSchedule;
 import com.pm.wordi.domain.mentoring.Mentoring;
 import com.pm.wordi.domain.mentoring.MentoringStatus;
 import com.pm.wordi.domain.mentoring.Payment;
@@ -12,8 +14,16 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class MentoringDto {
 
@@ -22,12 +32,19 @@ public class MentoringDto {
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class CreateRequest {
 
+        @NotNull(message = "가격 정보가 입력되지 않았습니다.")
         private Long price;
+
         @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
         private LocalDateTime requestSchedule1;
+
         @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
         private LocalDateTime requestSchedule2;
+
+        @NotBlank(message = "사전 질문을 기입해주세요.")
         private String questions;
+
+        @Valid
         private paymentDTO payment;
 
         public Mentoring toEntity(User user, Mentor mentor, Payment payment) {
@@ -52,8 +69,13 @@ public class MentoringDto {
     @AllArgsConstructor
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class paymentDTO {
+
+        @NotBlank(message = "주문번호가 입력되지 않았습니다.")
         private String orderNumber;
+
+        @NotNull(message = "가격 정보가 입력되지 않았습니다.")
         private Long price;
+
         private String depositor;
         private String bankCode;
         private String accountNumber;
@@ -69,6 +91,25 @@ public class MentoringDto {
                     .paymentStatus(PaymentStatus.결제보류)
                     .status(BaseStatus.ACTIVE)
                     .build();
+        }
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class MentoringRes {
+        private String nickname;
+        private String mentorNation;
+        private Long price;
+        private List<ScheduleDTO> mentorScheduleList = new ArrayList<>();
+
+        public MentoringRes(Mentor mentor) {
+            this.nickname = mentor.getUser().getNickname();
+            this.mentorNation = mentor.getNation();
+            this.price = mentor.getPrice();
+            this.mentorScheduleList = mentor.getMentorScheduleList().stream()
+                    .map(ScheduleDTO::new)
+                    .collect(Collectors.toList());
         }
     }
 }

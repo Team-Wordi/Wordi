@@ -21,7 +21,7 @@ public interface MentorRepository extends JpaRepository<Mentor, Long> {
     @Query("select m from Mentor m where m.status = 'ACTIVE' order by m.id desc")
     List<Mentor> searchProfileList();
 
-    @EntityGraph(attributePaths = {"mentorKeywordList"})
+    @EntityGraph(attributePaths = {"mentorScheduleList"})
     Optional<Mentor> findByIdAndStatus(Long mentorId, BaseStatus status);
 
     @EntityGraph(attributePaths = {"user"})

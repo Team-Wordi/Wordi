@@ -16,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import static com.pm.wordi.controller.dto.MentoringDto.*;
 import static com.pm.wordi.domain.BaseStatus.*;
 
 @Service
@@ -29,7 +30,7 @@ public class MentoringService {
     private final PaymentRepository paymentRepository;
 
     @Transactional
-    public void createMentoring(Long mentorId, Long userId, MentoringDto.CreateRequest createRequest) {
+    public void createMentoring(Long mentorId, Long userId, CreateRequest createRequest) {
 
         // 유저, 멘토 정보 조회
         User user = userRepository.findByIdAndStatus(userId, ACTIVE)
@@ -46,5 +47,20 @@ public class MentoringService {
         // 멘토링 내역 저장
         mentoringRepository.save(createRequest.toEntity(user, mentor, payment));
 
+    }
+
+    public MentoringRes getMentoring(Long mentorId, Long userId) {
+
+        User user = userRepository.findByIdAndStatus(userId, ACTIVE)
+                .orElseThrow(() -> new NoExistUserException("접속하신 회원 정보가 존재하지 않습니다."));
+        MentoringRes mentoringRes = mentorRepository.findByIdAndStatus(mentorId, ACTIVE)
+                .map(MentoringRes::new)
+                .orElseThrow(() -> new NoExistMentoringProfileException("신청하신 멘토링 멘토 정보가 존재하지 않습니다."));
+
+        if(mentoringRes.getNickname().equals(user.getNickname())) {
+            throw new EqualUserMentorException("내 멘토링 서비스는 신청할 수 없습니다.");
+        }
+
+        return mentoringRes;
     }
 }

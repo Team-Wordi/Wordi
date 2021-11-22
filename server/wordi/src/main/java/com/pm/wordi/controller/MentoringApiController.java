@@ -7,6 +7,7 @@ import com.pm.wordi.service.MentoringService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,12 +28,24 @@ public class MentoringApiController {
      * @return BaseResponse<HttpStatus>
      */
     @PostMapping("")
-    public ResponseEntity<HttpStatus> createMentoring(@RequestBody CreateRequest createRequest,
+    public ResponseEntity<HttpStatus> createMentoring(@Validated @RequestBody CreateRequest createRequest,
                                                       @PathVariable Long mentorId,
                                                       HttpServletRequest request) {
         Long userId = (Long)request.getAttribute("userId");
         mentoringService.createMentoring(mentorId, userId, createRequest);
         return RESPONSE_CREATED;
+    }
+
+    /**
+     * 멘토링 신청 페이지 API
+     * [GET] /app/mentors/{mentorId}/applications
+     * @return BaseResponse<MentoringRes>
+     */
+    @GetMapping("")
+    public ResponseEntity<MentoringRes> getMentoring(@PathVariable Long mentorId,
+                                                     HttpServletRequest request) {
+        Long userId = (Long)request.getAttribute("userId");
+        return ResponseEntity.ok(mentoringService.getMentoring(mentorId, userId));
     }
 
 }
