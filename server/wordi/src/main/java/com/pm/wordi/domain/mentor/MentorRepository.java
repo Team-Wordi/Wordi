@@ -24,5 +24,8 @@ public interface MentorRepository extends JpaRepository<Mentor, Long> {
     @EntityGraph(attributePaths = {"mentorKeywordList"})
     Optional<Mentor> findByIdAndStatus(Long mentorId, BaseStatus status);
 
+    @EntityGraph(attributePaths = {"user"})
+    Optional<Mentor> findFetchUserByIdAndStatus(Long mentorId, BaseStatus status);
+
 
 }

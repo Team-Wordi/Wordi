@@ -77,12 +77,14 @@ public class MentorService {
 
     }
 
+    @Transactional(readOnly = true)
     public List<ProfileListRes> searchProfileList() {
         return mentorRepository.searchProfileList().stream()
                 .map(ProfileListRes::new)
                 .collect(Collectors.toList());
     }
 
+    @Transactional(readOnly = true)
     public MentoringProfileRes getMentoringProfile(Long mentorId) {
         return mentorRepository.findByIdAndStatus(mentorId, ACTIVE)
                 .map(MentoringProfileRes::new)

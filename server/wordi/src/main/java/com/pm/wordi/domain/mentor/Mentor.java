@@ -14,6 +14,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static com.pm.wordi.controller.dto.MentorDto.*;
 
@@ -69,6 +70,31 @@ public class Mentor extends BaseTimeEntity {
 
     @Enumerated(EnumType.STRING)
     private BaseStatus status;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Mentor mentor = (Mentor) o;
+        return isProgress == mentor.isProgress && Objects.equals(id, mentor.id) && Objects.equals(user, mentor.user)
+                && Objects.equals(mentorKeywordList, mentor.mentorKeywordList)
+                && Objects.equals(mentorScheduleList, mentor.mentorScheduleList)
+                && Objects.equals(reviewList, mentor.reviewList) && Objects.equals(mentoringList, mentor.mentoringList)
+                && Objects.equals(nation, mentor.nation) && Objects.equals(startDate, mentor.startDate)
+                && Objects.equals(endDate, mentor.endDate) && Objects.equals(profileImageUrl, mentor.profileImageUrl)
+                && Objects.equals(profileIntroduction, mentor.profileIntroduction)
+                && Objects.equals(introduction, mentor.introduction) && Objects.equals(price, mentor.price)
+                && Objects.equals(entryCertification, mentor.entryCertification)
+                && Objects.equals(certification, mentor.certification) && mentorLevel == mentor.mentorLevel
+                && status == mentor.status;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, user, mentorKeywordList, mentorScheduleList, reviewList, mentoringList,
+                nation, startDate, endDate, isProgress, profileImageUrl, profileIntroduction, introduction,
+                price, entryCertification, certification, mentorLevel, status);
+    }
 
     // == 연관관계 편의 메서드
     public void addMentorKeywordList(MentorKeyword mentorKeyword) {
