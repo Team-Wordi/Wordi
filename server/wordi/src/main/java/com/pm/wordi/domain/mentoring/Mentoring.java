@@ -84,7 +84,12 @@ public class Mentoring extends BaseTimeEntity {
         if(!decideReq.isDecision()) {
             this.mentoringStatus = MentoringStatus.예약거절;
             this.refusalMessage = decideReq.getRefusalMessage();
-            this.payment.updatePaymentStatus(PaymentStatus.결제취소);
+            this.payment.updatePaymentStatus(PaymentStatus.환불);
         }
+    }
+
+    public void cancelMentoring() {
+        this.mentoringStatus = MentoringStatus.예약취소;
+        this.payment.updatePaymentStatus(PaymentStatus.결제취소);
     }
 }

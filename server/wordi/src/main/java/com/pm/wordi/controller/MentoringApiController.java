@@ -81,7 +81,15 @@ public class MentoringApiController {
         return ResponseEntity.ok(mentoringService.decideMentoring(mentoringId, decideReq));
     }
 
-
+    /**
+     * 유저 - 멘토링 취소 API
+     * [GET] /app/users/mentorings/{mentoringId}
+     * @return BaseResponse<RefundPaymentInfo>
+     */
+    @GetMapping("/app/users/mentorings/{mentoringId}")
+    public ResponseEntity<RefundPaymentInfo> cancelMentoring(@PathVariable Long mentoringId) {
+        return ResponseEntity.ok(mentoringService.cancelMentoring(mentoringId));
+    }
 
 
 
