@@ -51,7 +51,7 @@ public class MentorService {
 
     @Transactional(readOnly = true)
     public ProfileRes getProfile(Long userId) {
-        return mentorRepository.findProfileByUserIdAndStatus(userId, ACTIVE)
+        return mentorRepository.findByUserIdAndStatus(userId, ACTIVE)
                 .map(ProfileRes::new)
                 .orElseThrow(() -> new NoExistMentorException("해당 회원의 멘토 정보가 존재하지 않습니다."));
 
@@ -60,7 +60,7 @@ public class MentorService {
     @Transactional
     public void updateProfile(Long userId, ProfileReq profileReq) {
 
-        Mentor mentor = mentorRepository.findProfileByUserIdAndStatus(userId, ACTIVE)
+        Mentor mentor = mentorRepository.findByUserIdAndStatus(userId, ACTIVE)
                 .orElseThrow(() -> new NoExistMentorException("해당 회원의 멘토 정보가 존재하지 않습니다."));
 
         mentor.updateProfile(profileReq);
@@ -77,12 +77,14 @@ public class MentorService {
 
     }
 
+    @Transactional(readOnly = true)
     public List<ProfileListRes> searchProfileList() {
         return mentorRepository.searchProfileList().stream()
                 .map(ProfileListRes::new)
                 .collect(Collectors.toList());
     }
 
+    @Transactional(readOnly = true)
     public MentoringProfileRes getMentoringProfile(Long mentorId) {
         return mentorRepository.findByIdAndStatus(mentorId, ACTIVE)
                 .map(MentoringProfileRes::new)

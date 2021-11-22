@@ -32,7 +32,7 @@ public class MentorApiController {
                                                    HttpServletRequest request) {
         Long userId = (Long)request.getAttribute("userId");
         mentorService.createMentor(userId, createRequest);
-        return RESPONSE_OK;
+        return RESPONSE_CREATED;
     }
 
     /**
@@ -79,5 +79,7 @@ public class MentorApiController {
     public ResponseEntity<MentoringProfileRes> getMentoringProfile(@PathVariable Long mentorId) {
         return ResponseEntity.ok(mentorService.getMentoringProfile(mentorId));
     }
+
+
 
 }

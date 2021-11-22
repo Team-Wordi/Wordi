@@ -5,6 +5,7 @@ import com.pm.wordi.exception.EncryptException;
 import com.pm.wordi.exception.mentor.ExistMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentoringProfileException;
+import com.pm.wordi.exception.mentoring.EqualUserMentorException;
 import com.pm.wordi.exception.user.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
@@ -78,6 +79,12 @@ public class ExceptionAdvice {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
     }
 
+    // == Mentoring
+    @ExceptionHandler(EqualUserMentorException.class)
+    public ResponseEntity<String> equalUserMentorException(EqualUserMentorException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+    }
+
 
 
     // == client ==
@@ -91,6 +98,7 @@ public class ExceptionAdvice {
     // 잘못된 JSON 문법 요청 에러
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<String> httpMessageNotReadableException(HttpMessageNotReadableException e) {
+        e.printStackTrace();
         return BAD_JSON_GRAMMAR;
     }
 
@@ -100,7 +108,6 @@ public class ExceptionAdvice {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> exception(Exception e) {
         e.printStackTrace();
-        log.error("에러 메세지", e.getMessage());
         return new ResponseEntity<>("등록되지 않은 에러입니다.", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 

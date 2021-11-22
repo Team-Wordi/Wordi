@@ -11,6 +11,7 @@ import javax.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static com.pm.wordi.controller.dto.UserDto.*;
 
@@ -55,6 +56,25 @@ public class User extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private BaseStatus status;
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return isMentor == user.isMentor && isOAuth2 == user.isOAuth2 && Objects.equals(id, user.id)
+                && Objects.equals(userKeywordList, user.userKeywordList) && Objects.equals(email, user.email)
+                && Objects.equals(password, user.password) && Objects.equals(phoneNumber, user.phoneNumber)
+                && Objects.equals(nickname, user.nickname) && Objects.equals(nation1, user.nation1)
+                && Objects.equals(nation2, user.nation2) && Objects.equals(nation3, user.nation3)
+                && userLevel == user.userLevel && status == user.status;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, userKeywordList, email, password, phoneNumber, nickname,
+                nation1, nation2, nation3, userLevel, isMentor, isOAuth2, status);
+    }
 
     // == 연관관계 편의 메서드 ==
     public void addKeyword(UserKeyword userKeyword) {
