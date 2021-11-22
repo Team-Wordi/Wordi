@@ -186,5 +186,24 @@ public class MentoringDto {
         private String refusalMessage;
     }
 
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class RefundPaymentInfo{
+        private String OrderNumber;
+        private Long price;
+        private String depositor;
+        private String bankCode;
+        private String accountNumber;
+
+        public RefundPaymentInfo(Payment payment) {
+            this.OrderNumber = payment.getOrderNumber();
+            this.price = payment.getPrice();
+            this.depositor = payment.getDepositor();
+            this.bankCode = payment.getBankCode();
+            this.accountNumber = payment.getAccountNumber();
+        }
+    }
+
 
 }

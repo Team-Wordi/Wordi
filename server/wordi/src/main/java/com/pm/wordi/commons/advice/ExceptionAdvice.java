@@ -7,6 +7,7 @@ import com.pm.wordi.exception.mentor.NoExistMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentoringProfileException;
 import com.pm.wordi.exception.mentoring.EqualUserMentorException;
 import com.pm.wordi.exception.mentoring.NoExistMentoringException;
+import com.pm.wordi.exception.mentoring.NoExistPaymentException;
 import com.pm.wordi.exception.user.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
@@ -91,8 +92,10 @@ public class ExceptionAdvice {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
     }
 
-
-
+    @ExceptionHandler(NoExistPaymentException.class)
+    public ResponseEntity<String> noExistPaymentException(NoExistPaymentException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+    }
 
 
     // == client ==

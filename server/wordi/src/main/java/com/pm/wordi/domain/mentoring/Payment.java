@@ -52,4 +52,8 @@ public class Payment extends BaseTimeEntity {
         this.paymentStatus = paymentStatus;
         this.status = status;
     }
+
+    public void updatePaymentStatus(PaymentStatus paymentStatus) {
+        this.paymentStatus = paymentStatus;
+    }
 }

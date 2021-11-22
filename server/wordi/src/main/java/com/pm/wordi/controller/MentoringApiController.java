@@ -73,14 +73,15 @@ public class MentoringApiController {
     /**
      * 멘토 - 멘토링 신청 승인, 거절 API
      * [PATCH] /app/mentors/mentorings/{mentoringId}
-     * @return BaseResponse<HttpStatus>
+     * @return BaseResponse<RefundPaymentInfo>
      */
     @PatchMapping("/app/mentors/mentorings/{mentoringId}")
-    public ResponseEntity<HttpStatus> decideMentoring(@RequestBody DecideReq decideReq,
+    public ResponseEntity<RefundPaymentInfo> decideMentoring(@RequestBody DecideReq decideReq,
                                                       @PathVariable Long mentoringId) {
-        mentoringService.decideMentoring(mentoringId, decideReq);
-        return RESPONSE_OK;
+        return ResponseEntity.ok(mentoringService.decideMentoring(mentoringId, decideReq));
     }
+
+
 
 
 

@@ -15,6 +15,7 @@ public interface MentoringRepository extends JpaRepository<Mentoring, Long> {
     @EntityGraph(attributePaths = {"payment", "mentor"})
     List<Mentoring> findAllByUserIdAndStatus(Long userId, BaseStatus baseStatus);
 
+    @EntityGraph(attributePaths = {"payment"})
     Optional<Mentoring> findByIdAndStatus(Long mentoringId, BaseStatus baseStatus);
 
 }

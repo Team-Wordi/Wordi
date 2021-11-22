@@ -12,6 +12,7 @@ import com.pm.wordi.exception.mentor.NoExistMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentoringProfileException;
 import com.pm.wordi.exception.mentoring.EqualUserMentorException;
 import com.pm.wordi.exception.mentoring.NoExistMentoringException;
+import com.pm.wordi.exception.mentoring.NoExistPaymentException;
 import com.pm.wordi.exception.user.NoExistUserException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -87,10 +88,14 @@ public class MentoringService {
                 .collect(Collectors.toList());
     }
 
-    public void decideMentoring(Long mentoringId, DecideReq decideReq) {
+    public RefundPaymentInfo decideMentoring(Long mentoringId, DecideReq decideReq) {
         Mentoring mentoring = mentoringRepository.findByIdAndStatus(mentoringId, ACTIVE)
                 .orElseThrow(() -> new NoExistMentoringException("해당 멘토링 정보가 존재하지 않습니다."));
 
         mentoring.decideMentoring(decideReq);
+
+        return paymentRepository.findById(mentoring.getPayment().getId())
+                .map(RefundPaymentInfo::new)
+                .orElseThrow(() -> new NoExistPaymentException("멘토링 정보에 해당하는 결제 정보가 없습니다."));
     }
 }
