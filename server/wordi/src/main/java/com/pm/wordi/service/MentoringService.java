@@ -2,6 +2,7 @@ package com.pm.wordi.service;
 
 import com.pm.wordi.domain.mentor.Mentor;
 import com.pm.wordi.domain.mentor.MentorRepository;
+import com.pm.wordi.domain.mentoring.Mentoring;
 import com.pm.wordi.domain.mentoring.MentoringRepository;
 import com.pm.wordi.domain.mentoring.Payment;
 import com.pm.wordi.domain.mentoring.PaymentRepository;
@@ -10,6 +11,7 @@ import com.pm.wordi.domain.user.UserRepository;
 import com.pm.wordi.exception.mentor.NoExistMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentoringProfileException;
 import com.pm.wordi.exception.mentoring.EqualUserMentorException;
+import com.pm.wordi.exception.mentoring.NoExistMentoringException;
 import com.pm.wordi.exception.user.NoExistUserException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -83,5 +85,12 @@ public class MentoringService {
         return mentoringRepository.findAllByUserIdAndStatus(userId, ACTIVE).stream()
                 .map(UserMentoringRes::new)
                 .collect(Collectors.toList());
+    }
+
+    public void decideMentoring(Long mentoringId, DecideReq decideReq) {
+        Mentoring mentoring = mentoringRepository.findByIdAndStatus(mentoringId, ACTIVE)
+                .orElseThrow(() -> new NoExistMentoringException("해당 멘토링 정보가 존재하지 않습니다."));
+
+        mentoring.decideMentoring(decideReq);
     }
 }
