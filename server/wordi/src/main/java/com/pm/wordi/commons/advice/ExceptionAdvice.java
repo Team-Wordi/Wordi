@@ -4,6 +4,7 @@ import com.pm.wordi.exception.DecryptException;
 import com.pm.wordi.exception.EncryptException;
 import com.pm.wordi.exception.mentor.ExistMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentorException;
+import com.pm.wordi.exception.mentor.NoExistMentoringProfileException;
 import com.pm.wordi.exception.user.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
@@ -69,6 +70,11 @@ public class ExceptionAdvice {
 
     @ExceptionHandler(ExistMentorException.class)
     public ResponseEntity<String> existMentorException(ExistMentorException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(NoExistMentoringProfileException.class)
+    public ResponseEntity<String> noExistMentoringProfileException(NoExistMentoringProfileException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
     }
 

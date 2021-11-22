@@ -1,10 +1,12 @@
 package com.pm.wordi.service;
 
+import com.pm.wordi.domain.BaseStatus;
 import com.pm.wordi.domain.mentor.*;
 import com.pm.wordi.domain.user.User;
 import com.pm.wordi.domain.user.UserRepository;
 import com.pm.wordi.exception.mentor.ExistMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentorException;
+import com.pm.wordi.exception.mentor.NoExistMentoringProfileException;
 import com.pm.wordi.exception.user.NoExistUserException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -79,5 +81,11 @@ public class MentorService {
         return mentorRepository.searchProfileList().stream()
                 .map(ProfileListRes::new)
                 .collect(Collectors.toList());
+    }
+
+    public MentoringProfileRes getMentoringProfile(Long mentorId) {
+        return mentorRepository.findByIdAndStatus(mentorId, ACTIVE)
+                .map(MentoringProfileRes::new)
+                .orElseThrow(() -> new NoExistMentoringProfileException("해당 멘토 프로필이 존재하지 않습니다."));
     }
 }

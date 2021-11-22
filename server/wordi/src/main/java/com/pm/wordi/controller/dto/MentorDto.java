@@ -43,7 +43,10 @@ public class MentorDto {
 
         private List<String> keywordList = new ArrayList<>();
 
-        @NotBlank(message = "멘토 소개를 입력해주세요.")
+        @NotBlank(message = "멘토 프로필 소개를 입력해주세요.")
+        private String profileIntroduction;
+
+        @NotBlank(message = "멘토링 소개를 입력해주세요.")
         private String introduction;
 
         @NotEmpty(message = "일정을 1개 이상 입력해 주세요.")
@@ -66,6 +69,7 @@ public class MentorDto {
                     .startDate(this.startDate)
                     .endDate(this.endDate)
                     .isProgress(this.isProgress)
+                    .profileIntroduction(this.profileIntroduction)
                     .introduction(this.introduction)
                     .price(this.price)
                     .entryCertification(this.entryCertification)
@@ -109,6 +113,7 @@ public class MentorDto {
         private LocalDate endDate;
         private boolean isProgress;
         private List<String> keywordList = new ArrayList<>();
+        private String profileIntroduction;
         private String introduction;
         private List<ScheduleDTO> scheduleList = new ArrayList<>();
         private Long price;
@@ -120,6 +125,7 @@ public class MentorDto {
             this.isProgress = mentor.isProgress();
             this.keywordList = mentor.getMentorKeywordList().stream()
                     .map(k -> k.getKeyword()).collect(Collectors.toList());
+            this.profileIntroduction = mentor.getProfileIntroduction();
             this.introduction = mentor.getIntroduction();
             this.scheduleList = mentor.getMentorScheduleList().stream()
                     .map(ScheduleDTO::new).collect(Collectors.toList());
@@ -145,7 +151,10 @@ public class MentorDto {
 
         private List<String> keywordList = new ArrayList<>();
 
-        @NotBlank(message = "멘토 소개를 입력해주세요.")
+        @NotBlank(message = "멘토 프로필 소개를 입력해주세요.")
+        private String profileIntroduction;
+
+        @NotBlank(message = "멘토링 소개를 입력해주세요.")
         private String introduction;
 
         @NotEmpty(message = "일정을 1개 이상 입력해 주세요.")
@@ -166,7 +175,7 @@ public class MentorDto {
         private String nickname;
         private String mentorNation;
         private Long monthPeriod;
-        private List<String> keywordList;
+        private List<String> keywordList = new ArrayList<>();
 
         public ProfileListRes(Mentor mentor) {
             this.id = mentor.getId();
@@ -180,5 +189,60 @@ public class MentorDto {
         }
     }
 
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class MentoringProfileRes {
+
+        private String profileImageUrl;
+        private String nickname;
+        private String mentorNation;
+        private Long monthPeriod;
+        private String profileIntroduction;
+        private List<String> keywordList = new ArrayList<>();
+
+        private String introduce;
+        private List<ReviewDTO> reviewList = new ArrayList<>();
+        private Long price;
+        private List<ScheduleDTO> mentorScheduleList = new ArrayList<>();
+
+        public MentoringProfileRes(Mentor mentor) {
+            this.profileImageUrl = mentor.getProfileImageUrl();
+            this.nickname = mentor.getUser().getNickname();
+            this.mentorNation = mentor.getNation();
+            this.monthPeriod = ChronoUnit.MONTHS.between(mentor.getStartDate(), mentor.getEndDate());
+            this.profileIntroduction = mentor.getProfileIntroduction();
+            this.keywordList = mentor.getMentorKeywordList().stream()
+                    .map(k -> k.getKeyword())
+                    .collect(Collectors.toList());
+
+            this.introduce = mentor.getIntroduction();
+            this.reviewList = mentor.getReviewList().stream()
+                    .map(ReviewDTO::new)
+                    .collect(Collectors.toList());
+            this.price = mentor.getPrice();
+            this.mentorScheduleList = mentor.getMentorScheduleList().stream()
+                    .map(ScheduleDTO::new)
+                    .collect(Collectors.toList());
+        }
+
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class ReviewDTO {
+        private Long id;
+        private String nickname;
+        private String content;
+        private LocalDate writeDate;
+
+        public ReviewDTO(Review review) {
+            this.id = review.getId();
+            this.nickname = review.getUser().getNickname();
+            this.content = review.getContent();
+            this.writeDate = review.getUpdated().toLocalDate();
+        }
+    }
 
 }

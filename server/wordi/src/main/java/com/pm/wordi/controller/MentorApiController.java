@@ -69,4 +69,15 @@ public class MentorApiController {
         return ResponseEntity.ok(mentorService.searchProfileList());
     }
 
+
+    /**
+     * 멘토 프로필 상세 조회 API
+     * [GET] /app/mentors/{mentorId}
+     * @return BaseResponse<MentoringProfileRes>
+     */
+    @GetMapping("/{mentorId}")
+    public ResponseEntity<MentoringProfileRes> getMentoringProfile(@PathVariable Long mentorId) {
+        return ResponseEntity.ok(mentorService.getMentoringProfile(mentorId));
+    }
+
 }
