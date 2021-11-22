@@ -1,5 +1,7 @@
 package com.pm.wordi.domain.mentoring;
 
+import com.pm.wordi.controller.dto.MentoringDto;
+import com.pm.wordi.controller.dto.MentoringDto.DecideReq;
 import com.pm.wordi.domain.BaseStatus;
 import com.pm.wordi.domain.BaseTimeEntity;
 import com.pm.wordi.domain.mentor.Mentor;
@@ -70,5 +72,24 @@ public class Mentoring extends BaseTimeEntity {
         this.questions = questions;
         this.mentoringStatus = mentoringStatus;
         this.status = status;
+    }
+
+    public void decideMentoring(DecideReq decideReq) {
+        if(decideReq.isDecision()) {
+            this.mentoringStatus = MentoringStatus.예약확정;
+            this.selectedSchedule = decideReq.getSelectedSchedule();
+            this.payment.updatePaymentStatus(PaymentStatus.결제완료);
+        }
+
+        if(!decideReq.isDecision()) {
+            this.mentoringStatus = MentoringStatus.예약거절;
+            this.refusalMessage = decideReq.getRefusalMessage();
+            this.payment.updatePaymentStatus(PaymentStatus.환불);
+        }
+    }
+
+    public void cancelMentoring() {
+        this.mentoringStatus = MentoringStatus.예약취소;
+        this.payment.updatePaymentStatus(PaymentStatus.결제취소);
     }
 }

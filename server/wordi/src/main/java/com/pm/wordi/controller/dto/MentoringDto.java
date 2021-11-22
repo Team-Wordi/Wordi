@@ -14,6 +14,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.Nullable;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
@@ -152,6 +153,7 @@ public class MentoringDto {
         private LocalDateTime requestSchedule2;
         private LocalDateTime selectedSchedule;
         private String questions;
+        private String refusalMessage;
 
         public UserMentoringRes(Mentoring mentoring) {
             this.mentoringId = mentoring.getId();
@@ -166,7 +168,42 @@ public class MentoringDto {
             this.requestSchedule2 = mentoring.getRequestSchedule2();
             this.selectedSchedule = mentoring.getSelectedSchedule();
             this.questions = mentoring.getQuestions();
+            this.refusalMessage = mentoring.getRefusalMessage();
         }
     }
+
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class DecideReq {
+        private boolean decision;
+
+        @Nullable
+        @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+        private LocalDateTime selectedSchedule;
+
+        @Nullable
+        private String refusalMessage;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class RefundPaymentInfo{
+        private String OrderNumber;
+        private Long price;
+        private String depositor;
+        private String bankCode;
+        private String accountNumber;
+
+        public RefundPaymentInfo(Payment payment) {
+            this.OrderNumber = payment.getOrderNumber();
+            this.price = payment.getPrice();
+            this.depositor = payment.getDepositor();
+            this.bankCode = payment.getBankCode();
+            this.accountNumber = payment.getAccountNumber();
+        }
+    }
+
 
 }

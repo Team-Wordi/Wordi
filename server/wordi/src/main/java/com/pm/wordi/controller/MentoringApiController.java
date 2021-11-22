@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 import static com.pm.wordi.commons.utils.constants.ResponseConstants.RESPONSE_CREATED;
+import static com.pm.wordi.commons.utils.constants.ResponseConstants.RESPONSE_OK;
 import static com.pm.wordi.controller.dto.MentoringDto.*;
 
 @RestController
@@ -67,6 +68,27 @@ public class MentoringApiController {
     public ResponseEntity<List<UserMentoringRes>> geMentoringListByUser(HttpServletRequest request) {
         Long userId = (Long)request.getAttribute("userId");
         return ResponseEntity.ok(mentoringService.geMentoringListByUser(userId));
+    }
+
+    /**
+     * 멘토 - 멘토링 신청 승인, 거절 API
+     * [PATCH] /app/mentors/mentorings/{mentoringId}
+     * @return BaseResponse<RefundPaymentInfo>
+     */
+    @PatchMapping("/app/mentors/mentorings/{mentoringId}")
+    public ResponseEntity<RefundPaymentInfo> decideMentoring(@RequestBody DecideReq decideReq,
+                                                      @PathVariable Long mentoringId) {
+        return ResponseEntity.ok(mentoringService.decideMentoring(mentoringId, decideReq));
+    }
+
+    /**
+     * 유저 - 멘토링 취소 API
+     * [GET] /app/users/mentorings/{mentoringId}
+     * @return BaseResponse<RefundPaymentInfo>
+     */
+    @GetMapping("/app/users/mentorings/{mentoringId}")
+    public ResponseEntity<RefundPaymentInfo> cancelMentoring(@PathVariable Long mentoringId) {
+        return ResponseEntity.ok(mentoringService.cancelMentoring(mentoringId));
     }
 
 
