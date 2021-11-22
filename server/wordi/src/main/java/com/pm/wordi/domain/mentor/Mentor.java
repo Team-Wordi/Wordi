@@ -1,13 +1,10 @@
 package com.pm.wordi.domain.mentor;
 
-import com.pm.wordi.controller.dto.MentorDto;
 import com.pm.wordi.domain.BaseStatus;
 import com.pm.wordi.domain.BaseTimeEntity;
 import com.pm.wordi.domain.mentoring.Mentoring;
 import com.pm.wordi.domain.review.Review;
 import com.pm.wordi.domain.user.User;
-import com.pm.wordi.domain.user.UserKeyword;
-import com.pm.wordi.domain.user.UserLevel;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,7 +12,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,6 +54,8 @@ public class Mentor extends BaseTimeEntity {
 
     private String profileImageUrl;
 
+    private String profileIntroduction;
+
     private String introduction;
 
     private Long price;
@@ -96,8 +94,8 @@ public class Mentor extends BaseTimeEntity {
     // == 생성자 ==
 
     @Builder
-    public Mentor(User user, String nation, LocalDate startDate, LocalDate endDate,
-                  boolean isProgress, String profileImageUrl, String introduction, Long price,
+    public Mentor(User user, String nation, LocalDate startDate, LocalDate endDate, boolean isProgress,
+                  String profileImageUrl, String profileIntroduction, String introduction, Long price,
                   String entryCertification, String certification, MentorLevel mentorLevel, BaseStatus status) {
         this.user = user;
         this.nation = nation;
@@ -105,6 +103,7 @@ public class Mentor extends BaseTimeEntity {
         this.endDate = endDate;
         this.isProgress = isProgress;
         this.profileImageUrl = profileImageUrl;
+        this.profileIntroduction = profileIntroduction;
         this.introduction = introduction;
         this.price = price;
         this.entryCertification = entryCertification;
@@ -118,7 +117,10 @@ public class Mentor extends BaseTimeEntity {
         this.startDate = profileReq.getStartDate();
         this.endDate = profileReq.getEndDate();
         this.isProgress = profileReq.isProgress();
+        this.profileIntroduction = profileReq.getProfileIntroduction();
         this.introduction = profileReq.getIntroduction();
         this.price = profileReq.getPrice();
     }
+
+
 }

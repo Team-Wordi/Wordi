@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
+import java.util.List;
+
 import static com.pm.wordi.commons.utils.constants.ResponseConstants.*;
 import static com.pm.wordi.controller.dto.MentorDto.*;
 
@@ -55,6 +57,27 @@ public class MentorApiController {
         Long userId = (Long)request.getAttribute("userId");
         mentorService.updateProfile(userId, profileReq);
         return RESPONSE_OK;
+    }
+
+    /**
+     * 멘토 프로필 리스트 API
+     * [GET] /app/mentors?nation=&keyword=&months=
+     * @return BaseResponse<List<ProfileListRes>>
+     */
+    @GetMapping("")
+    public ResponseEntity<List<ProfileListRes>> searchProfileList() {
+        return ResponseEntity.ok(mentorService.searchProfileList());
+    }
+
+
+    /**
+     * 멘토 프로필 상세 조회 API
+     * [GET] /app/mentors/{mentorId}
+     * @return BaseResponse<MentoringProfileRes>
+     */
+    @GetMapping("/{mentorId}")
+    public ResponseEntity<MentoringProfileRes> getMentoringProfile(@PathVariable Long mentorId) {
+        return ResponseEntity.ok(mentorService.getMentoringProfile(mentorId));
     }
 
 }

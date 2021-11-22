@@ -1,15 +1,19 @@
 package com.pm.wordi.service;
 
-import com.pm.wordi.controller.dto.MentorDto;
 import com.pm.wordi.domain.BaseStatus;
 import com.pm.wordi.domain.mentor.*;
 import com.pm.wordi.domain.user.User;
 import com.pm.wordi.domain.user.UserRepository;
+import com.pm.wordi.exception.mentor.ExistMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentorException;
+import com.pm.wordi.exception.mentor.NoExistMentoringProfileException;
 import com.pm.wordi.exception.user.NoExistUserException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.pm.wordi.controller.dto.MentorDto.*;
 import static com.pm.wordi.domain.BaseStatus.*;
@@ -29,6 +33,10 @@ public class MentorService {
 
         User user = userRepository.findByIdAndStatus(userId, ACTIVE)
                 .orElseThrow(() -> new NoExistUserException("접속한 회원 정보와 일치하는 회원 정보가 없습니다."));
+
+        if(mentorRepository.countByUser(user)>=1) {
+            throw new ExistMentorException("이미 가입하신 멘토 정보가 있습니다.");
+        }
 
         Mentor mentor = mentorRepository.save(createRequest.toEntity(user));
 
@@ -67,5 +75,17 @@ public class MentorService {
         profileReq.getScheduleList().stream()
                 .forEach(s -> mentorScheduleRepository.save(s.toMentorSchedule(mentor)));
 
+    }
+
+    public List<ProfileListRes> searchProfileList() {
+        return mentorRepository.searchProfileList().stream()
+                .map(ProfileListRes::new)
+                .collect(Collectors.toList());
+    }
+
+    public MentoringProfileRes getMentoringProfile(Long mentorId) {
+        return mentorRepository.findByIdAndStatus(mentorId, ACTIVE)
+                .map(MentoringProfileRes::new)
+                .orElseThrow(() -> new NoExistMentoringProfileException("해당 멘토 프로필이 존재하지 않습니다."));
     }
 }
