@@ -27,9 +27,11 @@ const SelectBox = styled.div<{ isActive: boolean; isClicked: boolean }>`
 const Options = styled.div<{ isActive: boolean; width: number }>`
   position: absolute;
   display: ${({ isActive }) => (isActive ? 'block' : 'none')};
+  border: 1px solid ${COLORS.primary};
+  border-radius: 6px;
+  background: ${COLORS.white};
   width: ${({ width }) => width}px;
   max-width: 111px;
-  background: ${COLORS.white};
 `;
 
 const Option = styled.div`
@@ -37,8 +39,7 @@ const Option = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: Pretendard Variable;
-  font-weight: 500;
+  font-family: 'Pretendard';
   font-size: 13px;
   line-height: 16px;
   color: ${COLORS.black};
