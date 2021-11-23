@@ -92,7 +92,7 @@ const BottomTabBar = () => {
         </Content>
       </Tab>
       <Tab
-        to={ROUTES.MY}
+        to={ROUTES.MENTOR_DETAIL}
         onClick={() => setActiveTab(ROUTES.MY)}
         isActive={ROUTES.MY === activeTab}
       >

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { COLORS } from 'styles/Theme';
 import LeftIcon from 'components/icon/LeftIcon';
-import Header from 'components/MentorReview/Header';
-import Review from 'components/MentorReview/Review';
-import Introduction from 'components/MentorReview/Introduction';
+import Header from 'components/MentorDetail/Header';
+import Review from 'components/MentorDetail/Review';
+import Introduction from 'components/MentorDetail/Introduction';
 import { mentorData } from 'constants/dummy';
 import { Container } from 'styles/GlobalStyles';
+import Footer from 'components/MentorDetail/Footer';
 
-const MentorReviewPage = ({ history }: any) => {
+const MentorDetailPage = ({ history }: any) => {
   const [mentorDetail, setMentorDetail] = useState<any>('');
 
   const goBack = () => {
@@ -26,8 +27,9 @@ const MentorReviewPage = ({ history }: any) => {
       <Introduction introduction={mentorDetail.introduction} />
       <Review />
       <hr />
+      <Footer />
     </Container>
   );
 };
 
-export default MentorReviewPage;
+export default MentorDetailPage;
