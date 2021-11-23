@@ -2,6 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
 import MentorListCard from 'components/MentorList/MentorListCard';
+import MonthFilter from './MonthFilter';
+import KeywordFilter from './KeywordFilter';
+import NationFilter from './NationFilter';
+import RefreshIcon from 'components/icon/RefreshIcon';
 
 const Container = styled.div`
   padding: 31px 24px;
@@ -19,18 +23,47 @@ const DropdownMenuWrapper = styled.div`
   align-items: center;
   margin-bottom: 24px;
 
-  /* 추후 Dropdown Menu 컴포넌트 개발 이후 삭제될 속성들입니다. */
-  width: 100%;
-  height: 32px;
-  border: 1px solid ${COLORS.primary};
-  border-radius: 10px;
-  justify-content: center;
+  & > div {
+    margin-right: 8px;
+  }
+
+  :nth-child(3) {
+    margin-right: 2px;
+  }
+
+  :last-child() {
+    margin-right: 0;
+  }
 `;
 
+// const SearchButton = styled.button`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+
+//   border-radius: 5px;
+//   background: ${COLORS.primary};
+
+//   font-family: 'Pretendard';
+//   font-size: 14px;
+//   line-height: 16px;
+//   color: ${COLORS.white};
+
+//   padding: 8px 17px;
+//   margin-right: 0;
+// `;
+
 const Body = () => {
+  const refreshAllSelected = () => {};
+
   return (
     <Container>
-      <DropdownMenuWrapper>Dropdown Menu 컴포넌트가 추가될 공간입니다!</DropdownMenuWrapper>
+      <DropdownMenuWrapper>
+        <MonthFilter />
+        <KeywordFilter />
+        <NationFilter />
+        <RefreshIcon size={24} color={COLORS.black} onClick={refreshAllSelected} />
+      </DropdownMenuWrapper>
       <MentorListCard />
       <MentorListCard />
       <MentorListCard />
