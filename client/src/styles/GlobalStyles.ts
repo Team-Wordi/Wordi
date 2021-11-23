@@ -20,6 +20,7 @@ body {
 button {
   cursor: pointer;
   outline: none;
+  border: none;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
