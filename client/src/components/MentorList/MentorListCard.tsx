@@ -53,24 +53,31 @@ const Tags = styled.div`
   }
 `;
 
-const MentorListCard = () => {
+interface MentorListCardProps {
+  name: string;
+  nation: string;
+  month: number;
+  tags: string[];
+}
+
+const MentorListCard = ({ name, nation, month, tags }: MentorListCardProps) => {
   return (
     <Container>
       <Header>
         <ProfileImage />
         <MentorInfo>
           <Title>
-            워홀 매니아
+            {name}
+            {nation}
             <UKIcon size={16} />
           </Title>
-          <Description>12개월 워홀러</Description>
+          <Description>{month} 워홀러</Description>
         </MentorInfo>
       </Header>
       <Tags>
-        <Tag text="#집구하기" textColor={COLORS.black} border={COLORS.primary} />
-        <Tag text="#집구하기" textColor={COLORS.black} border={COLORS.primary} />
-        <Tag text="#집구하기" textColor={COLORS.black} border={COLORS.primary} />
-        <Tag text="#집구하기" textColor={COLORS.black} border={COLORS.primary} />
+        {tags.map((tag: string) => (
+          <Tag text={tag} textColor={COLORS.black} border={COLORS.primary} />
+        ))}
       </Tags>
     </Container>
   );

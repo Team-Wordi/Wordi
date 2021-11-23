@@ -1,15 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import DropdownMenu from 'components/common/DropdownMenu';
+import { useRecoilState } from 'recoil';
+import { isNationFilterClicked, mentorDataState, nationFilterState } from 'atoms/atoms';
+import { tempMentorData } from 'constants/tempMentorData';
 
 const NationFilter = () => {
-  const [selected, setSelected] = useState('관심 국가');
-  const [isClicked, setIsClicked] = useState(false);
+  const [selected, setSelected] = useRecoilState(nationFilterState);
+  const [isClicked, setIsClicked] = useRecoilState(isNationFilterClicked);
+  const [filteredMentorData, setFilteredMentorData] = useRecoilState(mentorDataState);
 
   const handleSelect = (option: string, handleClose: () => void) => {
     setSelected(option);
     setIsClicked(true);
     handleClose();
   };
+
+  const handleKeywordFilter = () => {
+    const matchValues = filteredMentorData.filter((item: any) => {
+      if (selected === '관심 국가') return [...tempMentorData];
+      return item.nation.includes(selected);
+    });
+    setFilteredMentorData(matchValues);
+  };
+
+  useEffect(() => {
+    handleKeywordFilter();
+  }, [selected]);
 
   return (
     <DropdownMenu
