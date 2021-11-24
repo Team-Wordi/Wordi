@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import Nation from 'components/common/Nation';
+import { NationName } from 'components/common/Nation';
 
-const Container = styled.div<FlagProps>`
+const Container = styled.div<{ size: number | undefined }>`
   width: 52px;
   height: 74px;
   display: flex;
@@ -11,26 +12,14 @@ const Container = styled.div<FlagProps>`
   align-items: center;
 
   & > img {
-    width: ${({ size }) => size};
-    height: ${({ size }) => size};
+    width: ${({ size }) => size}px;
+    height: ${({ size }) => size}px;
     margin-bottom: 8px;
   }
 `;
 
-type NationName =
-  | '캐나다'
-  | '일본'
-  | '덴마크'
-  | '프랑스'
-  | '독일'
-  | '홍콩'
-  | '이탈리아'
-  | '아르헨티나'
-  | '호주'
-  | '영국';
-
 interface FlagProps {
-  name?: NationName;
+  name: NationName;
   size?: number;
 }
 

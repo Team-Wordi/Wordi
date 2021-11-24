@@ -2,7 +2,7 @@ import React from 'react';
 import ProfileImage from 'components/common/ProfileImage';
 import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
-import UKIcon from 'components/icon/UKIcon';
+import Nation, { NationName } from 'components/common/Nation';
 
 const Container = styled.div`
   display: flex;
@@ -42,7 +42,7 @@ const Title = styled.div`
 
   margin-top: 9px;
 
-  & > svg {
+  & > img {
     margin-right: 4px;
   }
 `;
@@ -54,17 +54,23 @@ const Description = styled.div`
   margin-top: 4px;
 `;
 
-const ProfileCard = () => {
+interface ProfileCardProps {
+  nation: NationName;
+  name: string;
+  month: string;
+}
+
+const ProfileCard = ({ nation, name, month }: ProfileCardProps) => {
   return (
     <Container>
       <MentorInfoWrapper>
         <ProfileImage size={72} />
         <MentorInfo>
           <Title>
-            <UKIcon size={16} />
-            워홀 매니아
+            <Nation name={nation} size={14} />
+            {name}
           </Title>
-          <Description>12개월 워홀러</Description>
+          <Description>{month} 워홀러</Description>
         </MentorInfo>
       </MentorInfoWrapper>
     </Container>

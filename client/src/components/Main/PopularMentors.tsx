@@ -50,11 +50,9 @@ const PopularMentors = () => {
         </Heading>
       </Wrapper>
       <CardWrapper>
-        <ProfileCard />
-        <ProfileCard />
-        <ProfileCard />
-        <ProfileCard />
-        <ProfileCard />
+        <ProfileCard nation="영국" name="워홀매니아" month="12개월" />
+        <ProfileCard nation="이탈리아" name="Makeyourlife" month="9개월" />
+        <ProfileCard nation="프랑스" name="마이크로맨" month="1개월" />
       </CardWrapper>
     </>
   );

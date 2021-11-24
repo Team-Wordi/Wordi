@@ -9,8 +9,9 @@ import Italy from 'assets/img/nations/Italy.png';
 import Argentina from 'assets/img/nations/Argentina.png';
 import Australia from 'assets/img/nations/Australia.png';
 import UK from 'assets/img/nations/UK.png';
+import styled from 'styled-components';
 
-type NationName =
+export type NationName =
   | '캐나다'
   | '일본'
   | '덴마크'
@@ -24,6 +25,7 @@ type NationName =
 
 interface NationProps {
   name?: NationName;
+  size?: number | null;
 }
 
 type NationType = {
@@ -53,6 +55,13 @@ const nations: NationType = {
   영국: UK,
 };
 
-const Nation = ({ name }: NationProps): JSX.Element => <img src={nations[name!]} alt={name} />;
+const Img = styled.img<NationProps>`
+  width: ${({ size }) => size}px;
+  height: ${({ size }) => size}px;
+`;
+
+const Nation = ({ name, size }: NationProps): JSX.Element => (
+  <Img src={nations[name!]} alt={name} size={size} />
+);
 
 export default Nation;
