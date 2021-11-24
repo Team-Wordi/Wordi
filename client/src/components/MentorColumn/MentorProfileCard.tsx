@@ -1,8 +1,10 @@
 import React from 'react';
 import RightIcon from 'components/icon/RightIcon';
-import UKIcon from 'components/icon/UKIcon';
 import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
+import ProfileImage from 'components/common/ProfileImage';
+import Nation from 'components/common/Nation';
+import spreadArms from 'assets/img/mentorImage/spread_arms.png';
 
 const CardHeader = styled.div`
   display: flex;
@@ -10,16 +12,9 @@ const CardHeader = styled.div`
   margin-bottom: 11px;
 `;
 
-const Img = styled.div`
-  width: 50px;
-  height: 50px;
-  border: 1px solid black;
-  border-radius: 8px;
-  margin-right: 16px;
-`;
-
 const MentorInfo = styled.div`
   width: 80%;
+  margin-left: 16px;
 `;
 
 const Text = styled.div`
@@ -37,8 +32,8 @@ const MentorNameBox = styled.div`
   font-size: 14px;
   font-weight: 500;
 
-  & > svg {
-    margin-right: 6px;
+  & > img {
+    margin-left: 6px;
   }
 `;
 
@@ -64,19 +59,19 @@ const MentorProfileCard = () => {
   return (
     <>
       <CardHeader>
-        <Img />
+        <ProfileImage size={50} img={spreadArms} />
         <MentorInfo>
           <MentorTitle>
             <MentorNameBox>
-              <UKIcon size={18} />
               워홀 매니아
+              <Nation size={14} name="영국" />
             </MentorNameBox>
             <VisitProfile>
               프로필 방문
               <RightIcon size={14} />
             </VisitProfile>
           </MentorTitle>
-          <Text>1년차 영국 워홀러</Text>
+          <Text>12개월 워홀러</Text>
         </MentorInfo>
       </CardHeader>
       <Description>

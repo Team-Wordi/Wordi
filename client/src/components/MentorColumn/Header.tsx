@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import LeftIcon from 'components/icon/LeftIcon';
 import { COLORS } from 'styles/Theme';
-import HambuguerIcon from 'components/icon/HamburgerIcon';
-import NotificationIcon from 'components/icon/NotificationIcon';
+
 import BreadCrumb from 'components/common/BreadCrumb';
+import { useHistory } from 'react-router';
 
 const Container = styled.div`
   margin-bottom: 21px;
@@ -43,17 +43,17 @@ const Description = styled.div`
 `;
 
 const Header = () => {
-  const goBack = () => {};
-  const onHandleMenu = () => {};
+  const history = useHistory();
+
+  const goBack = () => {
+    history.goBack();
+  };
 
   return (
     <Container>
       <Icons>
         <LeftIcon size={24} color={COLORS.gray_03} onClick={goBack} />
-        <RightAlignIcons>
-          <NotificationIcon size={24} color={COLORS.gray_03} />
-          <HambuguerIcon size={24} color={COLORS.gray_03} onClick={onHandleMenu} />
-        </RightAlignIcons>
+        <RightAlignIcons />
       </Icons>
       <Title>"워홀, 걱정하지 마세요!"</Title>
       <Description>
