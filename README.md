@@ -4,7 +4,7 @@
 
 <br>
 
-### 💁🏻 Wiki 
+### 💁‍♂️ Wiki 
 - 🗓 [Team Develop Schedule](https://docs.google.com/spreadsheets/d/1PvN-VDS-5juqqID9342OCRrCo8649ipR/edit#gid=804223889)
 - 🌐 [Skill Spec [FE]](https://github.com/Team-Wordi/Wordi/wiki/%F0%9F%94%A8-Skill-Spec-%5BFE%5D)
 - 🛠 [Skill Spec [BE]](https://github.com/Team-Wordi/Wordi/wiki/%F0%9F%94%A8-Skill-Spec-%5BBE%5D)
