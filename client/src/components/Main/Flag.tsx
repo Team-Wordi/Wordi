@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { COLORS } from 'styles/Theme';
-import UK from 'assets/img/UK.png';
+import Nation from 'components/common/Nation';
 
 const Container = styled.div<FlagProps>`
   width: 52px;
@@ -18,17 +17,27 @@ const Container = styled.div<FlagProps>`
   }
 `;
 
+type NationName =
+  | '캐나다'
+  | '일본'
+  | '덴마크'
+  | '프랑스'
+  | '독일'
+  | '홍콩'
+  | '이탈리아'
+  | '아르헨티나'
+  | '호주'
+  | '영국';
+
 interface FlagProps {
-  flag?: string | undefined | null;
-  name?: string | null;
+  name?: NationName;
   size?: number;
 }
 
-const Flag = ({ flag, name, size }: FlagProps) => {
+const Flag = ({ name, size }: FlagProps) => {
   return (
-    <Container>
-      {/* 추후 flag prop으로 대체할 예정 */}
-      <img src={UK} alt="UK" />
+    <Container size={size}>
+      <Nation name={name} />
       {name}
     </Container>
   );

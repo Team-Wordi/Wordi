@@ -45,13 +45,13 @@ const Icon = styled.div`
 const Countries = () => {
   return (
     <CountryWrapper>
-      <Flag size={52} name="영국" />
-      <Flag size={52} name="영국" />
-      <Flag size={52} name="영국" />
-      <Flag size={52} name="영국" />
-      <Flag size={52} name="영국" />
-      <Flag size={52} name="영국" />
-      <Flag size={52} name="영국" />
+      <Flag name="영국" />
+      <Flag name="캐나다" />
+      <Flag name="프랑스" />
+      <Flag name="일본" />
+      <Flag name="호주" />
+      <Flag name="아르헨티나" />
+      <Flag name="이탈리아" />
 
       <ViewAll>
         <Icon>
