@@ -1,13 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import DropdownMenu from 'components/common/DropdownMenu';
 import { useRecoilState } from 'recoil';
-import { isMonthFilterClicked, mentorDataState, monthFilterState } from 'atoms/atoms';
+import {
+  isKeywordFilterClicked,
+  isMonthFilterClicked,
+  isNationFilterClicked,
+  mentorDataState,
+  monthFilterState,
+} from 'atoms/atoms';
 import { tempMentorData } from 'constants/tempMentorData';
 
 const MonthFilter = () => {
   const [selected, setSelected] = useRecoilState(monthFilterState);
   const [isClicked, setIsClicked] = useRecoilState(isMonthFilterClicked);
   const [filteredMentorData, setFilteredMentorData] = useRecoilState(mentorDataState);
+  const [nationFilterClicked] = useRecoilState(isNationFilterClicked);
+  const [keywordFilterClicked] = useRecoilState(isKeywordFilterClicked);
 
   const handleSelect = (option: string, handleClose: () => void) => {
     setSelected(option);
@@ -16,7 +24,11 @@ const MonthFilter = () => {
   };
 
   const handleMonthFilter = () => {
-    const matchValues = filteredMentorData.filter((item: any) => {
+    /* 중복되는 코드입니다. 하나의 함수로 묶는 리팩토링이 필요합니다. */
+    const otherFilterClicked = nationFilterClicked || keywordFilterClicked;
+    const checkMultiFilter = otherFilterClicked ? filteredMentorData : tempMentorData;
+
+    const matchValues = checkMultiFilter.filter((item: any) => {
       if (selected === '기간') return [...tempMentorData];
       return item.month.includes(selected);
     });
