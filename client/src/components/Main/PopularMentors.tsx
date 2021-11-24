@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
 import LoveIcon from 'components/icon/LoveIcon';
 import ProfileCard from './ProfileCard';
+import spreadArms from 'assets/img/mentorImage/spread_arms.png';
+import marchingBand from 'assets/img/mentorImage/marching_band.png';
+import beach from 'assets/img/mentorImage/beach.png';
 
 const Wrapper = styled.div`
   padding: 0px 16px;
@@ -50,11 +53,9 @@ const PopularMentors = () => {
         </Heading>
       </Wrapper>
       <CardWrapper>
-        <ProfileCard />
-        <ProfileCard />
-        <ProfileCard />
-        <ProfileCard />
-        <ProfileCard />
+        <ProfileCard nation="영국" name="워홀매니아" month="12개월" img={spreadArms} />
+        <ProfileCard nation="이탈리아" name="Makeyourlife" month="9개월" img={marchingBand} />
+        <ProfileCard nation="프랑스" name="마이크로맨" month="1개월" img={beach} />
       </CardWrapper>
     </>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
-import UKIcon from 'components/icon/UKIcon';
+import Nation from 'components/common/Nation';
 import DotIcon from 'components/icon/DotIcon';
 
 const Container = styled.div``;
@@ -17,7 +17,7 @@ const WriterBox = styled.div`
   display: flex;
   align-items: center;
 
-  & > svg {
+  & > img {
     margin-right: 4px;
   }
 
@@ -25,6 +25,11 @@ const WriterBox = styled.div`
     color: ${COLORS.gray_04};
     font-size: 11px;
   }
+`;
+
+const Date = styled.div`
+  font-size: 11px;
+  color: ${COLORS.gray_02};
 `;
 
 const Img = styled.div`
@@ -39,12 +44,11 @@ const BreadCrumb = () => {
     <Container>
       <Header>
         <WriterBox>
-          <UKIcon size={14} />
+          <Nation name="영국" size={12} />
           <div>워홀 매니아</div>
         </WriterBox>
-        <DotIcon size={18} color={COLORS.gray_03} />
+        <Date>2021.11.10</Date>
       </Header>
-
       <Img />
     </Container>
   );

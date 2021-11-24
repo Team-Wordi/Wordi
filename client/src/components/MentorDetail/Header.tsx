@@ -1,7 +1,10 @@
 import React from 'react';
+import Nation from 'components/common/Nation';
+import ProfileImage from 'components/common/ProfileImage';
 import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
-import Tag from '../common/Tag';
+import Tag from 'components/common/Tag';
+import spreadArms from 'assets/img/mentorImage/spread_arms.png';
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -43,13 +46,25 @@ const HeaderImg = styled.div`
   border-radius: 28px 28px 10px 10px;
 `;
 
+const TitleBox = styled.div`
+  display: flex;
+  align-items: center;
+
+  & > img {
+    margin-left: 4px;
+  }
+`;
+
 const Header = ({ mentorDetail }: any) => {
   const { name, smallTitle, tags } = mentorDetail;
 
   return (
     <HeaderContainer>
       <HeaderInfo>
-        <h2>{name}</h2>
+        <TitleBox>
+          <h2>{name}</h2>
+          <Nation name="영국" size={14} />
+        </TitleBox>
         <p>{smallTitle}</p>
         <TagsContainer>
           {tags?.map((tag: any) => (
@@ -57,7 +72,7 @@ const Header = ({ mentorDetail }: any) => {
           ))}
         </TagsContainer>
       </HeaderInfo>
-      <HeaderImg />
+      <ProfileImage size={82} img={spreadArms} />
     </HeaderContainer>
   );
 };

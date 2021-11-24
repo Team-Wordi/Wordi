@@ -7,8 +7,10 @@ import Introduction from 'components/MentorDetail/Introduction';
 import { mentorData } from 'constants/dummy';
 import { Container } from 'styles/GlobalStyles';
 import Footer from 'components/MentorDetail/Footer';
+import { useHistory } from 'react-router';
 
-const MentorDetailPage = ({ history }: any) => {
+const MentorDetailPage = () => {
+  const history = useHistory();
   const [mentorDetail, setMentorDetail] = useState<any>('');
 
   const goBack = () => {

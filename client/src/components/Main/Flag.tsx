@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { COLORS } from 'styles/Theme';
-import UK from 'assets/img/UK.png';
+import Nation from 'components/common/Nation';
+import { NationName } from 'components/common/Nation';
 
-const Container = styled.div<FlagProps>`
+const Container = styled.div<{ size: number | undefined }>`
   width: 52px;
   height: 74px;
   display: flex;
@@ -12,23 +12,21 @@ const Container = styled.div<FlagProps>`
   align-items: center;
 
   & > img {
-    width: ${({ size }) => size};
-    height: ${({ size }) => size};
+    width: ${({ size }) => size}px;
+    height: ${({ size }) => size}px;
     margin-bottom: 8px;
   }
 `;
 
 interface FlagProps {
-  flag?: string | undefined | null;
-  name?: string | null;
+  name: NationName;
   size?: number;
 }
 
-const Flag = ({ flag, name, size }: FlagProps) => {
+const Flag = ({ name, size }: FlagProps) => {
   return (
-    <Container>
-      {/* 추후 flag prop으로 대체할 예정 */}
-      <img src={UK} alt="UK" />
+    <Container size={size}>
+      <Nation name={name} />
       {name}
     </Container>
   );
