@@ -52,19 +52,21 @@ const Description = styled.div`
   color: ${COLORS.gray_04};
 
   margin-top: 4px;
+  margin-bottom: 4px;
 `;
 
 interface ProfileCardProps {
   nation: NationName;
   name: string;
   month: string;
+  img: string;
 }
 
-const ProfileCard = ({ nation, name, month }: ProfileCardProps) => {
+const ProfileCard = ({ nation, name, month, img }: ProfileCardProps) => {
   return (
     <Container>
       <MentorInfoWrapper>
-        <ProfileImage size={72} />
+        <ProfileImage size={72} img={img} />
         <MentorInfo>
           <Title>
             <Nation name={nation} size={14} />
