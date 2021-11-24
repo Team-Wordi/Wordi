@@ -3,12 +3,15 @@ import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
 
 const Container = styled.div<TagProps>`
-  font-family: 'Pretendard';
-  display: inline-block;
-  padding: 2px 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px 8px;
   border: ${({ border }) => (border ? `1px solid ${border}` : `1px solid ${COLORS.primary}`)};
-  color: ${({ textColor }) => (textColor ? `${textColor}` : `${COLORS.primary}`)};
   border-radius: 6px;
+  font-family: 'Pretendard';
+  color: ${({ textColor }) => (textColor ? `${textColor}` : `${COLORS.primary}`)};
+  width: 65px;
 `;
 
 interface TagProps {

@@ -73,8 +73,6 @@ const Body = () => {
     setMentorData(tempMentorData);
   }, []);
 
-  // console.log('mentorData: ', mentorData);
-
   return (
     <Container>
       <DropdownMenuWrapper>
@@ -87,6 +85,7 @@ const Body = () => {
       {mentorData.map((mentor: any) => (
         <MentorListCard
           key={mentor.name}
+          img={mentor.img}
           name={mentor.name}
           nation={mentor.nation}
           month={mentor.month}

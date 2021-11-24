@@ -10,6 +10,7 @@ import Argentina from 'assets/img/nations/Argentina.png';
 import Australia from 'assets/img/nations/Australia.png';
 import UK from 'assets/img/nations/UK.png';
 import styled from 'styled-components';
+import { COLORS } from 'styles/Theme';
 
 export type NationName =
   | '캐나다'

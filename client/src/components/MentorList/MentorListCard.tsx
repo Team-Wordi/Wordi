@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
 import Tag from 'components/common/Tag';
 import ProfileImage from 'components/common/ProfileImage';
-import UKIcon from 'components/icon/UKIcon';
+import Nation, { NationName } from 'components/common/Nation';
 
 const Container = styled.div`
   width: 326px;
@@ -31,7 +31,7 @@ const Title = styled.div`
   font-weight: 600;
   font-size: 16px;
 
-  & > svg {
+  & > img {
     margin-left: 3px;
   }
 `;
@@ -55,21 +55,21 @@ const Tags = styled.div`
 
 interface MentorListCardProps {
   name: string;
-  nation: string;
+  nation: NationName;
+  img: string | undefined;
   month: number;
   tags: string[];
 }
 
-const MentorListCard = ({ name, nation, month, tags }: MentorListCardProps) => {
+const MentorListCard = ({ name, nation, month, tags, img }: MentorListCardProps) => {
   return (
     <Container>
       <Header>
-        <ProfileImage />
+        <ProfileImage size={50} img={img} />
         <MentorInfo>
           <Title>
             {name}
-            {nation}
-            <UKIcon size={16} />
+            <Nation size={14} name={nation} />
           </Title>
           <Description>{month} 워홀러</Description>
         </MentorInfo>

@@ -66,7 +66,7 @@ const ProfileCard = ({ nation, name, month, img }: ProfileCardProps) => {
   return (
     <Container>
       <MentorInfoWrapper>
-        <ProfileImage size={72} img={img} />
+        <ProfileImage img={img} />
         <MentorInfo>
           <Title>
             <Nation name={nation} size={14} />
