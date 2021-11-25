@@ -48,7 +48,7 @@ const Bottom = () => {
   return (
     <Container>
       <TitleWrapper>
-        <MessageIcon size={18} color={COLORS.primary} strokeWidth={0.2} />
+        <MessageIcon size={18} color={COLORS.primary} />
         <TextBox text="워디 멘토에게 하고 싶은 말을 자유롭게 써 주세요!" color={COLORS.gray_04} />
       </TitleWrapper>
       <TextArea

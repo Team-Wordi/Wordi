@@ -8,7 +8,14 @@ interface MyIconProps {
 }
 
 function MyIcon({ size, isActive }: MyIconProps): JSX.Element {
-  return <MySVG width={size} height={size} stroke={isActive ? COLORS.primary : COLORS.gray_03} />;
+  return (
+    <MySVG
+      width={size}
+      height={size}
+      stroke={isActive ? COLORS.primary : COLORS.gray_03}
+      stroke-width="0.5"
+    />
+  );
 }
 
 export default MyIcon;

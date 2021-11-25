@@ -7,7 +7,7 @@ interface ReviewIconProps {
 }
 
 function ReviewIcon({ size, color }: ReviewIconProps): JSX.Element {
-  return <ReviewSVG width={size} height={size} stroke={color} />;
+  return <ReviewSVG width={size} height={size} stroke={color} stroke-width="0.5" />;
 }
 
 export default ReviewIcon;

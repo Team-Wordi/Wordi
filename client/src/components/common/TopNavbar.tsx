@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
 import HamburgerIcon from 'components/icon/HamburgerIcon';
 import ActiveNotificationIcon from 'components/icon/ActiveNoficiationIcon';
+import LogoIcon from 'components/icon/LogoIcon';
 
 const Container = styled.div<{ logo: any }>`
   display: flex;
@@ -26,7 +27,14 @@ const RightBox = styled.div`
   }
 `;
 
-const LogoBox = styled.div``;
+const LogoBox = styled.div`
+  display: flex;
+  align-items: center;
+
+  & > svg {
+    margin-right: 9px;
+  }
+`;
 
 interface TopNavbarProps {
   logo?: boolean;
@@ -39,7 +47,12 @@ const TopNavbar = ({ logo, notificationColor, hamburgerColor }: TopNavbarProps) 
 
   return (
     <Container logo={logo}>
-      {logo && <LogoBox>워디</LogoBox>}
+      {logo && (
+        <LogoBox>
+          <LogoIcon size={18} />
+          워디
+        </LogoBox>
+      )}
       <RightBox>
         <ActiveNotificationIcon size={24} color={notificationColor} />
         <HamburgerIcon size={24} color={hamburgerColor} onClick={onHandleMenu} />

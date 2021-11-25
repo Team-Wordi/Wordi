@@ -8,7 +8,14 @@ interface HomeIconProps {
 }
 
 function HomeIcon({ size, isActive }: HomeIconProps): JSX.Element {
-  return <HomeSVG width={size} height={size} stroke={isActive ? COLORS.primary : COLORS.gray_03} />;
+  return (
+    <HomeSVG
+      width={size}
+      height={size}
+      stroke={isActive ? COLORS.primary : COLORS.gray_03}
+      stroke-width="0.5"
+    />
+  );
 }
 
 export default HomeIcon;

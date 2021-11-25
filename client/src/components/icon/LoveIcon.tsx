@@ -7,7 +7,7 @@ interface LoveIconProps {
 }
 
 function LoveIcon({ size, color }: LoveIconProps): JSX.Element {
-  return <LoveSVG width={size} height={size} stroke={color} />;
+  return <LoveSVG width={size} height={size} stroke={color} stroke-width="0.5" />;
 }
 
 export default LoveIcon;

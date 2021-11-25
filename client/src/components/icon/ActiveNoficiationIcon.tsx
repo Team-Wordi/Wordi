@@ -7,7 +7,15 @@ interface ActiveNotificationIconProps {
 }
 
 function ActiveNotificationIcon({ size, color }: ActiveNotificationIconProps): JSX.Element {
-  return <ActiveNotificationSVG width={size} height={size} stroke={color} fill={color} />;
+  return (
+    <ActiveNotificationSVG
+      width={size}
+      height={size}
+      stroke={color}
+      fill={color}
+      stroke-width="0.5"
+    />
+  );
 }
 
 export default ActiveNotificationIcon;

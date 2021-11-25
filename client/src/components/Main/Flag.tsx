@@ -4,12 +4,13 @@ import Nation from 'components/common/Nation';
 import { NationName } from 'components/common/Nation';
 
 const Container = styled.div<{ size: number | undefined }>`
-  width: 54px;
-  height: 74px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: 'Pretendard';
+  width: 54px;
+  height: 74px;
 
   & > img {
     width: ${({ size }) => size}px;
