@@ -21,7 +21,7 @@ const ScheduleApplication = () => {
   return (
     <Container>
       <DatePickerBox>
-        <TextBox text="1순위 일정" color={COLORS.gray_03} />
+        <TextBox text="1순위 일정" color={COLORS.gray_04} />
 
         <Button
           size={75}
@@ -33,10 +33,10 @@ const ScheduleApplication = () => {
         />
       </DatePickerBox>
       <DatePickerBox>
-        <TextBox text="2순위 일정" color={COLORS.gray_03} />
+        <TextBox text="2순위 일정" color={COLORS.gray_04} />
         <Button
           size={75}
-          text="희망 일정"
+          text="희망 일정선택"
           fill={COLORS.white}
           border={COLORS.primary}
           textColor={COLORS.primary}

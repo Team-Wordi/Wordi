@@ -45,7 +45,7 @@ const BreadCrumb = () => {
       <Header>
         <WriterBox>
           <Nation name="영국" size={12} />
-          <div>워홀 매니아</div>
+          <div>워홀매니아</div>
         </WriterBox>
         <Date>2021.11.10</Date>
       </Header>

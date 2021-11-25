@@ -2,12 +2,12 @@ import React from 'react';
 import { ReactComponent as MessageSVG } from 'assets/icons/message.svg';
 
 interface MessageIconProps {
-  size?: number;
-  color?: string;
+  size: number;
+  color: string;
 }
 
 function MessageIcon({ size, color }: MessageIconProps): JSX.Element {
-  return <MessageSVG width={size} height={size} stroke={color} stroke-width="0.5" />;
+  return <MessageSVG width={size} height={size} stroke={color} fill={color} stroke-width="0.2" />;
 }
 
 export default MessageIcon;

@@ -39,6 +39,7 @@ const Content = styled.div`
 
   font-family: 'Pretendard';
   font-size: 11px;
+  line-height: 13px;
 
   & > svg {
     margin-bottom: 4px;

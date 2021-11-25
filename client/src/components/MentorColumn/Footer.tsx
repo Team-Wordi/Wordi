@@ -8,6 +8,7 @@ import { Divider } from 'styles/GlobalStyles';
 
 const Container = styled.div`
   padding: 0 16px;
+  padding-bottom: 24px;
 `;
 
 const Icons = styled.div`
