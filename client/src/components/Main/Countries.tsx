@@ -3,6 +3,12 @@ import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
 import Flag from './Flag';
 import FlatDotIcon from 'components/icon/FlatDotIcon';
+import { useHistory } from 'react-router';
+import { ROUTES } from 'utils/routes';
+import { nations } from 'constants/dummy';
+import { NationName } from 'components/common/Nation';
+import { useRecoilState } from 'recoil';
+import { isNationFilterClicked, nationFilterState } from 'atoms/atoms';
 
 const CountryWrapper = styled.div`
   display: grid;
@@ -43,15 +49,21 @@ const Icon = styled.div`
 `;
 
 const Countries = () => {
+  const history = useHistory();
+  const [, setSelected] = useRecoilState(nationFilterState);
+  const [, setIsClicked] = useRecoilState(isNationFilterClicked);
+
+  const goMentorListPage = (nation: NationName) => {
+    history.push(`${ROUTES.MENTOR_LIST}${nation}`);
+    setSelected(nation);
+    setIsClicked(true);
+  };
+
   return (
     <CountryWrapper>
-      <Flag name="영국" />
-      <Flag name="캐나다" />
-      <Flag name="프랑스" />
-      <Flag name="일본" />
-      <Flag name="호주" />
-      <Flag name="아르헨티나" />
-      <Flag name="이탈리아" />
+      {nations.map((nation: any) => (
+        <Flag name={nation.name} onClick={() => goMentorListPage(nation.name)} />
+      ))}
 
       <ViewAll>
         <Icon>

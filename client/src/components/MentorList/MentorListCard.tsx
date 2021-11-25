@@ -59,11 +59,12 @@ interface MentorListCardProps {
   img: string | undefined;
   month: number;
   tags: string[];
+  onClick: () => void;
 }
 
-const MentorListCard = ({ name, nation, month, tags, img }: MentorListCardProps) => {
+const MentorListCard = ({ name, nation, month, tags, img, onClick }: MentorListCardProps) => {
   return (
-    <Container>
+    <Container onClick={onClick}>
       <Header>
         <ProfileImage size={50} img={img} />
         <MentorInfo>

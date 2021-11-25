@@ -26,3 +26,13 @@ export const reviewData = [
       '기본적으로 알아야 할 것과 저에게 가장 필요한 팁들까지 알려주셔서 답답함이 많이 해소되었어요! 정말 감사합니다!',
   },
 ];
+
+export const nations = [
+  { name: '영국' },
+  { name: '캐나다' },
+  { name: '프랑스' },
+  { name: '일본' },
+  { name: '호주' },
+  { name: '아르헨티나' },
+  { name: '이탈리아' },
+];
