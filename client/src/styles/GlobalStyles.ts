@@ -30,10 +30,7 @@ a {
   text-decoration: none;
   color: inherit;
 }
-hr {
-  // border-color: ${COLORS.primary};
-  background-color: ${COLORS.primary};
-}
+
 `;
 
 export const Container = styled.div`

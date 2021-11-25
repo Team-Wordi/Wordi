@@ -1,19 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import ReviewCard from 'components/common/ReviewCard';
-import { reviewData } from 'constants/dummy';
 import { COLORS } from 'styles/Theme';
+import ReviewCard from 'components/common/ReviewCard';
+import ReviewIcon from 'components/icon/ReviewIcon';
+import { reviewData } from 'constants/dummy';
 
-const Reviews = styled.div`
-  margin-bottom: 36px;
+const TitleWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  margin-bottom: 18px;
+
+  & > svg {
+    margin-right: 6px;
+  }
 `;
 
 const Title = styled.h2`
   font-weight: 600;
-  font-size: 14px;
+  font-size: 16px;
   color: ${COLORS.black};
-  line-height: 23px;
-  margin-bottom: 18px;
+  line-height: 19px;
 `;
 
 const ReviewContainer = styled.div`
@@ -21,17 +28,18 @@ const ReviewContainer = styled.div`
   justify-content: space-between;
   overflow: auto;
   white-space: nowrap;
+  padding-left: 16px;
 
   &::-webkit-scrollbar {
     display: none;
   }
 
   & > div {
-    margin-right: 24px;
+    margin-right: 8px;
   }
 `;
 
-const Review = () => {
+const Reviews = () => {
   const [reviews, setReviews] = useState<any>([]);
 
   useEffect(() => {
@@ -39,15 +47,18 @@ const Review = () => {
   }, []);
 
   return (
-    <Reviews>
-      <Title>워디 후기</Title>
+    <>
+      <TitleWrapper>
+        <ReviewIcon size={18} color={COLORS.primary} />
+        <Title>워디 후기</Title>
+      </TitleWrapper>
       <ReviewContainer>
         {reviews.map((data: any) => (
           <ReviewCard review={data.review} reviewer={data.reviewer} date={data.date} />
         ))}
       </ReviewContainer>
-    </Reviews>
+    </>
   );
 };
 
-export default Review;
+export default Reviews;

@@ -1,36 +1,36 @@
 import React, { useEffect, useState } from 'react';
-import { COLORS } from 'styles/Theme';
-import LeftIcon from 'components/icon/LeftIcon';
+import styled from 'styled-components';
 import Header from 'components/MentorDetail/Header';
-import Review from 'components/MentorDetail/Review';
 import Introduction from 'components/MentorDetail/Introduction';
 import { mentorData } from 'constants/dummy';
-import { Container } from 'styles/GlobalStyles';
 import Footer from 'components/MentorDetail/Footer';
-import { useHistory } from 'react-router';
+import { COLORS } from 'styles/Theme';
+import Reviews from 'components/MentorDetail/Reviews';
+
+const Divider = styled.div`
+  background: ${COLORS.lightGray};
+  width: 100%;
+  min-width: 100%;
+  margin: 24px 0;
+  height: 8px;
+`;
 
 const MentorDetailPage = () => {
-  const history = useHistory();
   const [mentorDetail, setMentorDetail] = useState<any>('');
-
-  const goBack = () => {
-    history.goBack();
-  };
 
   useEffect(() => {
     setMentorDetail(mentorData);
   }, []);
 
   return (
-    <Container>
-      <LeftIcon size={24} color={COLORS.gray_03} onClick={goBack} />
+    <>
       <Header mentorDetail={mentorDetail} />
-      <hr />
-      <Introduction introduction={mentorDetail.introduction} />
-      <Review />
-      <hr />
+      <Divider />
+      <Introduction />
+      <Reviews />
+      <Divider />
       <Footer />
-    </Container>
+    </>
   );
 };
 

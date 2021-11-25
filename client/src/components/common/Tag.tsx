@@ -2,34 +2,26 @@ import React from 'react';
 import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
 
-const Container = styled.div<TagProps>`
+const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 3px 8px;
-  border: ${({ border }) => (border ? `1px solid ${border}` : `1px solid ${COLORS.primary}`)};
+
+  border: 1px solid ${COLORS.primary};
   border-radius: 6px;
+
+  color: ${COLORS.gray_04};
   font-family: 'Pretendard';
-  color: ${({ textColor }) => (textColor ? `${textColor}` : `${COLORS.primary}`)};
-  width: 65px;
+
+  padding: 3px 7px;
 `;
 
 interface TagProps {
-  text?: string | null;
-  textColor?: string | undefined | null;
-  border?: string | undefined | null;
+  text: string;
 }
 
-const Tag = ({ text, textColor, border }: TagProps) => {
-  return (
-    <>
-      {text && (
-        <Container textColor={textColor} border={border}>
-          {text}
-        </Container>
-      )}
-    </>
-  );
+const Tag = ({ text }: TagProps) => {
+  return <Container>#{text}</Container>;
 };
 
 export default Tag;

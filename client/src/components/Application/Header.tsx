@@ -4,7 +4,7 @@ import { COLORS } from 'styles/Theme';
 import HambuguerIcon from 'components/icon/HamburgerIcon';
 import MarketIcon from 'components/icon/MarketIcon';
 import TextBox from 'components/common/TextBox';
-import UKIcon from 'components/icon/UKIcon';
+import Nation from 'components/common/Nation';
 
 const Container = styled.div`
   display: flex;
@@ -43,7 +43,7 @@ const HeaderInfo = styled.div`
 const FlagBox = styled.div`
   display: inline-flex;
 
-  & > svg {
+  & > img {
     margin-right: 4px;
   }
 `;
@@ -60,7 +60,7 @@ const Header = () => {
       <HeaderInfo>
         <TextBox text="워디멘토" color={COLORS.gray_04} />
         <FlagBox>
-          <UKIcon size={16} />
+          <Nation size={14} name="영국" />
           <TextBox text="워홀매니아" color={COLORS.black} />
         </FlagBox>
       </HeaderInfo>

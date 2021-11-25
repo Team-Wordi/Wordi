@@ -5,6 +5,7 @@ import TextArea from 'components/common/TextArea';
 import Button from 'components/common/Button';
 import MessageIcon from 'components/icon/MessageIcon';
 import TextBox from 'components/common/TextBox';
+import PaymentButton from 'components/MentorDetail/PaymentButton';
 
 const Container = styled.div`
   & > textarea {
