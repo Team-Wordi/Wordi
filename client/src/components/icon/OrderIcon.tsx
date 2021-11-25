@@ -9,7 +9,13 @@ interface OrderIconProps {
 
 function OrderIcon({ size, isActive }: OrderIconProps): JSX.Element {
   return (
-    <OrderSVG width={size} height={size} stroke={isActive ? COLORS.primary : COLORS.gray_03} />
+    <OrderSVG
+      width={size}
+      height={size}
+      stroke={isActive ? COLORS.primary : COLORS.gray_03}
+      fill={isActive ? COLORS.primary : COLORS.gray_03}
+      strokeWidth="0.2"
+    />
   );
 }
 

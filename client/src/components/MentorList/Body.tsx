@@ -21,7 +21,7 @@ import { ROUTES } from 'utils/routes';
 import { useHistory } from 'react-router';
 
 const Container = styled.div`
-  padding: 31px 24px;
+  padding: 31px 0;
   background: ${COLORS.white};
   min-height: 100vh;
   border-radius: 30px 30px 0 0;
@@ -34,6 +34,7 @@ const Container = styled.div`
 const DropdownMenuWrapper = styled.div`
   display: flex;
   align-items: center;
+  padding: 0 16px;
   margin-bottom: 24px;
 
   & > div {
@@ -47,6 +48,11 @@ const DropdownMenuWrapper = styled.div`
   :last-child() {
     margin-right: 0;
   }
+`;
+
+const CardWrapper = styled.div`
+  width: 100%;
+  padding: 0 24px;
 `;
 
 const Body = () => {
@@ -85,18 +91,19 @@ const Body = () => {
         <NationFilter />
         <RefreshIcon size={24} color={COLORS.black} onClick={refreshAllSelected} />
       </DropdownMenuWrapper>
-
-      {mentorData.map((mentor: any) => (
-        <MentorListCard
-          key={mentor.name}
-          img={mentor.img}
-          name={mentor.name}
-          nation={mentor.nation}
-          month={mentor.month}
-          tags={mentor.tags}
-          onClick={() => goMentorProfilePage(mentor.name)}
-        />
-      ))}
+      <CardWrapper>
+        {mentorData.map((mentor: any) => (
+          <MentorListCard
+            key={mentor.name}
+            img={mentor.img}
+            name={mentor.name}
+            nation={mentor.nation}
+            month={mentor.month}
+            tags={mentor.tags}
+            onClick={() => goMentorProfilePage(mentor.name)}
+          />
+        ))}
+      </CardWrapper>
     </Container>
   );
 };
