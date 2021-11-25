@@ -6,6 +6,10 @@ import PaymentButton from './PaymentButton';
 import { useHistory } from 'react-router';
 import { ROUTES } from 'utils/routes';
 
+const Container = styled.div`
+  padding: 0 16px;
+`;
+
 const TextWrapper = styled.div`
   margin-bottom: 34px;
 `;
@@ -25,7 +29,7 @@ const Footer = () => {
   };
 
   return (
-    <>
+    <Container>
       <PaymentButton />
       <TextWrapper>
         <Text>월요일: 9:00 AM ~ 12:00 AM / 15:20 PM ~ 18:40 PM</Text>
@@ -44,7 +48,7 @@ const Footer = () => {
         textColor={COLORS.white}
         onClick={goApplicationPage}
       />
-    </>
+    </Container>
   );
 };
 

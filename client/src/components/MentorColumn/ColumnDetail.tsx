@@ -62,10 +62,10 @@ const ColumnDetail = () => {
         </p>
       </Text>
       <TagWrapper>
-        <Tag text="#영국" border={COLORS.gray_01} textColor={COLORS.gray_04} />
-        <Tag text="#두려움" border={COLORS.gray_01} textColor={COLORS.gray_04} />
-        <Tag text="#위디도움" border={COLORS.gray_01} textColor={COLORS.gray_04} />
-        <Tag text="#자신감" border={COLORS.gray_01} textColor={COLORS.gray_04} />
+        <Tag text="영국" />
+        <Tag text="두려움" />
+        <Tag text="위디도움" />
+        <Tag text="자신감" />
       </TagWrapper>
       <hr />
     </Container>

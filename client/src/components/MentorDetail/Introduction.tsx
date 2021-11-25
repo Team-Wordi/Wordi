@@ -1,25 +1,36 @@
 import React from 'react';
 import styled from 'styled-components';
-import Banner from 'components/common/Banner';
 import { COLORS } from 'styles/Theme';
+import SmileIcon from 'components/icon/SmileIcon';
+import banner1 from 'assets/img/banner/column_banner_1.png';
+import banner2 from 'assets/img/banner/column_banner_2.png';
+import BannerImage from 'components/common/BannerImage';
 
-const Intro = styled.div`
-  margin-top: 36px;
+const Container = styled.div`
+  padding: 0 16px;
+`;
+
+const TitleWrapper = styled.div`
+  display: flex;
+  margin-bottom: 15px;
+  & > svg {
+    margin-right: 6px;
+  }
 `;
 
 const Title = styled.h2`
   font-weight: 600;
-  font-size: 14px;
+  font-size: 16px;
   color: ${COLORS.black};
-  line-height: 23px;
-  margin-bottom: 18px;
+  line-height: 19px;
 `;
 
 const Description = styled.p`
   color: ${COLORS.gray_04};
   font-size: 14px;
   line-height: 23px;
-  margin-bottom: 42px;
+  padding-left: 18px;
+  padding-right: 14px;
 `;
 
 const CardContainer = styled.div`
@@ -27,42 +38,44 @@ const CardContainer = styled.div`
   justify-content: space-between;
   overflow: auto;
   white-space: nowrap;
+  padding-left: 16px;
+  margin-top: 12px;
   margin-bottom: 36px;
 
   &::-webkit-scrollbar {
     display: none;
   }
 
-  & > div {
+  & > img {
     margin-right: 8px;
+
+    :last-child {
+      margin-right: 0;
+    }
   }
 `;
 
-const Introduction = ({ introduction }: any) => {
+const Introduction = () => {
   return (
-    <Intro>
-      <Title>워디 소개</Title>
-      <Description>{introduction}</Description>
+    <>
+      <Container>
+        <TitleWrapper>
+          <SmileIcon size={18} />
+          <Title>워디 멘토를 소개해요!</Title>
+        </TitleWrapper>
+      </Container>
+      <Description>
+        안녕하세요. 영국에 온 지 1년이 된 워홀매니아 입니다. <br /> 영국 워킹 홀리데이 서류 준비부터
+        집구하고, 나아가 문화차이 <br />
+        까지 저 만의 노하우를 과감없이 알려드리겠습니다. <br />
+        제가 겪었던 경험을 공유하며 같은 어려움을 겪는 분들께 공감과 도움을 드리고 싶습니다.
+      </Description>
+
       <CardContainer>
-        {/* 데이터 들어오면 반복문으로 만들기 */}
-        <Banner
-          title="워홀, 겁먹지 마세요!"
-          description="걱정을 안고 떠난 영국 워킹 홀리데이, 
-지금은 괜한 걱정이었다 생각하죠!"
-          color={COLORS.yellow}
-        />
-        <Banner
-          title="영국에서 집 쉽게 구하기"
-          description="영국에서 집 구하기? 누워서 떡 먹기!"
-          color={COLORS.lightGreen}
-        />
-        <Banner
-          title="영국에서 집 쉽게 구하기"
-          description="영국에서 집 구하기? 누워서 떡 먹기!"
-          color={COLORS.lightblue}
-        />
+        <BannerImage img={banner1} width={184} height={112} />
+        <BannerImage img={banner2} width={184} height={112} />
       </CardContainer>
-    </Intro>
+    </>
   );
 };
 

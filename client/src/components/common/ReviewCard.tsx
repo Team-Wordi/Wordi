@@ -5,26 +5,34 @@ import { dateConverter } from 'utils/dateConverter';
 
 const Container = styled.div`
   display: inline-block;
-  min-width: 258px;
-  padding: 16px 14px;
+  min-width: 256px;
+  height: 136px;
+  padding: 32px 13px;
   border: none;
   border-radius: 10px;
-  background-color: ${COLORS.apricot};
+  background: ${COLORS.gray_01};
   color: ${COLORS.gray_04};
 `;
 
 const Text = styled.p`
-  font-size: 14px;
-  line-height: 23px;
+  display: -webkit-box;
+  font-size: 11px;
+  line-height: 18px;
+  margin-bottom: 22px;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: normal;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  height: 36px;
 `;
 
 const Footer = styled.div`
-  margin-top: 22px;
   display: flex;
   justify-content: space-between;
+  font-weight: 500;
   font-size: 12px;
-  line-height: 23px;
   white-space: normal;
 `;
 

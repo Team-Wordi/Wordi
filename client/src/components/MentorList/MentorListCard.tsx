@@ -76,7 +76,7 @@ const MentorListCard = ({ name, nation, month, tags, img }: MentorListCardProps)
       </Header>
       <Tags>
         {tags.map((tag: string) => (
-          <Tag text={tag} textColor={COLORS.black} border={COLORS.primary} />
+          <Tag text={tag} />
         ))}
       </Tags>
     </Container>

@@ -15,6 +15,7 @@ const Container = styled.div`
 
 const Header = styled.div`
   display: flex;
+  align-items: center;
   margin-bottom: 12px;
 
   & > svg {
