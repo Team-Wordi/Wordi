@@ -12,8 +12,8 @@ const App: React.FC<any> = () => {
   return (
     <Switch>
       <Route exact strict path={ROUTES.ROOT} component={MainPage} />
-      <Route exact path={ROUTES.MENTOR_DETAIL} component={MentorDetailPage} />
-      <Route exact path={ROUTES.MENTOR_LIST} component={MentorListPage} />
+      <Route path={ROUTES.MENTOR_DETAIL} component={MentorDetailPage} />
+      <Route path={ROUTES.MENTOR_LIST} component={MentorListPage} />
       <Route exact path={ROUTES.APPLICATION} component={ApplicationPage} />
       <Route exact path={ROUTES.MENTOR_COLUMN} component={MentorColumnPage} />
       <Route exact path={ROUTES.MY} component={MyPage} />
