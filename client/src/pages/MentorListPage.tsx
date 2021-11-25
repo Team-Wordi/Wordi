@@ -6,8 +6,9 @@ import Body from 'components/MentorList/Body';
 import BottomTabBar from 'components/common/BottomTabBar';
 
 const Container = styled.div`
-  min-height: 100vh;
   background: ${COLORS.primary};
+  min-height: 100vh;
+  padding-top: 13px;
 `;
 
 const MentorListPage = () => {
