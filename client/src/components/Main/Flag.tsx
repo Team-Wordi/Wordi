@@ -21,11 +21,12 @@ const Container = styled.div<{ size: number | undefined }>`
 interface FlagProps {
   name: NationName;
   size?: number;
+  onClick: () => void;
 }
 
-const Flag = ({ name, size }: FlagProps) => {
+const Flag = ({ name, size, onClick }: FlagProps) => {
   return (
-    <Container size={size}>
+    <Container size={size} onClick={onClick}>
       <Nation name={name} />
       {name}
     </Container>

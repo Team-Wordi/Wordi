@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
 import MentorListCard from 'components/MentorList/MentorListCard';
@@ -17,6 +17,8 @@ import {
   mentorDataState,
 } from 'atoms/atoms';
 import { tempMentorData } from 'constants/tempMentorData';
+import { ROUTES } from 'utils/routes';
+import { useHistory } from 'react-router';
 
 const Container = styled.div`
   padding: 31px 24px;
@@ -48,6 +50,8 @@ const DropdownMenuWrapper = styled.div`
 `;
 
 const Body = () => {
+  const history = useHistory();
+
   const [mentorData, setMentorData] = useRecoilState(mentorDataState);
   const resetMonth = useResetRecoilState(monthFilterState);
   const resetMonthFilterClicked = useResetRecoilState(isMonthFilterClicked);
@@ -69,9 +73,9 @@ const Body = () => {
     setMentorData(tempMentorData);
   };
 
-  useEffect(() => {
-    setMentorData(tempMentorData);
-  }, []);
+  const goMentorProfilePage = (mentorName: string) => {
+    history.push(`${ROUTES.MENTOR_DETAIL}${mentorName}`);
+  };
 
   return (
     <Container>
@@ -90,6 +94,7 @@ const Body = () => {
           nation={mentor.nation}
           month={mentor.month}
           tags={mentor.tags}
+          onClick={() => goMentorProfilePage(mentor.name)}
         />
       ))}
     </Container>
