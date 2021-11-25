@@ -7,7 +7,7 @@ interface MarketIconProps {
 }
 
 function MarketIcon({ size, color }: MarketIconProps): JSX.Element {
-  return <MarketSVG width={size} height={size} stroke={color} />;
+  return <MarketSVG width={size} height={size} stroke={color} fill={color} stroke-width="0.5" />;
 }
 
 export default MarketIcon;

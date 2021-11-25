@@ -69,7 +69,7 @@ const Header = () => {
       <CancelIcon size={14} color={COLORS.gray_02} onClick={goBack} />
       <TitleBox>
         <MarketIcon size={18} color={COLORS.primary} />
-        <Title>워디링 신청하기</Title>
+        <Title>멘토링 신청하기</Title>
       </TitleBox>
       <HeaderInfo>
         <TextBox text="워디멘토" color={COLORS.gray_04} />
@@ -80,7 +80,7 @@ const Header = () => {
       </HeaderInfo>
       <HeaderInfo>
         <TextBox text="신청 가격" color={COLORS.gray_04} />
-        <TextBox text="5,000" fontWeight={600} />
+        <TextBox text="4,000원" fontWeight={700} />
       </HeaderInfo>
     </Container>
   );

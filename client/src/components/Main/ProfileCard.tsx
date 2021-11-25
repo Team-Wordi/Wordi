@@ -15,9 +15,9 @@ const Container = styled.div`
 
   background: ${COLORS.white};
 
-  border: none;
+  border: 1px solid ${COLORS.lightGray};
+  border-bottom: 3px solid ${COLORS.lightGray};
   border-radius: 8px;
-  box-shadow: 1px 2px 0px 0px ${COLORS.lightGray};
 `;
 
 const MentorInfoWrapper = styled.div`

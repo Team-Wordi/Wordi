@@ -49,7 +49,7 @@ const Bottom = () => {
     <Container>
       <TitleWrapper>
         <MessageIcon size={18} color={COLORS.primary} />
-        <TextBox text="워디 멘토에게 하고 싶은 말을 자유롭게 써 주세요!" color={COLORS.gray_04} />
+        <TextBox text="워디멘토에게 하고 싶은 말을 자유롭게 써 주세요!" color={COLORS.gray_04} />
       </TitleWrapper>
       <TextArea
         placeholder="집구할 때 어떤 사이트나 서류가 필요한지 궁금합니다!"

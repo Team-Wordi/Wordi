@@ -8,11 +8,13 @@ import Nation, { NationName } from 'components/common/Nation';
 const Container = styled.div`
   width: 100%;
 
+  border: 1px solid ${COLORS.lightGray};
+  border-bottom: 3px solid ${COLORS.lightGray};
   border-radius: 8px;
+
   background: ${COLORS.white};
 
   padding: 21px 24px;
-  box-shadow: 1px 3px 0px 0px ${COLORS.lightGray};
 `;
 
 const Header = styled.div`

@@ -15,14 +15,14 @@ const Carousel = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     centerMode: true,
-    centerPadding: '28px',
+    centerPadding: '18px',
   };
 
   return (
     <Slider {...settings}>
-      <BannerImage img={banner1} width={312} height={152} />
-      <BannerImage img={banner2} width={312} height={152} />
-      <BannerImage img={banner3} width={312} height={152} />
+      <BannerImage img={banner1} width={318} height={152} />
+      <BannerImage img={banner2} width={318} height={152} />
+      <BannerImage img={banner3} width={318} height={152} />
     </Slider>
   );
 };
