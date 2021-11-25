@@ -13,7 +13,8 @@ function MentorIcon({ size, isActive }: MentorIconProps): JSX.Element {
       width={size}
       height={size}
       stroke={isActive ? COLORS.primary : COLORS.gray_03}
-      stroke-width="0.5"
+      fill={isActive ? COLORS.primary : COLORS.gray_03}
+      strokeWidth="0.2"
     />
   );
 }
