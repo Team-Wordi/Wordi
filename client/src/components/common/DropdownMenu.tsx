@@ -3,23 +3,25 @@ import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
 import DownIcon from 'components/icon/DownIcon';
 
-const Container = styled.div<{ width: number }>`
-  width: ${({ width }) => width}px;
+const Container = styled.div`
   max-width: 111px;
 `;
 
-const SelectBox = styled.div<{ isActive: boolean; isClicked: boolean }>`
+const SelectBox = styled.div<{ isActive: boolean; isClicked: boolean; width: number }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   border: 1px solid ${COLORS.primary};
-  border-radius: 6px;
+  border-bottom: ${({ isActive }) => isActive && 'none'};
+  border-radius: ${({ isActive }) => (isActive ? '6px 6px 0 0' : '6px')};
   background: ${({ isClicked }) => (isClicked ? COLORS.primary : COLORS.white)};
+
   color: ${({ isClicked }) => (isClicked ? COLORS.white : COLORS.black)};
   font-size: 13px;
   line-height: 16px;
 
+  width: ${({ width }) => width}px;
   height: 32px;
   padding: 8px 12px;
 `;
@@ -28,7 +30,8 @@ const Options = styled.div<{ isActive: boolean; width: number }>`
   position: absolute;
   display: ${({ isActive }) => (isActive ? 'block' : 'none')};
   border: 1px solid ${COLORS.primary};
-  border-radius: 6px;
+  border-top: ${({ isActive }) => isActive && 'none'};
+  border-radius: ${({ isActive }) => isActive && '0 0 6px 6px '};
   background: ${COLORS.white};
   width: ${({ width }) => width}px;
   max-width: 111px;
@@ -100,8 +103,8 @@ const DropdownMenu = ({
   handleCheckOutside(wrapperRef);
 
   return (
-    <Container ref={wrapperRef} width={width}>
-      <SelectBox onClick={handleActive} isActive={isActive} isClicked={isClicked}>
+    <Container ref={wrapperRef}>
+      <SelectBox width={width} onClick={handleActive} isActive={isActive} isClicked={isClicked}>
         {selected}
         <DownIcon size={16} color={isClicked ? COLORS.white : COLORS.gray_03} />
       </SelectBox>

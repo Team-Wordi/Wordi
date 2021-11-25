@@ -8,7 +8,16 @@ interface RefreshIconProps {
 }
 
 function RefreshIcon({ size, color, onClick }: RefreshIconProps): JSX.Element {
-  return <RefreshSVG width={size} height={size} stroke={color} fill={color} onClick={onClick} />;
+  return (
+    <RefreshSVG
+      width={size}
+      height={size}
+      stroke={color}
+      fill={color}
+      stroke-width="0.5"
+      onClick={onClick}
+    />
+  );
 }
 
 export default RefreshIcon;
