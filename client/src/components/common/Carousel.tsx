@@ -1,8 +1,10 @@
+/*  배너 이미지 사용으로 다음 스프린트에 삭제될 컴포넌트입니다. */
 import React from 'react';
-import { COLORS } from 'styles/Theme';
 import Slider from 'react-slick';
-import CarouselCard from './CarouselCard';
-import MainCarouselCard from 'components/Main/MainCarouselCard';
+import BannerImage from './BannerImage';
+import banner1 from 'assets/img/banner/main_banner_1.png';
+import banner2 from 'assets/img/banner/main_banner_2.png';
+import banner3 from 'assets/img/banner/main_banner_3.png';
 
 const Carousel = () => {
   const settings = {
@@ -18,9 +20,9 @@ const Carousel = () => {
 
   return (
     <Slider {...settings}>
-      <CarouselCard color={COLORS.lightYellow}>노란색</CarouselCard>
-      <MainCarouselCard />
-      <CarouselCard color={COLORS.green}>초록색</CarouselCard>
+      <BannerImage img={banner1} width={328} height={152} />
+      <BannerImage img={banner2} width={328} height={152} />
+      <BannerImage img={banner3} width={328} height={152} />
     </Slider>
   );
 };

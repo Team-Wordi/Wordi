@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
-import ReviewCard from 'components/common/ReviewCard';
 import ReviewIcon from 'components/icon/ReviewIcon';
 import { reviewData } from 'constants/dummy';
+import ReviewCard from 'components/common/ReviewCard';
 
 const TitleWrapper = styled.div`
   display: flex;

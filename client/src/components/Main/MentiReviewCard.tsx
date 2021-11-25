@@ -1,10 +1,13 @@
+/*
+  ReviewCard 컴포넌트 재사용으로 인해
+  다음 스프린트에 삭제될 컴포넌트입니다.
+*/
 import React from 'react';
 import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
 
 const Container = styled.div`
   min-width: 256px;
-  // 임시 height -> 추후 삭제 예정
   height: 136px;
 
   background: ${COLORS.gray_01};

@@ -4,8 +4,10 @@ import { COLORS } from 'styles/Theme';
 import MentorProfileCard from 'components/MentorColumn/MentorProfileCard';
 import RightIcon from 'components/icon/RightIcon';
 import LeftIcon from 'components/icon/LeftIcon';
+import { Divider } from 'styles/GlobalStyles';
+
 const Container = styled.div`
-  margin-top: 20px;
+  padding: 0 16px;
 `;
 
 const Icons = styled.div`
@@ -30,20 +32,22 @@ const Footer = () => {
   const goNext = () => {};
 
   return (
-    <Container>
+    <>
       <MentorProfileCard />
-      <hr />
-      <Icons>
-        <div>
-          <LeftIcon size={14} color={COLORS.primary} onClick={goBack} />
-          이전 칼럼
-        </div>
-        <div>
-          다음 칼럼
-          <RightIcon size={14} color={COLORS.primary} onClick={goNext} />
-        </div>
-      </Icons>
-    </Container>
+      <Divider />
+      <Container>
+        <Icons>
+          <div>
+            <LeftIcon size={14} color={COLORS.primary} onClick={goBack} />
+            이전 칼럼
+          </div>
+          <div>
+            다음 칼럼
+            <RightIcon size={14} color={COLORS.primary} onClick={goNext} />
+          </div>
+        </Icons>
+      </Container>
+    </>
   );
 };
 

@@ -14,11 +14,9 @@ const Container = styled.div`
 const TitleWrapper = styled.div`
   display: flex;
   align-items: center;
-
   font-weight: 700;
   font-size: 21px;
   color: ${COLORS.white};
-
   margin-bottom: 4px;
 
   & > svg {
@@ -30,7 +28,6 @@ const CardWrapper = styled.div`
   display: flex;
   overflow: auto;
   white-space: nowrap;
-
   margin-top: 16px;
 
   &::-webkit-scrollbar {
@@ -53,7 +50,7 @@ const TempCard = styled.div`
 const Header = () => {
   return (
     <Container>
-      <TopNavbar logo={false} color={COLORS.white} />
+      <TopNavbar logo={false} notificationColor={COLORS.white} hamburgerColor={COLORS.white} />
       <TitleWrapper>
         <PinIcon size={24} color={COLORS.white} />
         워디가 알려줄게요!

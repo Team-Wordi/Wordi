@@ -12,7 +12,7 @@ export const COLORS = {
   lightGreen: '#D3EFE1',
   skyblue: '#9DD4FF',
   apricot: '#FEF0E7',
-  gray_01: '#F5F5F5',
+  gray_01: '#E8E8E9',
   gray_02: '#C4C4C4',
   gray_03: '#929292',
   gray_04: '#666666',

@@ -62,12 +62,11 @@ const ColumnDetail = () => {
         </p>
       </Text>
       <TagWrapper>
-        <Tag text="영국" />
-        <Tag text="두려움" />
-        <Tag text="위디도움" />
-        <Tag text="자신감" />
+        <Tag text="영국" borderColor={COLORS.gray_01} />
+        <Tag text="두려움" borderColor={COLORS.gray_01} />
+        <Tag text="위디도움" borderColor={COLORS.gray_01} />
+        <Tag text="자신감" borderColor={COLORS.gray_01} />
       </TagWrapper>
-      <hr />
     </Container>
   );
 };
