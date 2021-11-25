@@ -1,16 +1,23 @@
 import React from 'react';
-import { Container } from 'styles/GlobalStyles';
+import styled from 'styled-components';
+import { COLORS } from 'styles/Theme';
 import Header from 'components/Application/Header';
 import ScheduleApplication from 'components/Application/ScheduleApplication';
 import Bottom from 'components/Application/Bottom';
+import { Divider } from 'styles/GlobalStyles';
+
+const Container = styled.div`
+  background: ${COLORS.primary};
+  height: 30px;
+`;
 
 const ApplicationPage = () => {
   return (
     <Container>
       <Header />
-      <hr />
+      <Divider />
       <ScheduleApplication />
-      <hr />
+      <Divider />
       <Bottom />
     </Container>
   );
