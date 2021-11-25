@@ -7,6 +7,7 @@ import BreadCrumb from 'components/common/BreadCrumb';
 import { useHistory } from 'react-router';
 
 const Container = styled.div`
+  margin-top: 8px;
   margin-bottom: 21px;
 `;
 

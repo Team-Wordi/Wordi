@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Banner from 'components/common/Banner';
-import { COLORS } from 'styles/Theme';
-import working from 'assets/img/working.png';
+import banner1 from 'assets/img/banner/column_banner_1.png';
+import banner2 from 'assets/img/banner/column_banner_3.jpg';
+import BannerImage from 'components/common/BannerImage';
 
 const Container = styled.div`
   display: flex;
@@ -16,7 +16,7 @@ const Container = styled.div`
     display: none;
   }
 
-  & > div {
+  & > img {
     margin-right: 8px;
   }
 
@@ -26,14 +26,8 @@ const Container = styled.div`
 const Banners = () => {
   return (
     <Container>
-      <Banner
-        title="워킹 홀리데이 이제 겁먹지 마세요."
-        description="예시입니다"
-        color={COLORS.yellow_02}
-        image={working}
-      />
-      <Banner title="영국에서 집 쉽게 구하기" description="예시입니다" color={COLORS.skyblue} />
-      <Banner title="3" description="예시입니다" color={COLORS.lightGreen} />
+      <BannerImage img={banner1} width={184} height={112} />
+      <BannerImage img={banner2} width={184} height={112} />
     </Container>
   );
 };

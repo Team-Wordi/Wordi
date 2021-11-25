@@ -30,18 +30,19 @@ const LogoBox = styled.div``;
 
 interface TopNavbarProps {
   logo?: boolean;
-  color: string | undefined;
+  notificationColor: string | undefined;
+  hamburgerColor: string | undefined;
 }
 
-const TopNavbar = ({ logo, color }: TopNavbarProps) => {
+const TopNavbar = ({ logo, notificationColor, hamburgerColor }: TopNavbarProps) => {
   const onHandleMenu = () => {};
 
   return (
     <Container logo={logo}>
       {logo && <LogoBox>워디</LogoBox>}
       <RightBox>
-        <ActiveNotificationIcon size={24} color={color} />
-        <HamburgerIcon size={24} color={color} onClick={onHandleMenu} />
+        <ActiveNotificationIcon size={24} color={notificationColor} />
+        <HamburgerIcon size={24} color={hamburgerColor} onClick={onHandleMenu} />
       </RightBox>
     </Container>
   );

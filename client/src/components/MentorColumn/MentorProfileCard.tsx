@@ -6,6 +6,10 @@ import ProfileImage from 'components/common/ProfileImage';
 import Nation from 'components/common/Nation';
 import spreadArms from 'assets/img/mentorImage/spread_arms.png';
 
+const Container = styled.div`
+  padding: 0 16px;
+`;
+
 const CardHeader = styled.div`
   display: flex;
   align-items: center;
@@ -57,7 +61,7 @@ const MentorTitle = styled.div`
 
 const MentorProfileCard = () => {
   return (
-    <>
+    <Container>
       <CardHeader>
         <ProfileImage size={50} img={spreadArms} />
         <MentorInfo>
@@ -78,7 +82,7 @@ const MentorProfileCard = () => {
         설렘 반 걱정 반으로 무작정 간 영국 워킹 홀리데이로 고생 좀 하고 지금은 워디로 광명찾고
         다양한 경험을 영국에서 하고 있습니다.
       </Description>
-    </>
+    </Container>
   );
 };
 

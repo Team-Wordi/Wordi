@@ -13,7 +13,7 @@ const Header = () => {
   return (
     <>
       <NavbarWrapper>
-        <TopNavbar logo={true} color={COLORS.gray_03} />
+        <TopNavbar logo={true} notificationColor={COLORS.primary} hamburgerColor={COLORS.gray_03} />
       </NavbarWrapper>
       <Carousel />
     </>

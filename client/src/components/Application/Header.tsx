@@ -6,6 +6,7 @@ import Nation from 'components/common/Nation';
 import MarketIcon from 'components/icon/MarketIcon';
 import CancelIcon from 'components/icon/CancelIcon';
 import { useHistory } from 'react-router';
+import { ROUTES } from 'utils/routes';
 
 const Container = styled.div`
   display: flex;
@@ -60,7 +61,7 @@ const Header = () => {
   const history = useHistory();
 
   const goBack = () => {
-    history.goBack();
+    history.push(ROUTES.ROOT);
   };
 
   return (

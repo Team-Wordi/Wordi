@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
 import Nation from 'components/common/Nation';
-import DotIcon from 'components/icon/DotIcon';
+import traveler from 'assets/img/mentorImage/traveler.png';
 
 const Container = styled.div``;
 
@@ -32,8 +32,8 @@ const Date = styled.div`
   color: ${COLORS.gray_02};
 `;
 
-const Img = styled.div`
-  background: ${COLORS.gray_02};
+const Img = styled.img`
+  width: 100%;
   height: 138px;
   border: none;
   border-radius: 8px;
@@ -49,7 +49,7 @@ const BreadCrumb = () => {
         </WriterBox>
         <Date>2021.11.10</Date>
       </Header>
-      <Img />
+      <Img src={traveler} alt={traveler} />
     </Container>
   );
 };

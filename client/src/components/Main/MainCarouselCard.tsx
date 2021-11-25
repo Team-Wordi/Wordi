@@ -1,3 +1,4 @@
+/*  배너 이미지 사용으로 다음 스프린트에 삭제될 컴포넌트입니다. */
 import React from 'react';
 import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
