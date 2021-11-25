@@ -1,11 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
-import TopNavbar from 'components/common/TopNavbar';
 import PinIcon from 'components/icon/PinIcon';
+import BannerImage from 'components/common/BannerImage';
+import banner1 from 'assets/img/banner/mentorList_banner_1.png';
+import banner2 from 'assets/img/banner/mentorList_banner_2.png';
+import TempNotificationIcon from 'components/icon/TempNotificationIcon';
+import TempHamburgerIcon from 'components/icon/TempHamburgerIcon';
 
 const Container = styled.div`
-  padding: 8px 16px 16px 16px;
+  padding: 0 16px;
   & > p {
     color: ${COLORS.white};
   }
@@ -28,40 +32,64 @@ const CardWrapper = styled.div`
   display: flex;
   overflow: auto;
   white-space: nowrap;
+
+  padding-left: 16px;
   margin-top: 16px;
+  margin-bottom: 24px;
 
   &::-webkit-scrollbar {
     display: none;
   }
 
-  & > div {
+  & > img {
     margin-right: 8px;
   }
 `;
 
-/* 디자인 쪽에서 이미지를 받으면 쓰지 않게 될 스타일 컴포넌트입니다. */
-const TempCard = styled.div`
-  min-width: 184px;
-  height: 112px;
-  border-radius: 10px;
-  background: ${COLORS.lightGreen};
+const NavbarWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  background: transparent;
+  color: ${COLORS.primary};
+
+  font-weight: 700;
+  font-size: 16px;
+
+  margin-bottom: 21px;
+`;
+
+const Icons = styled.div`
+  display: flex;
+
+  svg:first-child {
+    margin-right: 6px;
+  }
 `;
 
 const Header = () => {
   return (
-    <Container>
-      <TopNavbar logo={false} notificationColor={COLORS.white} hamburgerColor={COLORS.white} />
-      <TitleWrapper>
-        <PinIcon size={24} color={COLORS.white} />
-        워디가 알려줄게요!
-      </TitleWrapper>
-      <p>워킹 홀리데이에 대한 다양한 정보를 확인해봐요.</p>
+    <>
+      <Container>
+        <NavbarWrapper>
+          <Icons>
+            <TempNotificationIcon size={24} />
+            <TempHamburgerIcon size={24} />
+          </Icons>
+        </NavbarWrapper>
+
+        <TitleWrapper>
+          <PinIcon size={24} color={COLORS.white} />
+          워디가 알려줄게요!
+        </TitleWrapper>
+        <p>워킹 홀리데이에 대한 다양한 정보를 확인해봐요.</p>
+      </Container>
       <CardWrapper>
-        <TempCard />
-        <TempCard />
-        <TempCard />
+        <BannerImage img={banner1} width={184} height={112} />
+        <BannerImage img={banner2} width={184} height={112} />
       </CardWrapper>
-    </Container>
+    </>
   );
 };
 
