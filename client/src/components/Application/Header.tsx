@@ -1,18 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
-import HambuguerIcon from 'components/icon/HamburgerIcon';
-import MarketIcon from 'components/icon/MarketIcon';
 import TextBox from 'components/common/TextBox';
 import Nation from 'components/common/Nation';
+import MarketIcon from 'components/icon/MarketIcon';
+import CancelIcon from 'components/icon/CancelIcon';
+import { useHistory } from 'react-router';
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  border-radius: 30px 30px 0 0;
+  background: ${COLORS.white};
+  padding: 17px 16px 0px 16px;
 
   & > svg {
     margin-left: auto;
-    margin-bottom: 16px;
+    margin-bottom: 31px;
   }
 `;
 
@@ -35,6 +39,10 @@ const HeaderInfo = styled.div`
   display: flex;
   margin-bottom: 12px;
 
+  :last-child {
+    margin-bottom: 0;
+  }
+
   div:first-child {
     margin-right: 27px;
   }
@@ -49,10 +57,15 @@ const FlagBox = styled.div`
 `;
 
 const Header = () => {
-  const showMenu = () => {};
+  const history = useHistory();
+
+  const goBack = () => {
+    history.goBack();
+  };
+
   return (
     <Container>
-      <HambuguerIcon size={24} color={COLORS.gray_03} onClick={showMenu} />
+      <CancelIcon size={14} color={COLORS.gray_02} onClick={goBack} />
       <TitleBox>
         <MarketIcon size={18} color={COLORS.primary} />
         <Title>워디링 신청하기</Title>

@@ -38,4 +38,12 @@ export const Container = styled.div`
   min-height: 100vh;
 `;
 
+export const Divider = styled.div`
+  background: ${COLORS.lightGray};
+  width: 100%;
+  min-width: 100%;
+  margin: 24px 0;
+  height: 8px;
+`;
+
 export default GlobalStyles;

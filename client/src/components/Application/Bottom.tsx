@@ -5,9 +5,10 @@ import TextArea from 'components/common/TextArea';
 import Button from 'components/common/Button';
 import MessageIcon from 'components/icon/MessageIcon';
 import TextBox from 'components/common/TextBox';
-import PaymentButton from 'components/MentorDetail/PaymentButton';
 
 const Container = styled.div`
+  padding: 0 16px;
+
   & > textarea {
     margin-bottom: 14px;
   }
@@ -26,10 +27,16 @@ const TitleWrapper = styled.div`
 
 const Notification = styled.ul`
   list-style: none;
+
   & > li {
     margin-bottom: 10px;
-    line-height: 26px;
+    line-height: 17px;
   }
+
+  & > li:nth-child(2) {
+    max-width: 321px;
+  }
+
   & > li:last-child {
     margin-bottom: 36px;
   }
@@ -52,14 +59,14 @@ const Bottom = () => {
       <Notification>
         <li>
           <TextBox
-            text="워디멘토가 일정을 승인하면, 멘토링이 확정됩니다."
+            text="• 워디멘토가 일정을 승인하면, 멘토링이 확정됩니다."
             color={COLORS.gray_04}
             fontWeight={400}
           />
         </li>
         <li>
           <TextBox
-            text="워디링이 확정되면, 예약확정 알림과 유의사항이 문자로
+            text="• 워디링이 확정되면, 예약확정 알림과 유의사항이 문자로
       발송됩니다."
             color={COLORS.gray_04}
             fontWeight={400}
@@ -67,14 +74,14 @@ const Bottom = () => {
         </li>
         <li>
           <TextBox
-            text="확정된 멘토링 시작 20분 전, 채팅 링크가 전달됩니다."
+            text="• 확정된 멘토링 시작 20분 전, 채팅 링크가 전달됩니다."
             color={COLORS.gray_04}
             fontWeight={400}
           />
         </li>
         <li>
           <TextBox
-            text="확정된 멘토링 시간에 맞춰 채팅방에 입장해 주세요!"
+            text="• 확정된 멘토링 시간에 맞춰 채팅방에 입장해 주세요!"
             color={COLORS.gray_04}
             fontWeight={400}
           />

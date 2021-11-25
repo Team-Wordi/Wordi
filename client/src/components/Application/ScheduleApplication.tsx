@@ -1,12 +1,11 @@
 import React from 'react';
 import { COLORS } from 'styles/Theme';
 import Button from 'components/common/Button';
-import TextArea from 'components/common/TextArea';
 import styled from 'styled-components';
 import TextBox from 'components/common/TextBox';
 
 const Container = styled.div`
-  margin-top: 20px;
+  padding: 0 16px;
 `;
 
 const DatePickerBox = styled.div`
@@ -26,10 +25,10 @@ const ScheduleApplication = () => {
 
         <Button
           size={75}
-          text="희망 일정"
-          fill={COLORS.white}
+          text="11/20(수) 20:00pm"
+          fill={COLORS.primary}
           border={COLORS.primary}
-          textColor={COLORS.primary}
+          textColor={COLORS.white}
           onClick={handleButton}
         />
       </DatePickerBox>
