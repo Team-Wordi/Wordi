@@ -9,7 +9,12 @@ interface MentorIconProps {
 
 function MentorIcon({ size, isActive }: MentorIconProps): JSX.Element {
   return (
-    <MentorSVG width={size} height={size} stroke={isActive ? COLORS.primary : COLORS.gray_03} />
+    <MentorSVG
+      width={size}
+      height={size}
+      stroke={isActive ? COLORS.primary : COLORS.gray_03}
+      stroke-width="0.5"
+    />
   );
 }
 

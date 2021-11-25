@@ -13,6 +13,7 @@ function ActiveReviewIcon({ size, isActive }: ActiveReviewIconProps): JSX.Elemen
       width={size}
       height={size}
       stroke={isActive ? COLORS.primary : COLORS.gray_03}
+      strokeWidth="0.5"
     />
   );
 }
