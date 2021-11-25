@@ -46,4 +46,9 @@ export const Divider = styled.div`
   height: 8px;
 `;
 
+export const Background = styled.div`
+  background: ${COLORS.white};
+  min-height: 100vh;
+`;
+
 export default GlobalStyles;

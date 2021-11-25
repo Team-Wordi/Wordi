@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Divider } from 'styles/GlobalStyles';
+import { Background, Divider } from 'styles/GlobalStyles';
 import Header from 'components/MentorColumn/Header';
 import ColumnDetail from 'components/MentorColumn/ColumnDetail';
 import Footer from 'components/MentorColumn/Footer';
@@ -11,14 +11,14 @@ const Container = styled.div`
 
 const MentorColumnPage = () => {
   return (
-    <>
+    <Background>
       <Container>
         <Header />
         <ColumnDetail />
       </Container>
       <Divider />
       <Footer />
-    </>
+    </Background>
   );
 };
 

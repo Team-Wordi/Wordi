@@ -14,7 +14,7 @@ const Container = styled.div<{ borderColor: string | undefined | null }>`
   color: ${COLORS.gray_04};
   font-family: 'Pretendard';
 
-  padding: 3px 7px;
+  padding: 3px 6px;
 `;
 
 interface TagProps {

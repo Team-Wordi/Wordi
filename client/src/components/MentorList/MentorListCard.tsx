@@ -6,7 +6,7 @@ import ProfileImage from 'components/common/ProfileImage';
 import Nation, { NationName } from 'components/common/Nation';
 
 const Container = styled.div`
-  width: 326px;
+  width: 100%;
 
   border-radius: 8px;
   background: ${COLORS.white};

@@ -4,7 +4,7 @@ import { COLORS } from 'styles/Theme';
 import Header from 'components/Application/Header';
 import ScheduleApplication from 'components/Application/ScheduleApplication';
 import Bottom from 'components/Application/Bottom';
-import { Divider } from 'styles/GlobalStyles';
+import { Background, Divider } from 'styles/GlobalStyles';
 
 const Container = styled.div`
   background: ${COLORS.primary};
@@ -13,13 +13,13 @@ const Container = styled.div`
 
 const ApplicationPage = () => {
   return (
-    <Container>
+    <Background>
       <Header />
       <Divider />
       <ScheduleApplication />
       <Divider />
       <Bottom />
-    </Container>
+    </Background>
   );
 };
 
