@@ -79,8 +79,8 @@ const Body = () => {
     setMentorData(tempMentorData);
   };
 
-  const goMentorProfilePage = (mentorName: string) => {
-    history.push(`${ROUTES.MENTOR_DETAIL}${mentorName}`);
+  const goMentorProfilePage = (nation: string, name: string) => {
+    history.push(`${ROUTES.MENTOR}${nation}/${name}`);
   };
 
   return (
@@ -100,7 +100,7 @@ const Body = () => {
             nation={mentor.nation}
             month={mentor.month}
             tags={mentor.tags}
-            onClick={() => goMentorProfilePage(mentor.name)}
+            onClick={() => goMentorProfilePage(mentor.nation, mentor.name)}
           />
         ))}
       </CardWrapper>

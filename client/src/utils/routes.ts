@@ -2,6 +2,7 @@ export const ROUTES = {
   ROOT: '/Wordi/',
 
   // temporary routes
+  MENTOR: '/Wordi/mentor/',
   MENTOR_DETAIL: '/Wordi/mentor/:nation/:mentorName',
   MENTOR_LIST: '/Wordi/mentor/:nation',
   APPLICATION: '/Wordi/application',

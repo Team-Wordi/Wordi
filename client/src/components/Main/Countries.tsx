@@ -54,9 +54,10 @@ const Countries = () => {
   const [, setIsClicked] = useRecoilState(isNationFilterClicked);
 
   const goMentorListPage = (nation: NationName) => {
-    history.push(`${ROUTES.MENTOR_LIST}${nation}`);
     setSelected(nation);
     setIsClicked(true);
+
+    history.push(`${ROUTES.MENTOR}${nation}`);
   };
 
   return (
