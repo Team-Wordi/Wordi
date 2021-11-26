@@ -76,8 +76,8 @@ const Body = () => {
     <Container>
       <DropdownMenuWrapper>
         <NationFilter />
-        <MonthFilter />
         <KeywordFilter />
+        <MonthFilter />
         <RefreshIcon size={24} color={COLORS.black} onClick={refreshAllSelected} />
       </DropdownMenuWrapper>
       <CardWrapper>
