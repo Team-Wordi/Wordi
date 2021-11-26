@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/Wordi/static/js/main.aee8ed7c.chunk.js",
-    "main.js.map": "/Wordi/static/js/main.aee8ed7c.chunk.js.map",
+    "main.js": "/Wordi/static/js/main.96eab15e.chunk.js",
+    "main.js.map": "/Wordi/static/js/main.96eab15e.chunk.js.map",
     "runtime-main.js": "/Wordi/static/js/runtime-main.06f7f184.js",
     "runtime-main.js.map": "/Wordi/static/js/runtime-main.06f7f184.js.map",
     "static/css/2.f43417c7.chunk.css": "/Wordi/static/css/2.f43417c7.chunk.css",
@@ -49,6 +49,6 @@
     "static/js/runtime-main.06f7f184.js",
     "static/css/2.f43417c7.chunk.css",
     "static/js/2.84fe0023.chunk.js",
-    "static/js/main.aee8ed7c.chunk.js"
+    "static/js/main.96eab15e.chunk.js"
   ]
 }
