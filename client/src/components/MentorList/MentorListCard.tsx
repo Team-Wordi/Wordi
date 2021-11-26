@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
 import Tag from 'components/common/Tag';
 import ProfileImage from 'components/common/ProfileImage';
-import Nation, { NationName } from 'components/common/Nation';
+import Nation from 'components/common/Nation';
 
 const Container = styled.div`
   width: 100%;
@@ -14,7 +14,7 @@ const Container = styled.div`
 
   background: ${COLORS.white};
 
-  padding: 21px 24px;
+  padding: 21px 22px;
 `;
 
 const Header = styled.div`
@@ -56,30 +56,37 @@ const Tags = styled.div`
 `;
 
 interface MentorListCardProps {
-  name: string;
-  nation: NationName;
-  img: string | undefined;
-  month: number;
-  tags: string[];
+  nickname: string;
+  mentorNation: any;
+  profileImageUrl: string;
+  monthPeriod: number;
+  keywordList: string[];
   onClick: () => void;
 }
 
-const MentorListCard = ({ name, nation, month, tags, img, onClick }: MentorListCardProps) => {
+const MentorListCard = ({
+  nickname,
+  mentorNation,
+  monthPeriod,
+  keywordList,
+  profileImageUrl,
+  onClick,
+}: MentorListCardProps) => {
   return (
     <Container onClick={onClick}>
       <Header>
-        <ProfileImage size={50} img={img} />
+        <ProfileImage size={50} img={profileImageUrl} />
         <MentorInfo>
           <Title>
-            {name}
-            <Nation size={14} name={nation} />
+            {nickname}
+            <Nation size={14} name={mentorNation} />
           </Title>
-          <Description>{month} 워홀러</Description>
+          <Description>{monthPeriod}개월 워홀러</Description>
         </MentorInfo>
       </Header>
       <Tags>
-        {tags.map((tag: string) => (
-          <Tag text={tag} />
+        {keywordList?.map((keyword: string) => (
+          <Tag text={keyword} />
         ))}
       </Tags>
     </Container>

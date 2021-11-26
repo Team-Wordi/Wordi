@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react';
 import DropdownMenu from 'components/common/DropdownMenu';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import {
+  getMentorData,
   isKeywordFilterClicked,
   isMonthFilterClicked,
   isNationFilterClicked,
   mentorDataState,
   monthFilterState,
 } from 'atoms/atoms';
-import { tempMentorData } from 'constants/tempMentorData';
+import { matchExact } from 'utils/matchStringExact';
 
 const MonthFilter = () => {
+  const mentorData = useRecoilValue(getMentorData);
   const [selected, setSelected] = useRecoilState(monthFilterState);
   const [isClicked, setIsClicked] = useRecoilState(isMonthFilterClicked);
   const [filteredMentorData, setFilteredMentorData] = useRecoilState(mentorDataState);
@@ -26,11 +28,12 @@ const MonthFilter = () => {
   const handleMonthFilter = () => {
     /* 중복되는 코드입니다. 하나의 함수로 묶는 리팩토링이 필요합니다. */
     const otherFilterClicked = nationFilterClicked || keywordFilterClicked;
-    const checkMultiFilter = otherFilterClicked ? filteredMentorData : tempMentorData;
+    const checkMultiFilter = otherFilterClicked ? filteredMentorData : mentorData;
 
     const matchValues = checkMultiFilter.filter((item: any) => {
-      if (selected === '기간') return [...tempMentorData];
-      return item.month.includes(selected);
+      if (selected === '기간') return mentorData;
+      const month = item.monthPeriod + '개월';
+      return matchExact(selected, month);
     });
     setFilteredMentorData(matchValues);
   };

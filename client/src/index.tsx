@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import GlobalStyles from 'styles/GlobalStyles';
@@ -11,11 +11,13 @@ import ScrollToTop from 'components/common/ScrollToTop';
 ReactDOM.render(
   <React.StrictMode>
     <RecoilRoot>
-      <GlobalStyles />
-      <BrowserRouter>
-        <ScrollToTop />
-        <App />
-      </BrowserRouter>
+      <Suspense fallback={<div>Loading...</div>}>
+        <GlobalStyles />
+        <BrowserRouter>
+          <ScrollToTop />
+          <App />
+        </BrowserRouter>
+      </Suspense>
     </RecoilRoot>
   </React.StrictMode>,
   document.getElementById('root'),

@@ -4,7 +4,7 @@ import { COLORS } from 'styles/Theme';
 import Flag from './Flag';
 import FlatDotIcon from 'components/icon/FlatDotIcon';
 import { useHistory } from 'react-router';
-import { ROUTES } from 'utils/routes';
+import { ROUTES } from 'constants/routes';
 import { nations } from 'constants/dummy';
 import { NationName } from 'components/common/Nation';
 import { useRecoilState } from 'recoil';
@@ -63,7 +63,7 @@ const Countries = () => {
   return (
     <CountryWrapper>
       {nations.map((nation: any) => (
-        <Flag name={nation.name} onClick={() => goMentorListPage(nation.name)} />
+        <Flag key={nation.name} name={nation.name} onClick={() => goMentorListPage(nation.name)} />
       ))}
 
       <ViewAll>

@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react';
 import DropdownMenu from 'components/common/DropdownMenu';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import {
+  getMentorData,
   isKeywordFilterClicked,
   isMonthFilterClicked,
   isNationFilterClicked,
   keywordFilterState,
   mentorDataState,
 } from 'atoms/atoms';
-import { tempMentorData } from 'constants/tempMentorData';
 
 const KeywordFilter = () => {
+  const mentorData = useRecoilValue(getMentorData);
   const [selected, setSelected] = useRecoilState(keywordFilterState);
   const [isClicked, setIsClicked] = useRecoilState(isKeywordFilterClicked);
   const [filteredMentorData, setFilteredMentorData] = useRecoilState(mentorDataState);
@@ -26,11 +27,11 @@ const KeywordFilter = () => {
   const handleKeywordFilter = () => {
     /* 중복되는 코드입니다. 하나의 함수로 묶는 리팩토링이 필요합니다. */
     const otherFilterClicked = monthFilterClicked || nationFilterClicked;
-    const checkMultiFilter = otherFilterClicked ? filteredMentorData : tempMentorData;
+    const checkMultiFilter = otherFilterClicked ? filteredMentorData : mentorData;
 
     const matchValues = checkMultiFilter.filter((item: any) => {
-      if (selected === '키워드') return [...tempMentorData];
-      return item.tags.includes(selected);
+      if (selected === '키워드') return mentorData;
+      return item.keywordList.includes(selected);
     });
     setFilteredMentorData(matchValues);
   };

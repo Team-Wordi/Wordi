@@ -6,7 +6,7 @@ import Nation from 'components/common/Nation';
 import MarketIcon from 'components/icon/MarketIcon';
 import CancelIcon from 'components/icon/CancelIcon';
 import { useHistory } from 'react-router';
-import { ROUTES } from 'utils/routes';
+import { ROUTES } from 'constants/routes';
 
 const Container = styled.div`
   display: flex;

@@ -7,7 +7,7 @@ import MentorIcon from 'components/icon/MentorIcon';
 import OrderIcon from 'components/icon/OrderIcon';
 import MyIcon from 'components/icon/MyIcon';
 import { Link, useHistory } from 'react-router-dom';
-import { ROUTES } from 'utils/routes';
+import { ROUTES } from 'constants/routes';
 
 const Container = styled.div`
   position: sticky;

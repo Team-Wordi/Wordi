@@ -1,5 +1,6 @@
-import { atom } from 'recoil';
-import { tempMentorData } from 'constants/tempMentorData';
+import axios from 'axios';
+import { showMentorListAPI } from 'constants/api';
+import { atom, selector } from 'recoil';
 
 export const monthFilterState = atom<string>({
   key: 'monthFilterState',
@@ -33,5 +34,13 @@ export const isNationFilterClicked = atom<boolean>({
 
 export const mentorDataState = atom<any>({
   key: 'mentorDataState',
-  default: tempMentorData,
+  default: [],
+});
+
+export const getMentorData = selector<any>({
+  key: 'getMentorData',
+  get: async () => {
+    const response = await axios.get(showMentorListAPI);
+    return response.data;
+  },
 });
