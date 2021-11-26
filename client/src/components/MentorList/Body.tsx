@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
 import MentorListCard from 'components/MentorList/MentorListCard';
@@ -6,7 +6,7 @@ import MonthFilter from './MonthFilter';
 import KeywordFilter from './KeywordFilter';
 import NationFilter from './NationFilter';
 import RefreshIcon from 'components/icon/RefreshIcon';
-import { useRecoilState, useResetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil';
 import {
   keywordFilterState,
   monthFilterState,
@@ -15,9 +15,9 @@ import {
   isKeywordFilterClicked,
   isNationFilterClicked,
   mentorDataState,
+  getMentorData,
 } from 'atoms/atoms';
-import { tempMentorData } from 'constants/tempMentorData';
-import { ROUTES } from 'utils/routes';
+import { ROUTES } from 'constants/routes';
 import { useHistory } from 'react-router';
 
 const Container = styled.div`
@@ -57,8 +57,8 @@ const CardWrapper = styled.div`
 
 const Body = () => {
   const history = useHistory();
-
-  const [mentorData, setMentorData] = useRecoilState(mentorDataState);
+  const mentorData = useRecoilValue(getMentorData);
+  const [filteredMentorData, setFilteredMentorData] = useRecoilState(mentorDataState);
   const resetMonth = useResetRecoilState(monthFilterState);
   const resetMonthFilterClicked = useResetRecoilState(isMonthFilterClicked);
   const resetKeyword = useResetRecoilState(keywordFilterState);
@@ -76,8 +76,12 @@ const Body = () => {
     resetNation();
     resetNationFilterClicked();
 
-    setMentorData(tempMentorData);
+    setFilteredMentorData(mentorData);
   };
+
+  useEffect(() => {
+    setFilteredMentorData(mentorData);
+  }, []);
 
   const goMentorProfilePage = (nation: string, name: string) => {
     history.push(`${ROUTES.MENTOR}${nation}/${name}`);
@@ -92,14 +96,14 @@ const Body = () => {
         <RefreshIcon size={24} color={COLORS.black} onClick={refreshAllSelected} />
       </DropdownMenuWrapper>
       <CardWrapper>
-        {mentorData.map((mentor: any) => (
+        {filteredMentorData.map((mentor: any) => (
           <MentorListCard
-            key={mentor.name}
-            img={mentor.img}
-            name={mentor.name}
-            nation={mentor.nation}
-            month={mentor.month}
-            tags={mentor.tags}
+            key={mentor.id}
+            profileImageUrl={mentor.profileImageUrl}
+            nickname={mentor.nickname}
+            mentorNation={mentor.mentorNation}
+            monthPeriod={mentor.monthPeriod}
+            keywordList={mentor.keywordList}
             onClick={() => goMentorProfilePage(mentor.nation, mentor.name)}
           />
         ))}

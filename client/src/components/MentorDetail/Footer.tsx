@@ -4,7 +4,7 @@ import { COLORS } from 'styles/Theme';
 import Button from 'components/common/Button';
 import PaymentButton from './PaymentButton';
 import { useHistory } from 'react-router';
-import { ROUTES } from 'utils/routes';
+import { ROUTES } from 'constants/routes';
 
 const Container = styled.div`
   padding: 0 16px;

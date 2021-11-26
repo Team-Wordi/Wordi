@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router';
-import { ROUTES } from 'utils/routes';
+import { ROUTES } from 'constants/routes';
 import MainPage from 'pages/MainPage';
 import MentorDetailPage from 'pages/MentorDetailPage';
 import MentorListPage from 'pages/MentorListPage';
