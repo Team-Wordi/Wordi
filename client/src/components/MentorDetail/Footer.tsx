@@ -33,11 +33,11 @@ const Footer = () => {
     <Container>
       <PaymentButton />
       <TextWrapper>
-        <Text>월요일: 9:00 AM ~ 12:00 AM / 15:20 PM ~ 18:40 PM</Text>
+        <Text>월요일: 9:00 AM ~ 12:00 AM</Text>
         <Text>화요일: 9:00 AM ~ 12:00 PM</Text>
         <Text>수요일: 9:00 AM ~ 23:00 PM</Text>
         <Text>목요일: 9:00 AM ~ 12:00 PM</Text>
-        <Text>금요일: 9:00 AM ~ 12:00 PM / 15:20 PM ~ 18:40 PM</Text>
+        <Text>금요일: 9:00 AM ~ 12:00 PM</Text>
         <Text>토요일: 13:00 AM ~ 15:00 PM</Text>
         <Text>일요일: 13:00 AM ~ 15:00 PM</Text>
       </TextWrapper>

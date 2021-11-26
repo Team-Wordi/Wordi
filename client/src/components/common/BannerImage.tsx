@@ -11,10 +11,11 @@ interface BannerImageProps {
   img: string;
   width: number;
   height: number;
+  onClick?: () => void;
 }
 
-const BannerImage = ({ img, width, height }: BannerImageProps) => {
-  return <Img src={img} alt={img} width={width} height={height} />;
+const BannerImage = ({ img, width, height, onClick }: BannerImageProps) => {
+  return <Img src={img} alt={img} width={width} height={height} onClick={onClick} />;
 };
 
 export default BannerImage;

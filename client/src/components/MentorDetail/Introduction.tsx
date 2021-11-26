@@ -5,6 +5,8 @@ import SmileIcon from 'components/icon/SmileIcon';
 import banner1 from 'assets/img/banner/column_banner_1.png';
 import banner2 from 'assets/img/banner/column_banner_2.png';
 import BannerImage from 'components/common/BannerImage';
+import { useHistory } from 'react-router';
+import { ROUTES } from 'constants/routes';
 
 const Container = styled.div`
   padding: 0 16px;
@@ -56,6 +58,12 @@ const CardContainer = styled.div`
 `;
 
 const Introduction = () => {
+  const history = useHistory();
+
+  const goMentorColumnPage = () => {
+    history.push(`${ROUTES.MENTOR_COLUMN}`);
+  };
+
   return (
     <>
       <Container>
@@ -72,8 +80,8 @@ const Introduction = () => {
       </Description>
 
       <CardContainer>
-        <BannerImage img={banner1} width={184} height={112} />
-        <BannerImage img={banner2} width={184} height={112} />
+        <BannerImage img={banner1} width={184} height={112} onClick={goMentorColumnPage} />
+        <BannerImage img={banner2} width={184} height={112} onClick={goMentorColumnPage} />
       </CardContainer>
     </>
   );
