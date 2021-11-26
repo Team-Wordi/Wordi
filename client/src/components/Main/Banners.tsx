@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import banner1 from 'assets/img/banner/column_banner_1.png';
-import banner2 from 'assets/img/banner/column_banner_3.jpg';
+import banner2 from 'assets/img/banner/column_banner_3.png';
 import BannerImage from 'components/common/BannerImage';
 
 const Container = styled.div`

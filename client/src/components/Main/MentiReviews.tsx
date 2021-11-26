@@ -38,7 +38,7 @@ const MentiReviews = () => {
   return (
     <>
       <Wrapper>
-        <Title text="리얼 멘토링 후기" icon={<MessageIcon size={18} color={COLORS.primary} />} />
+        <Title text="실시간 멘토링 후기" icon={<MessageIcon size={18} color={COLORS.primary} />} />
       </Wrapper>
       <Container>
         {reviews.map((data: any) => (

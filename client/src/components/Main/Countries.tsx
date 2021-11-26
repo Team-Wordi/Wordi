@@ -14,6 +14,7 @@ import {
   mentorDataState,
   nationFilterState,
 } from 'atoms/atoms';
+import { rem } from 'utils/remConverter';
 
 const CountryWrapper = styled.div`
   display: grid;
@@ -21,7 +22,7 @@ const CountryWrapper = styled.div`
   align-items: center;
   grid-gap: 15px 33px;
 
-  padding: 0px 34px;
+  padding: 0 ${rem(16)};
   margin-top: 28px;
   margin-bottom: 28px;
 `;
