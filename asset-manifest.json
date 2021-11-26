@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/Wordi/static/js/main.f182f454.chunk.js",
-    "main.js.map": "/Wordi/static/js/main.f182f454.chunk.js.map",
+    "main.js": "/Wordi/static/js/main.b4dbb301.chunk.js",
+    "main.js.map": "/Wordi/static/js/main.b4dbb301.chunk.js.map",
     "runtime-main.js": "/Wordi/static/js/runtime-main.06f7f184.js",
     "runtime-main.js.map": "/Wordi/static/js/runtime-main.06f7f184.js.map",
     "static/css/2.f43417c7.chunk.css": "/Wordi/static/css/2.f43417c7.chunk.css",
@@ -17,7 +17,6 @@
     "static/media/beach.27d921ff.png": "/Wordi/static/media/beach.27d921ff.png",
     "static/media/cancel.aa6c01d8.svg": "/Wordi/static/media/cancel.aa6c01d8.svg",
     "static/media/check.28692d10.svg": "/Wordi/static/media/check.28692d10.svg",
-    "static/media/column_banner_3.ec790d37.jpg": "/Wordi/static/media/column_banner_3.ec790d37.jpg",
     "static/media/dot.6ae51db3.svg": "/Wordi/static/media/dot.6ae51db3.svg",
     "static/media/down.7dab6382.svg": "/Wordi/static/media/down.7dab6382.svg",
     "static/media/flat_dot.36caa489.svg": "/Wordi/static/media/flat_dot.36caa489.svg",
@@ -49,6 +48,6 @@
     "static/js/runtime-main.06f7f184.js",
     "static/css/2.f43417c7.chunk.css",
     "static/js/2.84fe0023.chunk.js",
-    "static/js/main.f182f454.chunk.js"
+    "static/js/main.b4dbb301.chunk.js"
   ]
 }
