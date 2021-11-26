@@ -45,7 +45,7 @@ const ScheduleApplication = () => {
         <TextBox text="2순위 일정" color={COLORS.gray_04} />
         <Button
           size={75}
-          text={toggle2 ? `11/20(수) 20:00pm` : `희망 일정선택`}
+          text={toggle2 ? `11/20(목) 21:00pm` : `희망 일정선택`}
           fill={toggle2 ? COLORS.primary : COLORS.white}
           border={COLORS.primary}
           textColor={toggle2 ? COLORS.white : COLORS.primary}
