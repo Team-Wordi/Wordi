@@ -43,7 +43,7 @@ const KeywordFilter = () => {
   return (
     <DropdownMenu
       width={94}
-      options={['집구하기', '룸메찾기', '서류준비', '취업비자']}
+      options={['집구하기', '룸메찾기', '서류준비', '취업비자', '문화찾기', '어학', '아르바이트']}
       selected={selected}
       isClicked={isClicked}
       handleSelect={handleSelect}

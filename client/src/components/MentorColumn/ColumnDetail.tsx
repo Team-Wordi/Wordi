@@ -2,6 +2,7 @@ import React from 'react';
 import Tag from 'components/common/Tag';
 import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
+import DotIcon from 'components/icon/DotIcon';
 
 const Container = styled.div``;
 
@@ -21,9 +22,15 @@ const Text = styled.div`
   }
 `;
 
+const Footer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+`;
+
 const TagWrapper = styled.div`
   display: flex;
-  margin-bottom: 20px;
 
   & > div {
     margin-right: 5px;
@@ -61,12 +68,15 @@ const ColumnDetail = () => {
           (웃음)
         </p>
       </Text>
-      <TagWrapper>
-        <Tag text="영국" borderColor={COLORS.gray_01} />
-        <Tag text="두려움" borderColor={COLORS.gray_01} />
-        <Tag text="위디도움" borderColor={COLORS.gray_01} />
-        <Tag text="자신감" borderColor={COLORS.gray_01} />
-      </TagWrapper>
+      <Footer>
+        <TagWrapper>
+          <Tag text="영국" borderColor={COLORS.gray_01} />
+          <Tag text="두려움" borderColor={COLORS.gray_01} />
+          <Tag text="위디도움" borderColor={COLORS.gray_01} />
+          <Tag text="자신감" borderColor={COLORS.gray_01} />
+        </TagWrapper>
+        <DotIcon size={14} color={COLORS.gray_02} />
+      </Footer>
     </Container>
   );
 };

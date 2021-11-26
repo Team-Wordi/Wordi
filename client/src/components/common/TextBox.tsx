@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
 
 const Container = styled.div<TextBoxProps>`
+  font-family: 'Pretendard';
   font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : 500)};
   font-size: 14px;
   color: ${({ color }) => (color ? color : COLORS.black)};

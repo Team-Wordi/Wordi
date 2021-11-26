@@ -12,7 +12,7 @@ const Container = styled.div`
   padding: 32px 13px;
   border: none;
   border-radius: 10px;
-  background: ${COLORS.gray_01};
+  background: ${COLORS.gray_06};
   color: ${COLORS.gray_04};
 `;
 
@@ -40,7 +40,10 @@ const Footer = styled.div`
 
 const Reviewer = styled.div``;
 
-const Date = styled.div``;
+const Date = styled.div`
+  font-weight: 400;
+  color: ${COLORS.gray_04};
+`;
 
 interface ReviewCardProps {
   review?: string | null;

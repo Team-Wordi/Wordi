@@ -29,6 +29,8 @@ const Notification = styled.ul`
   list-style: none;
 
   & > li {
+    display: flex;
+    align-items: center;
     margin-bottom: 10px;
     line-height: 17px;
   }
@@ -39,6 +41,10 @@ const Notification = styled.ul`
 
   & > li:last-child {
     margin-bottom: 36px;
+  }
+
+  & > li > div:first-child {
+    margin-right: 10px;
   }
 `;
 
@@ -52,36 +58,40 @@ const Bottom = () => {
         <TextBox text="워디멘토에게 하고 싶은 말을 자유롭게 써 주세요!" color={COLORS.gray_04} />
       </TitleWrapper>
       <TextArea
-        placeholder="집구할 때 어떤 사이트나 서류가 필요한지 궁금합니다!"
+        placeholder="집 구할 때 어떤 사이트나 서류가 필요한지 궁금합니다!"
         height={138}
         onChange={handleChange}
       />
       <Notification>
         <li>
+          <TextBox text="•" color={COLORS.gray_04} fontWeight={400}></TextBox>
           <TextBox
-            text="• 워디멘토가 일정을 승인하면, 멘토링이 확정됩니다."
+            text="워디멘토가 일정을 승인하면, 멘토링이 확정됩니다."
             color={COLORS.gray_04}
             fontWeight={400}
           />
         </li>
         <li>
+          <TextBox text="•" color={COLORS.gray_04} fontWeight={400}></TextBox>
           <TextBox
-            text="• 워디링이 확정되면, 예약확정 알림과 유의사항이 문자로
+            text="워디링이 확정되면, 예약확정 알림과 유의사항이 문자로
       발송됩니다."
             color={COLORS.gray_04}
             fontWeight={400}
           />
         </li>
         <li>
+          <TextBox text="•" color={COLORS.gray_04} fontWeight={400}></TextBox>
           <TextBox
-            text="• 확정된 멘토링 시작 20분 전, 채팅 링크가 전달됩니다."
+            text="확정된 멘토링 시작 20분 전, 채팅 링크가 전달됩니다."
             color={COLORS.gray_04}
             fontWeight={400}
           />
         </li>
         <li>
+          <TextBox text="•" color={COLORS.gray_04} fontWeight={400}></TextBox>
           <TextBox
-            text="• 확정된 멘토링 시간에 맞춰 채팅방에 입장해 주세요!"
+            text="확정된 멘토링 시간에 맞춰 채팅방에 입장해 주세요!"
             color={COLORS.gray_04}
             fontWeight={400}
           />

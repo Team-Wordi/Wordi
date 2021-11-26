@@ -30,6 +30,11 @@ const RightBox = styled.div`
 const LogoBox = styled.div`
   display: flex;
   align-items: center;
+  font-family: 'Jua';
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 1px;
+  line-height: 18px;
 
   & > svg {
     margin-right: 9px;

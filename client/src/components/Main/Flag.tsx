@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Nation from 'components/common/Nation';
 import { NationName } from 'components/common/Nation';
+import { COLORS } from 'styles/Theme';
 
 const Container = styled.div<{ size: number | undefined }>`
   display: flex;
@@ -9,6 +10,7 @@ const Container = styled.div<{ size: number | undefined }>`
   justify-content: center;
   align-items: center;
   font-family: 'Pretendard';
+  color: ${COLORS.gray_04};
   width: 54px;
   height: 74px;
 

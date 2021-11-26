@@ -35,6 +35,8 @@ const Options = styled.div<{ isActive: boolean; width: number }>`
   background: ${COLORS.white};
   width: ${({ width }) => width}px;
   max-width: 111px;
+  height: 147px;
+  overflow: scroll;
 `;
 
 const Option = styled.div`

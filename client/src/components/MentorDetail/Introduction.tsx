@@ -61,7 +61,7 @@ const Introduction = () => {
       <Container>
         <TitleWrapper>
           <SmileIcon size={18} />
-          <Title>워디 멘토를 소개해요!</Title>
+          <Title>워디멘토를 소개해요!</Title>
         </TitleWrapper>
       </Container>
       <Description>

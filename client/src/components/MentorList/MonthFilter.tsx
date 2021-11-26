@@ -10,6 +10,7 @@ import {
   monthFilterState,
 } from 'atoms/atoms';
 import { matchExact } from 'utils/matchStringExact';
+import { months } from 'constants/months';
 
 const MonthFilter = () => {
   const mentorData = useRecoilValue(getMentorData);
@@ -45,7 +46,7 @@ const MonthFilter = () => {
   return (
     <DropdownMenu
       width={84}
-      options={['3개월', '6개월', '12개월']}
+      options={months}
       selected={selected}
       isClicked={isClicked}
       handleSelect={handleSelect}

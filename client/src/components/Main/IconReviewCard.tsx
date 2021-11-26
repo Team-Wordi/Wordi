@@ -13,7 +13,7 @@ const Container = styled.div`
   padding: 19px 13px 14px 13px;
   border: none;
   border-radius: 10px;
-  background: ${COLORS.gray_01};
+  background: ${COLORS.gray_06};
   color: ${COLORS.gray_04};
 `;
 
@@ -41,7 +41,10 @@ const Footer = styled.div`
 
 const Reviewer = styled.div``;
 
-const Date = styled.div``;
+const Date = styled.div`
+  font-weight: 400;
+  color: ${COLORS.gray_04};
+`;
 
 const Header = styled.div`
   display: flex;
@@ -86,7 +89,7 @@ const IconReviewCard = ({
   mentorMonth,
 }: IconReviewCardProps) => {
   const hiddenName = reviewer?.slice(0, 1) + '*** ';
-  const newDate = dateConverter(date);
+  const convertedDate = dateConverter(date);
 
   return (
     <Container>
@@ -100,7 +103,7 @@ const IconReviewCard = ({
       <Text>{review}</Text>
       <Footer>
         <Reviewer>{hiddenName}님</Reviewer>
-        <Date>{newDate}</Date>
+        <Date>{convertedDate}</Date>
       </Footer>
     </Container>
   );

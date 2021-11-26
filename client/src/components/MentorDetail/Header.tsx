@@ -74,7 +74,7 @@ const Header = ({ mentorDetail }: any) => {
 
   return (
     <Container>
-      <LeftIcon size={24} color={COLORS.gray_03} onClick={goBack} />
+      <LeftIcon size={24} color={COLORS.gray_02} onClick={goBack} />
       <ProfileContainer>
         <ProfileImage size={50} img={spreadArms} />
         <MentorName>

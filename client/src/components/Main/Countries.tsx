@@ -5,10 +5,15 @@ import Flag from './Flag';
 import FlatDotIcon from 'components/icon/FlatDotIcon';
 import { useHistory } from 'react-router';
 import { ROUTES } from 'constants/routes';
-import { nations } from 'constants/dummy';
+import { nations } from 'constants/nations';
 import { NationName } from 'components/common/Nation';
-import { useRecoilState } from 'recoil';
-import { isNationFilterClicked, nationFilterState } from 'atoms/atoms';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import {
+  getMentorData,
+  isNationFilterClicked,
+  mentorDataState,
+  nationFilterState,
+} from 'atoms/atoms';
 
 const CountryWrapper = styled.div`
   display: grid;
@@ -50,10 +55,17 @@ const Icon = styled.div`
 
 const Countries = () => {
   const history = useHistory();
+  const mentorData = useRecoilValue(getMentorData);
+  const [, setFilteredMentorData] = useRecoilState(mentorDataState);
   const [, setSelected] = useRecoilState(nationFilterState);
   const [, setIsClicked] = useRecoilState(isNationFilterClicked);
 
   const goMentorListPage = (nation: NationName) => {
+    const matchValues = mentorData.filter((item: any) => {
+      return item.mentorNation.includes(nation);
+    });
+    setFilteredMentorData(matchValues);
+
     setSelected(nation);
     setIsClicked(true);
 
@@ -63,7 +75,7 @@ const Countries = () => {
   return (
     <CountryWrapper>
       {nations.map((nation: any) => (
-        <Flag key={nation.name} name={nation.name} onClick={() => goMentorListPage(nation.name)} />
+        <Flag key={nation} name={nation} onClick={() => goMentorListPage(nation)} />
       ))}
 
       <ViewAll>

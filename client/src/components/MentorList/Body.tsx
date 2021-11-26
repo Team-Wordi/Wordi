@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { COLORS } from 'styles/Theme';
 import MentorListCard from 'components/MentorList/MentorListCard';
@@ -33,21 +33,10 @@ const Container = styled.div`
 
 const DropdownMenuWrapper = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 0 16px;
   margin-bottom: 24px;
-
-  & > div {
-    margin-right: 8px;
-  }
-
-  :nth-child(3) {
-    margin-right: 2px;
-  }
-
-  :last-child() {
-    margin-right: 0;
-  }
 `;
 
 const CardWrapper = styled.div`
@@ -79,10 +68,6 @@ const Body = () => {
     setFilteredMentorData(mentorData);
   };
 
-  useEffect(() => {
-    setFilteredMentorData(mentorData);
-  }, []);
-
   const goMentorProfilePage = (nation: string, name: string) => {
     history.push(`${ROUTES.MENTOR}${nation}/${name}`);
   };
@@ -90,9 +75,9 @@ const Body = () => {
   return (
     <Container>
       <DropdownMenuWrapper>
+        <NationFilter />
         <MonthFilter />
         <KeywordFilter />
-        <NationFilter />
         <RefreshIcon size={24} color={COLORS.black} onClick={refreshAllSelected} />
       </DropdownMenuWrapper>
       <CardWrapper>
@@ -104,7 +89,7 @@ const Body = () => {
             mentorNation={mentor.mentorNation}
             monthPeriod={mentor.monthPeriod}
             keywordList={mentor.keywordList}
-            onClick={() => goMentorProfilePage(mentor.nation, mentor.name)}
+            onClick={() => goMentorProfilePage(mentor.mentorNation, mentor.nickname)}
           />
         ))}
       </CardWrapper>

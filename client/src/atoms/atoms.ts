@@ -32,15 +32,15 @@ export const isNationFilterClicked = atom<boolean>({
   default: false,
 });
 
-export const mentorDataState = atom<any>({
-  key: 'mentorDataState',
-  default: [],
-});
-
 export const getMentorData = selector<any>({
   key: 'getMentorData',
   get: async () => {
     const response = await axios.get(showMentorListAPI);
     return response.data;
   },
+});
+
+export const mentorDataState = atom<any>({
+  key: 'mentorDataState',
+  default: [],
 });

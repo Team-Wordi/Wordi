@@ -9,6 +9,7 @@ import {
   mentorDataState,
   nationFilterState,
 } from 'atoms/atoms';
+import { nations } from 'constants/nations';
 
 const NationFilter = () => {
   const mentorData = useRecoilValue(getMentorData);
@@ -24,7 +25,7 @@ const NationFilter = () => {
     handleClose();
   };
 
-  const handleKeywordFilter = () => {
+  const handleNationFilter = () => {
     /* 중복되는 코드입니다. 하나의 함수로 묶는 리팩토링이 필요합니다. */
     const otherFilterClicked = monthFilterClicked || keywordFilterClicked;
     const checkMultiFilter = otherFilterClicked ? filteredMentorData : mentorData;
@@ -38,13 +39,13 @@ const NationFilter = () => {
   };
 
   useEffect(() => {
-    handleKeywordFilter();
+    handleNationFilter();
   }, [selected]);
 
   return (
     <DropdownMenu
       width={111}
-      options={['독일', '프랑스', '영국', '이탈리아', '아르헨티나']}
+      options={nations}
       selected={selected}
       isClicked={isClicked}
       handleSelect={handleSelect}

@@ -79,7 +79,7 @@ const Header = () => {
         </FlagBox>
       </HeaderInfo>
       <HeaderInfo>
-        <TextBox text="신청 가격" color={COLORS.gray_04} />
+        <TextBox text="신청가격" color={COLORS.gray_04} />
         <TextBox text="4,000원" fontWeight={700} />
       </HeaderInfo>
     </Container>

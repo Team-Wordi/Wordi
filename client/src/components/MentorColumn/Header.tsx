@@ -40,7 +40,7 @@ const Description = styled.div`
   line-height: 23px;
   color: ${COLORS.gray_04};
 
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 `;
 
 const Header = () => {
@@ -53,7 +53,7 @@ const Header = () => {
   return (
     <Container>
       <Icons>
-        <LeftIcon size={24} color={COLORS.gray_03} onClick={goBack} />
+        <LeftIcon size={24} color={COLORS.gray_02} onClick={goBack} />
         <RightAlignIcons />
       </Icons>
       <Title>"워홀, 걱정하지 마세요!"</Title>
