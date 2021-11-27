@@ -3,6 +3,7 @@
 서비스명은 **워디**(완벽한 워킹홀리데이 디자인)입니다.
 
 <br>
+<img src="https://user-images.githubusercontent.com/66458836/143670605-1c9b4837-3ffa-4443-876a-5ca814f192da.png" width="20%" height="20%" />
 
 ### 💁‍♂️ Wiki 
 - 🗓 [Team Develop Schedule](https://docs.google.com/spreadsheets/d/1PvN-VDS-5juqqID9342OCRrCo8649ipR/edit#gid=804223889)
