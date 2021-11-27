@@ -188,6 +188,7 @@ public class MentorDto {
             this.keywordList = mentor.getMentorKeywordList().stream()
                     .map(k -> k.getKeyword())
                     .collect(Collectors.toList());
+
         }
     }
 

@@ -9,6 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.websocket.server.PathParam;
 
 import java.util.List;
 
@@ -65,8 +66,10 @@ public class MentorApiController {
      * @return BaseResponse<List<ProfileListRes>>
      */
     @GetMapping("")
-    public ResponseEntity<List<ProfileListRes>> searchProfileList() {
-        return ResponseEntity.ok(mentorService.searchProfileList());
+    public ResponseEntity<List<ProfileListRes>> searchProfileList(@RequestParam(required = false) String nation,
+                                                                  @RequestParam(required = false) String keyword,
+                                                                  @RequestParam(required = false) Long months) {
+        return ResponseEntity.ok(mentorService.searchProfileList(nation, keyword, months));
     }
 
 

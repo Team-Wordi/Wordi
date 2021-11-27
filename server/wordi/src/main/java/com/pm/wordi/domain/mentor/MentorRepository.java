@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 import java.util.Optional;
 
-public interface MentorRepository extends JpaRepository<Mentor, Long> {
+public interface MentorRepository extends JpaRepository<Mentor, Long>, MentorRepositoryCustom {
 
     Long countByUser(User user);
 

@@ -78,10 +78,20 @@ public class MentorService {
     }
 
     @Transactional(readOnly = true)
-    public List<ProfileListRes> searchProfileList() {
-        return mentorRepository.searchProfileList().stream()
+    public List<ProfileListRes> searchProfileList(String nationCond, String keywordCond, Long monthCond) {
+
+        //TODO. 날짜도 QueryDsl 안에서 처리하기(startDate, endDate 차이를 QueryDsl 로직 안에서 구해야하는 과제)
+        if(monthCond!=null) {
+            return mentorRepository.searchProfileList(nationCond, keywordCond).stream()
+                    .map(ProfileListRes::new)
+                    .filter(p->p.getMonthPeriod()>=monthCond)
+                    .collect(Collectors.toList());
+        }
+
+        return mentorRepository.searchProfileList(nationCond, keywordCond).stream()
                 .map(ProfileListRes::new)
                 .collect(Collectors.toList());
+        
     }
 
     @Transactional(readOnly = true)
