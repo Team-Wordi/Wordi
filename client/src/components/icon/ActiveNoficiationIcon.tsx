@@ -13,7 +13,7 @@ function ActiveNotificationIcon({ size, color }: ActiveNotificationIconProps): J
       height={size}
       stroke={color}
       fill={color}
-      stroke-width="0.5"
+      strokeWidth="0.5"
     />
   );
 }

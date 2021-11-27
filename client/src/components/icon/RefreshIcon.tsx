@@ -14,7 +14,7 @@ function RefreshIcon({ size, color, onClick }: RefreshIconProps): JSX.Element {
       height={size}
       stroke={color}
       fill={color}
-      stroke-width="0.5"
+      strokeWidth="0.5"
       onClick={onClick}
     />
   );

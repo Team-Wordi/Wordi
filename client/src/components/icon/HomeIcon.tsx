@@ -14,7 +14,7 @@ function HomeIcon({ size, isActive }: HomeIconProps): JSX.Element {
       height={size}
       stroke={isActive ? COLORS.primary : COLORS.gray_03}
       fill={isActive ? COLORS.primary : COLORS.gray_03}
-      stroke-width="0.2"
+      strokeWidth="0.2"
     />
   );
 }

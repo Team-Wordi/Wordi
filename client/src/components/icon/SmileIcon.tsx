@@ -7,7 +7,7 @@ interface SmileIconProps {
 }
 
 function SmileIcon({ size, color }: SmileIconProps): JSX.Element {
-  return <SmileSvg width={size} height={size} stroke={color} stroke-width="0.5" />;
+  return <SmileSvg width={size} height={size} stroke={color} strokeWidth="0.5" />;
 }
 
 export default SmileIcon;

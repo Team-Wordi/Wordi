@@ -7,7 +7,7 @@ interface MessageIconProps {
 }
 
 function MessageIcon({ size, color }: MessageIconProps): JSX.Element {
-  return <MessageSVG width={size} height={size} stroke={color} fill={color} stroke-width="0.2" />;
+  return <MessageSVG width={size} height={size} stroke={color} fill={color} strokeWidth="0.2" />;
 }
 
 export default MessageIcon;

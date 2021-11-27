@@ -7,7 +7,7 @@ interface DownIconProps {
 }
 
 function DownIcon({ size, color }: DownIconProps): JSX.Element {
-  return <DownSvg width={size} height={size} stroke={color} fill={color} stroke-width="0.5" />;
+  return <DownSvg width={size} height={size} stroke={color} fill={color} strokeWidth="0.5" />;
 }
 
 export default DownIcon;
