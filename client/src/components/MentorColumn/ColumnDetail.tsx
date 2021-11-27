@@ -70,10 +70,10 @@ const ColumnDetail = () => {
       </Text>
       <Footer>
         <TagWrapper>
-          <Tag text="영국" borderColor={COLORS.gray_01} />
-          <Tag text="두려움" borderColor={COLORS.gray_01} />
-          <Tag text="위디도움" borderColor={COLORS.gray_01} />
-          <Tag text="자신감" borderColor={COLORS.gray_01} />
+          <Tag key="영국" text="영국" borderColor={COLORS.gray_01} />
+          <Tag key="두려움" text="두려움" borderColor={COLORS.gray_01} />
+          <Tag key="위디도움" text="위디도움" borderColor={COLORS.gray_01} />
+          <Tag key="자신감" text="자신감" borderColor={COLORS.gray_01} />
         </TagWrapper>
         <DotIcon size={14} color={COLORS.gray_02} />
       </Footer>

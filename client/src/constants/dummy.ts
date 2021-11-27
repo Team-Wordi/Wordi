@@ -8,6 +8,7 @@ export const mentorData = {
 
 export const reviewData = [
   {
+    id: Date.now() + Math.random(),
     reviewer: '마마무',
     mentorName: '워홀매니아',
     mentorNation: '영국',
@@ -17,6 +18,7 @@ export const reviewData = [
       '워디멘토님 완전 대박이예요! 저 진짜 감동받았습니다! 지식인이나 커뮤니티보다 훨씬 상세하게 알 수 있었습니다!',
   },
   {
+    id: Date.now() + Math.random(),
     reviewer: '재현이',
     mentorName: '고민말고Go',
     mentorNation: '아르헨티나',

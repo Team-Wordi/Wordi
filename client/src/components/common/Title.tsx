@@ -46,7 +46,7 @@ const Title = ({ text, icon }: TitleProps) => {
       </LeftContents>
       <ShowMore>
         더 보기
-        <RightIcon size={14} />
+        <RightIcon size={14} color={COLORS.gray_03} />
       </ShowMore>
     </TitleBox>
   );

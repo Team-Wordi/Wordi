@@ -18,12 +18,17 @@ const Container = styled.div<{ borderColor: string | undefined | null }>`
 `;
 
 interface TagProps {
+  key: string;
   text: string;
   borderColor?: string | undefined | null;
 }
 
-const Tag = ({ text, borderColor }: TagProps) => {
-  return <Container borderColor={borderColor}>#{text}</Container>;
+const Tag = ({ key, text, borderColor }: TagProps) => {
+  return (
+    <Container key={key} borderColor={borderColor}>
+      #{text}
+    </Container>
+  );
 };
 
 export default Tag;

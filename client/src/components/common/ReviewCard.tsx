@@ -46,17 +46,18 @@ const Date = styled.div`
 `;
 
 interface ReviewCardProps {
+  key?: string;
   review?: string | null;
   reviewer?: string | undefined;
   date?: string | undefined;
 }
 
-const ReviewCard = ({ review, reviewer, date }: ReviewCardProps) => {
+const ReviewCard = ({ key, review, reviewer, date }: ReviewCardProps) => {
   const hiddenName = reviewer?.slice(0, 1) + '*** ';
   const newDate = dateConverter(date);
 
   return (
-    <Container>
+    <Container key={key}>
       <Text>{review}</Text>
       <Footer>
         <Reviewer>{hiddenName}님</Reviewer>

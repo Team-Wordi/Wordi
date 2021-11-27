@@ -27,6 +27,7 @@ const MentiReviews = () => {
       <FlatList>
         {reviews.map((data: any) => (
           <IconReviewCard
+            key={data.review}
             review={data.review}
             reviewer={data.reviewer}
             date={data.date}
