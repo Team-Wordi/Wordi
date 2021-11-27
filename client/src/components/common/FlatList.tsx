@@ -13,10 +13,18 @@ const Container = styled.div`
 
   & > div {
     margin-right: 8px;
+
+    :last-child {
+      margin-right: 0;
+    }
   }
 
   & > img {
     margin-right: 8px;
+
+    :last-child {
+      margin-right: 0;
+    }
   }
 `;
 
