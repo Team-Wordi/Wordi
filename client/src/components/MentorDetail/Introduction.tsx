@@ -34,6 +34,8 @@ const Description = styled.p`
   line-height: 23px;
   padding-left: 18px;
   padding-right: 14px;
+
+  margin-bottom: 12px;
 `;
 
 const Introduction = () => {

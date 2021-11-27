@@ -8,7 +8,16 @@ interface RightIconProps {
 }
 
 function RightIcon({ size, color, onClick }: RightIconProps): JSX.Element {
-  return <RightSvg width={size} height={size} stroke={color} onClick={onClick} />;
+  return (
+    <RightSvg
+      width={size}
+      height={size}
+      stroke={color}
+      fill={color}
+      strokeWidth="0.2"
+      onClick={onClick}
+    />
+  );
 }
 
 export default RightIcon;
