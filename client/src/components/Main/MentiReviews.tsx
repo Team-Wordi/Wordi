@@ -5,27 +5,11 @@ import Title from 'components/common/Title';
 import MessageIcon from 'components/icon/MessageIcon';
 import IconReviewCard from './IconReviewCard';
 import { reviewData } from 'constants/dummy';
+import FlatList from 'components/common/FlatList';
 
 const Container = styled.div`
-  display: flex;
-  overflow: auto;
-  white-space: nowrap;
-
-  padding-left: 16px;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  & > div {
-    margin-right: 8px;
-  }
-
-  margin-top: 16px;
-`;
-
-const Wrapper = styled.div`
   padding: 0px 16px;
+  margin-top: 24px;
 `;
 
 const MentiReviews = () => {
@@ -37,10 +21,10 @@ const MentiReviews = () => {
 
   return (
     <>
-      <Wrapper>
-        <Title text="실시간 멘토링 후기" icon={<MessageIcon size={18} color={COLORS.primary} />} />
-      </Wrapper>
       <Container>
+        <Title text="실시간 멘토링 후기" icon={<MessageIcon size={18} color={COLORS.primary} />} />
+      </Container>
+      <FlatList>
         {reviews.map((data: any) => (
           <IconReviewCard
             review={data.review}
@@ -51,7 +35,7 @@ const MentiReviews = () => {
             mentorMonth={data.mentorMonth}
           />
         ))}
-      </Container>
+      </FlatList>
     </>
   );
 };

@@ -7,9 +7,12 @@ import banner1 from 'assets/img/banner/mentorList_banner_1.png';
 import banner2 from 'assets/img/banner/mentorList_banner_2.png';
 import TempNotificationIcon from 'components/icon/TempNotificationIcon';
 import TempHamburgerIcon from 'components/icon/TempHamburgerIcon';
+import FlatList from 'components/common/FlatList';
 
 const Container = styled.div`
   padding: 0 16px;
+  margin-bottom: 16px;
+
   & > p {
     color: ${COLORS.white};
   }
@@ -28,36 +31,18 @@ const TitleWrapper = styled.div`
   }
 `;
 
-const CardWrapper = styled.div`
-  display: flex;
-  overflow: auto;
-  white-space: nowrap;
-
-  padding-left: 16px;
-  margin-top: 16px;
-  margin-bottom: 24px;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  & > img {
-    margin-right: 8px;
-  }
-`;
-
 const NavbarWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
 
   background: transparent;
-  color: ${COLORS.primary};
 
+  color: ${COLORS.primary};
   font-weight: 700;
   font-size: 16px;
 
-  margin-bottom: 21px;
+  margin-bottom: 25px;
 `;
 
 const Icons = styled.div`
@@ -85,10 +70,10 @@ const Header = () => {
         </TitleWrapper>
         <p>워킹 홀리데이에 대한 다양한 정보를 확인해봐요.</p>
       </Container>
-      <CardWrapper>
+      <FlatList>
         <BannerImage img={banner1} width={184} height={112} />
         <BannerImage img={banner2} width={184} height={112} />
-      </CardWrapper>
+      </FlatList>
     </>
   );
 };

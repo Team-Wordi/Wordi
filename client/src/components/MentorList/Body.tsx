@@ -21,10 +21,11 @@ import { ROUTES } from 'constants/routes';
 import { useHistory } from 'react-router';
 
 const Container = styled.div`
-  padding: 31px 0;
+  border-radius: 30px 30px 0 0;
   background: ${COLORS.white};
   min-height: 100vh;
-  border-radius: 30px 30px 0 0;
+  padding: 31px 0;
+  margin-top: 21px;
 
   & > div {
     margin-bottom: 16px;

@@ -6,6 +6,7 @@ import ProfileCard from './ProfileCard';
 import spreadArms from 'assets/img/mentorImage/spread_arms.png';
 import marchingBand from 'assets/img/mentorImage/marching_band.png';
 import beach from 'assets/img/mentorImage/beach.png';
+import FlatList from 'components/common/FlatList';
 
 const Wrapper = styled.div`
   padding: 0px 16px;
@@ -24,25 +25,6 @@ const Heading = styled.div`
   }
 `;
 
-const CardWrapper = styled.div`
-  display: flex;
-  overflow: auto;
-  white-space: nowrap;
-
-  padding-left: 16px;
-  padding-bottom: 3px;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  & > div {
-    margin-right: 8px;
-  }
-
-  margin-bottom: 40px;
-`;
-
 const PopularMentors = () => {
   return (
     <>
@@ -52,11 +34,11 @@ const PopularMentors = () => {
           이번주 인기왕 워디멘토
         </Heading>
       </Wrapper>
-      <CardWrapper>
+      <FlatList>
         <ProfileCard nation="영국" name="워홀매니아" month="12개월" img={spreadArms} />
         <ProfileCard nation="이탈리아" name="Makeyourlife" month="9개월" img={marchingBand} />
         <ProfileCard nation="프랑스" name="마이크로맨" month="1개월" img={beach} />
-      </CardWrapper>
+      </FlatList>
     </>
   );
 };

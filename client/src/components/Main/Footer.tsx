@@ -5,8 +5,10 @@ import { COLORS } from 'styles/Theme';
 const Container = styled.div`
   width: 100%;
   height: 121px;
-  padding: 18px 16px 0px 16px;
   background: ${COLORS.gray_01};
+
+  padding: 18px 16px 0px 16px;
+  margin-top: 45px;
 `;
 
 const Text = styled.div`

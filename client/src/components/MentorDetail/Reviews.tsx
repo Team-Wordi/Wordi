@@ -4,6 +4,7 @@ import { COLORS } from 'styles/Theme';
 import ReviewIcon from 'components/icon/ReviewIcon';
 import { reviewData } from 'constants/dummy';
 import ReviewCard from 'components/common/ReviewCard';
+import FlatList from 'components/common/FlatList';
 
 const TitleWrapper = styled.div`
   display: flex;
@@ -23,22 +24,6 @@ const Title = styled.h2`
   line-height: 19px;
 `;
 
-const ReviewContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  overflow: auto;
-  white-space: nowrap;
-  padding-left: 16px;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  & > div {
-    margin-right: 8px;
-  }
-`;
-
 const Reviews = () => {
   const [reviews, setReviews] = useState<any>([]);
 
@@ -52,11 +37,11 @@ const Reviews = () => {
         <ReviewIcon size={18} color={COLORS.primary} />
         <Title>워디 후기</Title>
       </TitleWrapper>
-      <ReviewContainer>
+      <FlatList>
         {reviews.map((data: any) => (
           <ReviewCard review={data.review} reviewer={data.reviewer} date={data.date} />
         ))}
-      </ReviewContainer>
+      </FlatList>
     </>
   );
 };

@@ -7,6 +7,7 @@ import banner2 from 'assets/img/banner/column_banner_2.png';
 import BannerImage from 'components/common/BannerImage';
 import { useHistory } from 'react-router';
 import { ROUTES } from 'constants/routes';
+import FlatList from 'components/common/FlatList';
 
 const Container = styled.div`
   padding: 0 16px;
@@ -35,28 +36,6 @@ const Description = styled.p`
   padding-right: 14px;
 `;
 
-const CardContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  overflow: auto;
-  white-space: nowrap;
-  padding-left: 16px;
-  margin-top: 12px;
-  margin-bottom: 36px;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  & > img {
-    margin-right: 8px;
-
-    :last-child {
-      margin-right: 0;
-    }
-  }
-`;
-
 const Introduction = () => {
   const history = useHistory();
 
@@ -78,10 +57,10 @@ const Introduction = () => {
         제가 겪었던 경험을 공유하며 같은 어려움을 겪는 분들께 공감과 도움을 드리고 싶습니다.
       </Description>
 
-      <CardContainer>
+      <FlatList>
         <BannerImage img={banner1} width={184} height={112} onClick={goMentorColumnPage} />
         <BannerImage img={banner2} width={184} height={112} onClick={goMentorColumnPage} />
-      </CardContainer>
+      </FlatList>
     </>
   );
 };
