@@ -56,6 +56,7 @@ const Tags = styled.div`
 `;
 
 interface MentorListCardProps {
+  key: string;
   nickname: string;
   mentorNation: any;
   profileImageUrl: string;
@@ -65,6 +66,7 @@ interface MentorListCardProps {
 }
 
 const MentorListCard = ({
+  key,
   nickname,
   mentorNation,
   monthPeriod,
@@ -73,7 +75,7 @@ const MentorListCard = ({
   onClick,
 }: MentorListCardProps) => {
   return (
-    <Container onClick={onClick}>
+    <Container key={key} onClick={onClick}>
       <Header>
         <ProfileImage size={50} img={profileImageUrl} />
         <MentorInfo>
@@ -86,7 +88,7 @@ const MentorListCard = ({
       </Header>
       <Tags>
         {keywordList?.map((keyword: string) => (
-          <Tag text={keyword} />
+          <Tag key={keyword} text={keyword} />
         ))}
       </Tags>
     </Container>

@@ -71,6 +71,7 @@ const MentorInfo = styled.div`
 `;
 
 interface IconReviewCardProps {
+  key: string;
   review?: string | null;
   reviewer?: string | undefined;
   date?: string | undefined;
@@ -81,6 +82,7 @@ interface IconReviewCardProps {
 }
 
 const IconReviewCard = ({
+  key,
   review,
   reviewer,
   date,
@@ -92,7 +94,7 @@ const IconReviewCard = ({
   const convertedDate = dateConverter(date);
 
   return (
-    <Container>
+    <Container key={key}>
       <Header>
         <Nation name={mentorNation} size={30} />
         <MentorInfo>

@@ -91,7 +91,7 @@ const Header = ({ mentorDetail }: any) => {
       </Description>
       <TagsContainer>
         {tags?.map((tag: string) => (
-          <Tag text={tag} />
+          <Tag key={tag} text={tag} />
         ))}
       </TagsContainer>
     </Container>

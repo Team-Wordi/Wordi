@@ -68,7 +68,12 @@ const Reviews = () => {
       </TitleContainer>
       <FlatList>
         {reviews.map((data: any) => (
-          <ReviewCard review={data.review} reviewer={data.reviewer} date={data.date} />
+          <ReviewCard
+            key={data.review}
+            review={data.review}
+            reviewer={data.reviewer}
+            date={data.date}
+          />
         ))}
       </FlatList>
     </>
