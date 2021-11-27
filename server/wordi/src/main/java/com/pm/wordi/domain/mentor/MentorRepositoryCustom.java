@@ -1,5 +1,8 @@
 package com.pm.wordi.domain.mentor;
 
-public interface MentorRepositoryCustom {
+import java.util.List;
 
+
+public interface MentorRepositoryCustom {
+    List<Mentor> searchProfileList(String nation, String keyword);
 }
