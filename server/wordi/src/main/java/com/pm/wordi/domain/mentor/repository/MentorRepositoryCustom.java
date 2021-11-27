@@ -1,4 +1,6 @@
-package com.pm.wordi.domain.mentor;
+package com.pm.wordi.domain.mentor.repository;
+
+import com.pm.wordi.domain.mentor.entity.Mentor;
 
 import java.util.List;
 

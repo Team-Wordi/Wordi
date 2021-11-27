@@ -2,8 +2,10 @@ package com.pm.wordi.service;
 
 import com.pm.wordi.commons.utils.certification.AES128;
 import com.pm.wordi.commons.utils.certification.Secret;
-import com.pm.wordi.domain.BaseStatus;
-import com.pm.wordi.domain.user.*;
+import com.pm.wordi.domain.user.entity.User;
+import com.pm.wordi.domain.user.entity.UserKeyword;
+import com.pm.wordi.domain.user.repository.UserKeywordRepository;
+import com.pm.wordi.domain.user.repository.UserRepository;
 import com.pm.wordi.exception.user.NoExistEmailException;
 import com.pm.wordi.exception.user.NoExistUserException;
 import com.pm.wordi.exception.user.NotMatchPasswordException;

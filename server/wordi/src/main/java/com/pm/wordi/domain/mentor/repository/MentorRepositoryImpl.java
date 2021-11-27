@@ -1,15 +1,11 @@
-package com.pm.wordi.domain.mentor;
+package com.pm.wordi.domain.mentor.repository;
 
-import com.pm.wordi.controller.dto.MentorDto;
 import com.pm.wordi.domain.BaseStatus;
-import com.querydsl.core.types.ExpressionUtils;
+import com.pm.wordi.domain.mentor.entity.Mentor;
 import com.querydsl.core.types.Predicate;
-import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import java.util.List;

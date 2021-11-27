@@ -1,7 +1,7 @@
 package com.pm.wordi.commons.advice;
 
-import com.pm.wordi.exception.DecryptException;
-import com.pm.wordi.exception.EncryptException;
+import com.pm.wordi.exception.certification.DecryptException;
+import com.pm.wordi.exception.certification.EncryptException;
 import com.pm.wordi.exception.mentor.ExistMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentoringProfileException;

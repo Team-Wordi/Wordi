@@ -1,13 +1,13 @@
 package com.pm.wordi.service;
 
-import com.pm.wordi.domain.mentor.Mentor;
-import com.pm.wordi.domain.mentor.MentorRepository;
-import com.pm.wordi.domain.mentoring.Mentoring;
-import com.pm.wordi.domain.mentoring.MentoringRepository;
-import com.pm.wordi.domain.mentoring.Payment;
-import com.pm.wordi.domain.mentoring.PaymentRepository;
-import com.pm.wordi.domain.user.User;
-import com.pm.wordi.domain.user.UserRepository;
+import com.pm.wordi.domain.mentor.entity.Mentor;
+import com.pm.wordi.domain.mentor.repository.MentorRepository;
+import com.pm.wordi.domain.mentoring.entity.Mentoring;
+import com.pm.wordi.domain.mentoring.repository.MentoringRepository;
+import com.pm.wordi.domain.mentoring.entity.Payment;
+import com.pm.wordi.domain.mentoring.repository.PaymentRepository;
+import com.pm.wordi.domain.user.entity.User;
+import com.pm.wordi.domain.user.repository.UserRepository;
 import com.pm.wordi.exception.mentor.NoExistMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentoringProfileException;
 import com.pm.wordi.exception.mentoring.EqualUserMentorException;

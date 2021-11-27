@@ -1,11 +1,10 @@
 package com.pm.wordi.service;
 
-import com.pm.wordi.controller.dto.CommonDto;
 import com.pm.wordi.domain.BaseStatus;
-import com.pm.wordi.domain.mentor.MentorRepository;
-import com.pm.wordi.domain.mentoring.MentoringRepository;
-import com.pm.wordi.domain.review.ReviewRepository;
-import com.pm.wordi.domain.user.UserRepository;
+import com.pm.wordi.domain.mentor.repository.MentorRepository;
+import com.pm.wordi.domain.mentoring.repository.MentoringRepository;
+import com.pm.wordi.domain.review.repository.ReviewRepository;
+import com.pm.wordi.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

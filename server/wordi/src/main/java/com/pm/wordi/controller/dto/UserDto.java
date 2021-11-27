@@ -3,9 +3,8 @@ package com.pm.wordi.controller.dto;
 import com.pm.wordi.commons.utils.certification.AES128;
 import com.pm.wordi.commons.utils.certification.Secret;
 import com.pm.wordi.domain.BaseStatus;
-import com.pm.wordi.domain.user.User;
-import com.pm.wordi.domain.user.UserKeyword;
-import com.pm.wordi.domain.user.UserLevel;
+import com.pm.wordi.domain.user.entity.User;
+import com.pm.wordi.domain.user.entity.UserLevel;
 import lombok.*;
 
 import javax.validation.constraints.*;
