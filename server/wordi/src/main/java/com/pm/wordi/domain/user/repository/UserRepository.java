@@ -1,6 +1,7 @@
-package com.pm.wordi.domain.user;
+package com.pm.wordi.domain.user.repository;
 
 import com.pm.wordi.domain.BaseStatus;
+import com.pm.wordi.domain.user.entity.User;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 

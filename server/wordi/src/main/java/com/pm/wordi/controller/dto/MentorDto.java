@@ -1,22 +1,18 @@
 package com.pm.wordi.controller.dto;
 
 import com.pm.wordi.domain.BaseStatus;
-import com.pm.wordi.domain.mentor.Mentor;
-import com.pm.wordi.domain.mentor.MentorKeyword;
-import com.pm.wordi.domain.mentor.MentorLevel;
-import com.pm.wordi.domain.mentor.MentorSchedule;
-import com.pm.wordi.domain.mentoring.Mentoring;
-import com.pm.wordi.domain.review.Review;
-import com.pm.wordi.domain.user.User;
+import com.pm.wordi.domain.mentor.entity.Mentor;
+import com.pm.wordi.domain.mentor.entity.MentorLevel;
+import com.pm.wordi.domain.mentor.entity.MentorSchedule;
+import com.pm.wordi.domain.review.entity.Review;
+import com.pm.wordi.domain.user.entity.User;
 import lombok.*;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.pm.wordi.controller.dto;
 
-import com.pm.wordi.domain.mentor.Mentor;
-import com.pm.wordi.domain.review.Review;
+import com.pm.wordi.domain.mentor.entity.Mentor;
+import com.pm.wordi.domain.review.entity.Review;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

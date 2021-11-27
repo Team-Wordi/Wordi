@@ -1,6 +1,5 @@
-package com.pm.wordi.domain.mentor;
+package com.pm.wordi.domain.mentor.entity;
 
-import com.pm.wordi.domain.user.User;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

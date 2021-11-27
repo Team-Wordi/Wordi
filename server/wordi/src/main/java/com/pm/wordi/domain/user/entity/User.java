@@ -1,4 +1,4 @@
-package com.pm.wordi.domain.user;
+package com.pm.wordi.domain.user.entity;
 
 import com.pm.wordi.domain.BaseStatus;
 import com.pm.wordi.domain.BaseTimeEntity;

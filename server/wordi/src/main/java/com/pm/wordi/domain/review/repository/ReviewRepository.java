@@ -1,6 +1,7 @@
-package com.pm.wordi.domain.review;
+package com.pm.wordi.domain.review.repository;
 
 import com.pm.wordi.domain.BaseStatus;
+import com.pm.wordi.domain.review.entity.Review;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 

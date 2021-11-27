@@ -1,10 +1,10 @@
-package com.pm.wordi.domain.mentor;
+package com.pm.wordi.domain.mentor.entity;
 
 import com.pm.wordi.domain.BaseStatus;
 import com.pm.wordi.domain.BaseTimeEntity;
-import com.pm.wordi.domain.mentoring.Mentoring;
-import com.pm.wordi.domain.review.Review;
-import com.pm.wordi.domain.user.User;
+import com.pm.wordi.domain.mentoring.entity.Mentoring;
+import com.pm.wordi.domain.review.entity.Review;
+import com.pm.wordi.domain.user.entity.User;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

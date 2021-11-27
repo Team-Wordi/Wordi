@@ -1,9 +1,9 @@
-package com.pm.wordi.domain.mentoring;
+package com.pm.wordi.domain.mentoring.repository;
 
 import com.pm.wordi.domain.BaseStatus;
+import com.pm.wordi.domain.mentoring.entity.Mentoring;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 import java.util.Optional;

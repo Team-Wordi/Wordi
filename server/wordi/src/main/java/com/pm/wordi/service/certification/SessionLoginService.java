@@ -1,13 +1,11 @@
 package com.pm.wordi.service.certification;
 
-import com.pm.wordi.domain.user.User;
-import com.pm.wordi.domain.user.UserRepository;
+import com.pm.wordi.domain.user.entity.User;
+import com.pm.wordi.domain.user.repository.UserRepository;
 import com.pm.wordi.exception.user.NoExistUserException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

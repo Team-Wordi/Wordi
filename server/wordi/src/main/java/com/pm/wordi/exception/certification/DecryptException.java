@@ -1,4 +1,4 @@
-package com.pm.wordi.exception;
+package com.pm.wordi.exception.certification;
 
 public class DecryptException extends Exception{
     public DecryptException() {

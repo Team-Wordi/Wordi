@@ -1,11 +1,11 @@
-package com.pm.wordi.domain.mentor;
+package com.pm.wordi.domain.mentor.repository;
 
 import com.pm.wordi.domain.BaseStatus;
-import com.pm.wordi.domain.user.User;
+import com.pm.wordi.domain.mentor.entity.Mentor;
+import com.pm.wordi.domain.user.entity.User;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
