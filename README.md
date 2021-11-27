@@ -5,12 +5,26 @@
 <br>
 <img src="https://user-images.githubusercontent.com/66458836/143670605-1c9b4837-3ffa-4443-876a-5ca814f192da.png" width="20%" height="20%" />
 
-### 💁‍♂️ Wiki 
+## 💁‍♂️ Wiki 
+#### **👬 Common** 
 - 🗓 [Team Develop Schedule](https://docs.google.com/spreadsheets/d/1PvN-VDS-5juqqID9342OCRrCo8649ipR/edit#gid=804223889)
-- 🌐 [Skill Spec [FE]](https://github.com/Team-Wordi/Wordi/wiki/%F0%9F%94%A8-Skill-Spec-%5BFE%5D)
-- 🛠 [Skill Spec [BE]](https://github.com/Team-Wordi/Wordi/wiki/%F0%9F%94%A8-Skill-Spec-%5BBE%5D)
+- 📰 [Action Flow](https://github.com/Team-Wordi/Wordi/wiki/%F0%9F%A7%BE-Action-Flow)
 - 📱 [Prototype](https://www.figma.com/proto/83sQzXod3EimvcF7lnc3DC/%EC%9B%8C%EB%94%94?node-id=2228%3A21992&scaling=scale-down&page-id=2221%3A10773)
+
+
+#### **🌐 Front-End** 
+- 🌐 [Skill Spec [FE]](https://github.com/Team-Wordi/Wordi/wiki/%F0%9F%94%A8-Skill-Spec-%5BFE%5D)
 - ✅ [스토리북 도입기? [FE]](https://github.com/Team-Wordi/Wordi/wiki/Storybook-%EB%8F%84%EC%9E%85%EA%B8%B0%3F)
+
+
+#### **🎅 Back-End** 
+- 🛠 [Skill Spec [BE]](https://github.com/Team-Wordi/Wordi/wiki/%F0%9F%94%A8-Skill-Spec-%5BBE%5D)
+- 📦 [DataBase](https://github.com/Team-Wordi/Wordi/wiki/%F0%9F%93%A6-DataBase)
+- 📜 [API Document](https://documenter.getpostman.com/view/16596703/UVJWoyrR)
+- 📁 [디렉토리 구조](https://github.com/Team-Wordi/Wordi/wiki/%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EA%B5%AC%EC%A1%B0-%5BBE%5D)
+- 🔎 [핵심 기능 구현](https://github.com/Team-Wordi/Wordi/wiki/%ED%95%B5%EC%8B%AC-%EA%B8%B0%EB%8A%A5-%5BBE%5D)
+- 🎇 [트러블 슈팅](https://github.com/Team-Wordi/Wordi/wiki/%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85-%5BBE%5D)
+
 
 <br>
 
