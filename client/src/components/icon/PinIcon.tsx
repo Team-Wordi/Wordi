@@ -7,7 +7,7 @@ interface PinIconProps {
 }
 
 function PinIcon({ size, color }: PinIconProps): JSX.Element {
-  return <PinSVG width={size} height={size} stroke={color} stroke-width="0.5" />;
+  return <PinSVG width={size} height={size} stroke={color} strokeWidth="0.5" />;
 }
 
 export default PinIcon;

@@ -14,7 +14,7 @@ function LeftIcon({ size, color, onClick }: LeftIconProps): JSX.Element {
       height={size}
       stroke={color}
       fill={color}
-      stroke-width="0.2"
+      strokeWidth="0.2"
       onClick={onClick}
     />
   );
