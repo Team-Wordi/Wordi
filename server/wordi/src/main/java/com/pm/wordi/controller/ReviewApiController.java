@@ -1,6 +1,5 @@
 package com.pm.wordi.controller;
 
-import com.pm.wordi.controller.dto.ReviewDto;
 import com.pm.wordi.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -12,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 import static com.pm.wordi.commons.utils.constants.ResponseConstants.RESPONSE_CREATED;
+import static com.pm.wordi.commons.utils.constants.ResponseConstants.RESPONSE_OK;
 import static com.pm.wordi.controller.dto.ReviewDto.*;
 
 @RestController
@@ -50,7 +50,7 @@ public class ReviewApiController {
      * @return ResponseEntity<List<reviewRes>>
      */
     @GetMapping("")
-    public ResponseEntity<List<reviewRes>> getReviewListByUser(HttpServletRequest request) {
+    public ResponseEntity<List<ReviewRes>> getReviewListByUser(HttpServletRequest request) {
         Long userId = (Long) request.getAttribute("userId");
         return ResponseEntity.ok(reviewService.getReviewListByUser(userId));
     }
@@ -61,7 +61,7 @@ public class ReviewApiController {
      * @return ResponseEntity<List<reviewRes>>
      */
     @GetMapping("/{mentorId}")
-    public ResponseEntity<List<reviewRes>> getReviewListByMentor(@PathVariable Long mentorId) {
+    public ResponseEntity<List<ReviewRes>> getReviewListByMentor(@PathVariable Long mentorId) {
         return ResponseEntity.ok(reviewService.getReviewListByMentor(mentorId));
     }
 
@@ -71,8 +71,22 @@ public class ReviewApiController {
      * @return ResponseEntity<reviewRes>
      */
     @GetMapping("/details/{reviewId}")
-    public ResponseEntity<reviewRes> getReview(@PathVariable Long reviewId) {
+    public ResponseEntity<ReviewRes> getReview(@PathVariable Long reviewId) {
         return ResponseEntity.ok(reviewService.getReview(reviewId));
+    }
+
+    /**
+     * 리뷰 수정 API
+     * [PATCH] /app/reviews/details/{reviewId}
+     * @return ResponseEntity<HttpStatus>
+     */
+    @PatchMapping("/details/{reviewId}")
+    public ResponseEntity<HttpStatus> updateReview(@PathVariable Long reviewId,
+                                                   @RequestBody ReviewReq reviewReq,
+                                                   HttpServletRequest request) {
+        Long userId = (Long) request.getAttribute("userId");
+        reviewService.updateReview(userId, reviewId, reviewReq);
+        return RESPONSE_OK;
     }
 
 

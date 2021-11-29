@@ -52,7 +52,7 @@ public class ReviewDto {
     @Getter
     @AllArgsConstructor
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
-    public static class reviewRes {
+    public static class ReviewRes {
         private Long reviewId;
         private String mentorNickname;
         private String mentorNation;
@@ -60,7 +60,7 @@ public class ReviewDto {
         private String writer;
         private LocalDateTime writeDate;
 
-        public reviewRes(Review review) {
+        public ReviewRes(Review review) {
             this.reviewId = review.getId();
             this.mentorNickname = review.getMentor().getUser().getNickname();
             this.mentorNation = review.getMentor().getNation();
@@ -68,5 +68,12 @@ public class ReviewDto {
             this.writer = review.getUser().getNickname();
             this.writeDate = review.getUpdated();
         }
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class ReviewReq {
+        private String contents;
     }
 }

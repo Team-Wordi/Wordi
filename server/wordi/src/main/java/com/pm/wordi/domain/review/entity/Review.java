@@ -1,5 +1,7 @@
 package com.pm.wordi.domain.review.entity;
 
+import com.pm.wordi.controller.dto.ReviewDto;
+import com.pm.wordi.controller.dto.ReviewDto.ReviewReq;
 import com.pm.wordi.domain.BaseStatus;
 import com.pm.wordi.domain.BaseTimeEntity;
 import com.pm.wordi.domain.mentor.entity.Mentor;
@@ -36,6 +38,10 @@ public class Review extends BaseTimeEntity {
 
     public void updateMentor(Mentor mentor) {
         this.mentor = mentor;
+    }
+
+    public void updateContents(ReviewReq reviewReq) {
+        this.content = reviewReq.getContents();
     }
 
     @Builder
