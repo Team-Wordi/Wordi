@@ -26,7 +26,7 @@ public class UserApiController {
     /**
      * 회원가입 API
      * [POST] /app/users/account/signup
-     * @return BaseResponse<ResponseTokens>
+     * @return ResponseEntity<ResponseTokens>
      */
     @UnAuth
     @PostMapping("/account/signup")
@@ -37,7 +37,7 @@ public class UserApiController {
     /**
      * 로그인 API
      * [POST] /app/users/account/login
-     * @return BaseResponse<ResponseTokens>
+     * @return ResponseEntity<ResponseTokens>
      */
     @UnAuth
     @PostMapping("/account/login")
@@ -48,7 +48,7 @@ public class UserApiController {
     /**
      * 이메일 중복체크 API
      * [GET] /app/users/account/check-duplicate/{email}
-     * @return BaseResponse<Boolean>
+     * @return ResponseEntity<Boolean>
      */
     @UnAuth
     @GetMapping("/account/check-duplicate/{email}")
@@ -60,7 +60,7 @@ public class UserApiController {
     /**
      * 닉네임 중복체크 API
      * [GET] /app/users/profile/check-duplicate/{nickname}
-     * @return BaseResponse<Boolean>
+     * @return ResponseEntity<Boolean>
      */
     @UnAuth
     @GetMapping("/profile/check-duplicate/{nickname}")
@@ -72,7 +72,7 @@ public class UserApiController {
     /**
      * 개인정보 조회 API
      * [GET] /app/users/account
-     * @return BaseResponse<AccountRes>
+     * @return ResponseEntity<AccountRes>
      */
     @GetMapping("/account")
     public ResponseEntity<AccountRes> getAccount(HttpServletRequest request) {
@@ -83,7 +83,7 @@ public class UserApiController {
     /**
      * 개인정보 수정 API
      * [PATCH] /app/users/account
-     * @return BaseResponse<HttpStatus>
+     * @return ResponseEntity<HttpStatus>
      */
     @PatchMapping("/account")
     public ResponseEntity<HttpStatus> updateAccount(@Validated @RequestBody AccountReq accountReq,
@@ -97,7 +97,7 @@ public class UserApiController {
     /**
      * 비밀번호 수정 API
      * [PATCH] /app/users/account/password
-     * @return BaseResponse<HttpStatus>
+     * @return ResponseEntity<HttpStatus>
      */
     @PatchMapping("/account/password")
     public ResponseEntity<HttpStatus> updatePassword(@Validated @RequestBody changePasswordReq changePasswordReq,
@@ -110,7 +110,7 @@ public class UserApiController {
     /**
      * 프로필 조회 API
      * [GET] /app/users/profile
-     * @return BaseResponse<ProfileRes>
+     * @return ResponseEntity<ProfileRes>
      */
     @GetMapping("/profile")
     public ResponseEntity<ProfileRes> getProfile(HttpServletRequest request) {
@@ -121,7 +121,7 @@ public class UserApiController {
     /**
      * 프로필 수정 API
      * [PATCH] /app/users/profile
-     * @return BaseResponse<HttpStatus>
+     * @return ResponseEntity<HttpStatus>
      */
     @PatchMapping("/profile")
     public ResponseEntity<HttpStatus> updateProfile(@Validated @RequestBody ProfileReq profileReq,

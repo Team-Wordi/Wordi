@@ -25,7 +25,7 @@ public class MentoringApiController {
     /**
      * 멘토링 신청 API
      * [POST] /app/mentors/{mentorId}/applications
-     * @return BaseResponse<HttpStatus>
+     * @return ResponseEntity<HttpStatus>
      */
     @PostMapping("/app/mentors/{mentorId}/applications")
     public ResponseEntity<HttpStatus> createMentoring(@Validated @RequestBody ApplicationReq applicationReq,
@@ -39,7 +39,7 @@ public class MentoringApiController {
     /**
      * 멘토링 신청 페이지 API
      * [GET] /app/mentors/{mentorId}/applications
-     * @return BaseResponse<MentoringRes>
+     * @return ResponseEntity<MentoringRes>
      */
     @GetMapping("/app/mentors/{mentorId}/applications")
     public ResponseEntity<ApplicationRes> getMentoring(@PathVariable Long mentorId,
@@ -51,7 +51,7 @@ public class MentoringApiController {
     /**
      * 멘토 - 멘토링 내역 조회 API
      * [GET] /app/mentors/mentorings
-     * @return BaseResponse<List<MentorMentoringRes>>
+     * @return ResponseEntity<List<MentorMentoringRes>>
      */
     @GetMapping("/app/mentors/mentorings")
     public ResponseEntity<List<MentorMentoringRes>> geMentoringListBytMentor(HttpServletRequest request) {
@@ -62,7 +62,7 @@ public class MentoringApiController {
     /**
      * 유저 - 멘토링 내역 조회 API
      * [GET] /app/users/mentorings
-     * @return BaseResponse<List<UserMentoringRes>>
+     * @return ResponseEntity<List<UserMentoringRes>>
      */
     @GetMapping("/app/users/mentorings")
     public ResponseEntity<List<UserMentoringRes>> geMentoringListByUser(HttpServletRequest request) {
@@ -73,7 +73,7 @@ public class MentoringApiController {
     /**
      * 멘토 - 멘토링 신청 승인, 거절 API
      * [PATCH] /app/mentors/mentorings/{mentoringId}
-     * @return BaseResponse<RefundPaymentInfo>
+     * @return ResponseEntity<RefundPaymentInfo>
      */
     @PatchMapping("/app/mentors/mentorings/{mentoringId}")
     public ResponseEntity<RefundPaymentInfo> decideMentoring(@RequestBody DecideReq decideReq,
@@ -84,7 +84,7 @@ public class MentoringApiController {
     /**
      * 유저 - 멘토링 취소 API
      * [GET] /app/users/mentorings/{mentoringId}
-     * @return BaseResponse<RefundPaymentInfo>
+     * @return ResponseEntity<RefundPaymentInfo>
      */
     @GetMapping("/app/users/mentorings/{mentoringId}")
     public ResponseEntity<RefundPaymentInfo> cancelMentoring(@PathVariable Long mentoringId) {

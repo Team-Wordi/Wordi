@@ -27,5 +27,4 @@ public interface MentorRepository extends JpaRepository<Mentor, Long>, MentorRep
     @EntityGraph(attributePaths = {"user"})
     Optional<Mentor> findFetchUserByIdAndStatus(Long mentorId, BaseStatus status);
 
-
 }

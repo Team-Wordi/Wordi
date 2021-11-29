@@ -26,7 +26,7 @@ public class MentorApiController {
     /**
      * 멘토등록 API
      * [POST] /app/mentors
-     * @return BaseResponse<HttpStatus>
+     * @return ResponseEntity<HttpStatus>
      */
     @PostMapping("")
     public ResponseEntity<HttpStatus> createMentor(@Validated @RequestBody CreateRequest createRequest,
@@ -39,7 +39,7 @@ public class MentorApiController {
     /**
      * 멘토 프로필 관리 조회 API
      * [GET] /app/mentors/profile
-     * @return BaseResponse<ProfileRes>
+     * @return ResponseEntity<ProfileRes>
      */
     @GetMapping("/profile")
     public ResponseEntity<ProfileRes> getProfile(HttpServletRequest request) {
@@ -50,7 +50,7 @@ public class MentorApiController {
     /**
      * 멘토 프로필 수정 API
      * [PATCH] /app/mentors/profile
-     * @return BaseResponse<HttpStatus>
+     * @return ResponseEntity<HttpStatus>
      */
     @PatchMapping("/profile")
     public ResponseEntity<HttpStatus> updateProfile(@Validated @RequestBody ProfileReq profileReq,
@@ -63,7 +63,7 @@ public class MentorApiController {
     /**
      * 멘토 프로필 리스트 API
      * [GET] /app/mentors?nation=&keyword=&months=
-     * @return BaseResponse<List<ProfileListRes>>
+     * @return ResponseEntity<List<ProfileListRes>>
      */
     @GetMapping("")
     public ResponseEntity<List<ProfileListRes>> searchProfileList(@RequestParam(required = false) String nation,
@@ -76,7 +76,7 @@ public class MentorApiController {
     /**
      * 멘토 프로필 상세 조회 API
      * [GET] /app/mentors/{mentorId}
-     * @return BaseResponse<MentoringProfileRes>
+     * @return ResponseEntity<MentoringProfileRes>
      */
     @GetMapping("/{mentorId}")
     public ResponseEntity<MentoringProfileRes> getMentoringProfile(@PathVariable Long mentorId) {
