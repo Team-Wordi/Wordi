@@ -5,10 +5,7 @@ import com.pm.wordi.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -35,6 +32,15 @@ public class ReviewApiController {
         return RESPONSE_CREATED;
     }
 
+    /**
+     * 리뷰 등록 페이지 API
+     * [GET] /app/reviews/{mentoringId}
+     * @return ResponseEntity<CreateReviewPage>
+     */
+    @GetMapping("/{mentoringId}")
+    public ResponseEntity<CreateReviewPage> getCreateReviewPage(@PathVariable Long mentoringId) {
+        return ResponseEntity.ok(reviewService.getCreateReviewPage(mentoringId));
+    }
 
 
 }

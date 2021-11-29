@@ -30,4 +30,19 @@ public class ReviewDto {
 
         }
     }
+
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class CreateReviewPage {
+        private Long mentorId;
+        private String mentorNickname;
+        private String mentorNation;
+
+        public CreateReviewPage(Mentor mentor) {
+            this.mentorId = mentor.getId();
+            this.mentorNickname = mentor.getUser().getNickname();
+            this.mentorNation = mentor.getNation();
+        }
+    }
 }
