@@ -9,6 +9,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class ReviewDto {
 
     @Getter
@@ -43,6 +46,27 @@ public class ReviewDto {
             this.mentorId = mentor.getId();
             this.mentorNickname = mentor.getUser().getNickname();
             this.mentorNation = mentor.getNation();
+        }
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class reviewRes {
+        private Long reviewId;
+        private String mentorNickname;
+        private String mentorNation;
+        private String contents;
+        private String writer;
+        private LocalDateTime writeDate;
+
+        public reviewRes(Review review) {
+            this.reviewId = review.getId();
+            this.mentorNickname = review.getMentor().getUser().getNickname();
+            this.mentorNation = review.getMentor().getNation();
+            this.contents = review.getContent();
+            this.writer = review.getUser().getNickname();
+            this.writeDate = review.getUpdated();
         }
     }
 }

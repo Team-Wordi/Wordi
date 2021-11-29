@@ -14,6 +14,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static com.pm.wordi.controller.dto.ReviewDto.*;
 import static com.pm.wordi.domain.BaseStatus.ACTIVE;
 
@@ -43,5 +46,12 @@ public class ReviewService {
         return mentoringRepository.findMentorById(mentoringId).map(CreateReviewPage::new)
                 .orElseThrow(() -> new NoExistMentorException("해당 멘토 정보가 존재하지 않습니다."));
 
+    }
+
+    @Transactional(readOnly = true)
+    public List<reviewRes> getReviewListByUser(Long userId) {
+        return reviewRepository.findAllByUserIdAndStatus(userId, ACTIVE).stream()
+                .map(reviewRes::new)
+                .collect(Collectors.toList());
     }
 }

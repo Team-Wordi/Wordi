@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
+import java.util.List;
+
 import static com.pm.wordi.commons.utils.constants.ResponseConstants.RESPONSE_CREATED;
 import static com.pm.wordi.controller.dto.ReviewDto.*;
 
@@ -40,6 +42,17 @@ public class ReviewApiController {
     @GetMapping("/{mentoringId}")
     public ResponseEntity<CreateReviewPage> getCreateReviewPage(@PathVariable Long mentoringId) {
         return ResponseEntity.ok(reviewService.getCreateReviewPage(mentoringId));
+    }
+
+    /**
+     * 회원 - 리뷰 리스트 API
+     * [GET] /app/reviews
+     * @return ResponseEntity<List<reviewRes>>
+     */
+    @GetMapping("")
+    public ResponseEntity<List<reviewRes>> getReviewListByUser(HttpServletRequest request) {
+        Long userId = (Long) request.getAttribute("userId");
+        return ResponseEntity.ok(reviewService.getReviewListByUser(userId));
     }
 
 
