@@ -65,5 +65,15 @@ public class ReviewApiController {
         return ResponseEntity.ok(reviewService.getReviewListByMentor(mentorId));
     }
 
+    /**
+     * 리뷰 상세 조회 API
+     * [GET] /app/reviews/details/{reviewId}
+     * @return ResponseEntity<reviewRes>
+     */
+    @GetMapping("/details/{reviewId}")
+    public ResponseEntity<reviewRes> getReview(@PathVariable Long reviewId) {
+        return ResponseEntity.ok(reviewService.getReview(reviewId));
+    }
+
 
 }

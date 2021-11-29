@@ -8,6 +8,7 @@ import com.pm.wordi.exception.mentor.NoExistMentoringProfileException;
 import com.pm.wordi.exception.mentoring.EqualUserMentorException;
 import com.pm.wordi.exception.mentoring.NoExistMentoringException;
 import com.pm.wordi.exception.mentoring.NoExistPaymentException;
+import com.pm.wordi.exception.review.NoExistReviewException;
 import com.pm.wordi.exception.user.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
@@ -81,7 +82,7 @@ public class ExceptionAdvice {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
     }
 
-    // == Mentoring
+    // == Mentoring ==
     @ExceptionHandler(EqualUserMentorException.class)
     public ResponseEntity<String> equalUserMentorException(EqualUserMentorException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
@@ -94,6 +95,13 @@ public class ExceptionAdvice {
 
     @ExceptionHandler(NoExistPaymentException.class)
     public ResponseEntity<String> noExistPaymentException(NoExistPaymentException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+
+    // == Review ==
+    @ExceptionHandler(NoExistReviewException.class)
+    public ResponseEntity<String> noExistReviewException(NoExistReviewException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
     }
 

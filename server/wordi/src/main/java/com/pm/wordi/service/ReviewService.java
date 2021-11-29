@@ -9,6 +9,7 @@ import com.pm.wordi.domain.review.repository.ReviewRepository;
 import com.pm.wordi.domain.user.entity.User;
 import com.pm.wordi.domain.user.repository.UserRepository;
 import com.pm.wordi.exception.mentor.NoExistMentorException;
+import com.pm.wordi.exception.review.NoExistReviewException;
 import com.pm.wordi.exception.user.NoExistUserException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -60,5 +61,10 @@ public class ReviewService {
         return reviewRepository.findAllByMentorIdAndStatus(mentorId, ACTIVE).stream()
                 .map(reviewRes::new)
                 .collect(Collectors.toList());
+    }
+
+    public reviewRes getReview(Long reviewId) {
+        return reviewRepository.findByIdAndStatus(reviewId, ACTIVE).map(reviewRes::new)
+                .orElseThrow(() -> new NoExistReviewException("해당 리뷰가 존재하지 않습니다."));
     }
 }
