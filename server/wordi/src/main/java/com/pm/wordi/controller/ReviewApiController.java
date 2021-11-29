@@ -89,5 +89,18 @@ public class ReviewApiController {
         return RESPONSE_OK;
     }
 
+    /**
+     * 리뷰 삭제 API
+     * [DELETE] /app/reviews/{reviewId}
+     * @return ResponseEntity<HttpStatus>
+     */
+    @DeleteMapping("/{reviewId}")
+    public ResponseEntity<HttpStatus> deleteReview(@PathVariable Long reviewId,
+                                                   HttpServletRequest request) {
+        Long userId = (Long) request.getAttribute("userId");
+        reviewService.deleteReview(userId, reviewId);
+        return RESPONSE_OK;
+    }
+
 
 }

@@ -44,6 +44,10 @@ public class Review extends BaseTimeEntity {
         this.content = reviewReq.getContents();
     }
 
+    public void deleteStatus() {
+        this.status = BaseStatus.INACTIVE;
+    }
+
     @Builder
     public Review(User user, Mentor mentor, String content, BaseStatus status) {
         this.user = user;

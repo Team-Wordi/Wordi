@@ -84,4 +84,20 @@ public class ReviewService {
         review.updateContents(reviewReq);
     }
 
+    @Transactional
+    public void deleteReview(Long userId, Long reviewId) {
+
+        User user = userRepository.findByIdAndStatus(userId, ACTIVE)
+                .orElseThrow(() -> new NoExistUserException("접속한 회원 정보와 일치하는 회원 정보가 없습니다."));
+
+        Review review = reviewRepository.findByIdAndStatus(reviewId, ACTIVE)
+                .orElseThrow(() -> new NoExistReviewException("해당 리뷰가 존재하지 않습니다."));
+
+        if(review.getUser()!=user) {
+            throw new NoMatchUserReviewException("해당 리뷰 수정에 권한이 없습니다.");
+        }
+
+        review.deleteStatus();
+
+    }
 }
