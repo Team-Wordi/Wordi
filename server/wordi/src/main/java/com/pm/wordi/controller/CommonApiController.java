@@ -18,7 +18,7 @@ public class CommonApiController {
     /**
      * 메인 페이지 API
      * [GET] /app
-     * @return BaseResponse<MainRes>
+     * @return ResponseEntity<MainRes>
      */
     @GetMapping("/app")
     public ResponseEntity<MainRes> getMain(HttpServletRequest request) {

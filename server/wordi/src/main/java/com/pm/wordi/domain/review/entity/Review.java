@@ -5,6 +5,7 @@ import com.pm.wordi.domain.BaseTimeEntity;
 import com.pm.wordi.domain.mentor.entity.Mentor;
 import com.pm.wordi.domain.user.entity.User;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -37,5 +38,11 @@ public class Review extends BaseTimeEntity {
         this.mentor = mentor;
     }
 
-
+    @Builder
+    public Review(User user, Mentor mentor, String content, BaseStatus status) {
+        this.user = user;
+        this.mentor = mentor;
+        this.content = content;
+        this.status = status;
+    }
 }
