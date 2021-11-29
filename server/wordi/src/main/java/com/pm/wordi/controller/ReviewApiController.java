@@ -36,10 +36,10 @@ public class ReviewApiController {
 
     /**
      * 리뷰 등록 페이지 API
-     * [GET] /app/reviews/{mentoringId}
+     * [GET] /app/reviews/write-page/{mentoringId}
      * @return ResponseEntity<CreateReviewPage>
      */
-    @GetMapping("/{mentoringId}")
+    @GetMapping("/write-page/{mentoringId}")
     public ResponseEntity<CreateReviewPage> getCreateReviewPage(@PathVariable Long mentoringId) {
         return ResponseEntity.ok(reviewService.getCreateReviewPage(mentoringId));
     }
@@ -53,6 +53,16 @@ public class ReviewApiController {
     public ResponseEntity<List<reviewRes>> getReviewListByUser(HttpServletRequest request) {
         Long userId = (Long) request.getAttribute("userId");
         return ResponseEntity.ok(reviewService.getReviewListByUser(userId));
+    }
+
+    /**
+     * 멘토 - 리뷰 리스트 API
+     * [GET] /app/reviews/{mentorId}
+     * @return ResponseEntity<List<reviewRes>>
+     */
+    @GetMapping("/{mentorId}")
+    public ResponseEntity<List<reviewRes>> getReviewListByMentor(@PathVariable Long mentorId) {
+        return ResponseEntity.ok(reviewService.getReviewListByMentor(mentorId));
     }
 
 

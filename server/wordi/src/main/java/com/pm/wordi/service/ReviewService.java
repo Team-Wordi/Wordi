@@ -54,4 +54,11 @@ public class ReviewService {
                 .map(reviewRes::new)
                 .collect(Collectors.toList());
     }
+
+    @Transactional(readOnly = true)
+    public List<reviewRes> getReviewListByMentor(Long mentorId) {
+        return reviewRepository.findAllByMentorIdAndStatus(mentorId, ACTIVE).stream()
+                .map(reviewRes::new)
+                .collect(Collectors.toList());
+    }
 }

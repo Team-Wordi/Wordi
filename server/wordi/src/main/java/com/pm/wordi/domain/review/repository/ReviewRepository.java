@@ -14,4 +14,7 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
 
     @EntityGraph(attributePaths = {"user", "mentor"})
     List<Review> findAllByUserIdAndStatus(Long userId, BaseStatus status);
+
+    @EntityGraph(attributePaths = {"user", "mentor"})
+    List<Review> findAllByMentorIdAndStatus(Long mentorId, BaseStatus status);
 }
