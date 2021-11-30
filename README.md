@@ -10,6 +10,7 @@
 - 🗓 [Team Develop Schedule](https://docs.google.com/spreadsheets/d/1PvN-VDS-5juqqID9342OCRrCo8649ipR/edit#gid=804223889)
 - 📰 [Action Flow](https://github.com/Team-Wordi/Wordi/wiki/%F0%9F%A7%BE-Action-Flow)
 - 📱 [Prototype](https://www.figma.com/proto/83sQzXod3EimvcF7lnc3DC/%EC%9B%8C%EB%94%94?node-id=2228%3A21992&scaling=scale-down&page-id=2221%3A10773)
+- 📽 [시연 영상](https://youtu.be/iyXeW-ohZ4c)
 
 
 #### **🌐 Front-End** 
