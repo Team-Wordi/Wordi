@@ -6,6 +6,7 @@ import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import org.springframework.util.StringUtils;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -35,7 +36,7 @@ public class MentorRepositoryImpl implements MentorRepositoryCustom {
     }
 
     private BooleanExpression keywordEq(String keywordCond) {
-        if(keywordCond == null) {
+        if(StringUtils.hasText(keywordCond)) {
             return null;
         }
         return mentor.mentorKeywordList.contains(
@@ -47,7 +48,7 @@ public class MentorRepositoryImpl implements MentorRepositoryCustom {
     }
 
 
-    private Predicate nationEq(String nationCond) {
+    private BooleanExpression nationEq(String nationCond) {
         return nationCond != null ? mentor.nation.eq(nationCond) : null;
     }
 
