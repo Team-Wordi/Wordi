@@ -4,11 +4,13 @@ import com.pm.wordi.domain.BaseStatus;
 import com.pm.wordi.domain.mentor.entity.Mentor;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.dsl.BooleanExpression;
+import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.EntityManager;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import static com.pm.wordi.domain.mentor.QMentor.*;
@@ -35,6 +37,7 @@ public class MentorRepositoryImpl implements MentorRepositoryCustom {
                 .fetch();
     }
 
+
     private BooleanExpression keywordEq(String keywordCond) {
         if(StringUtils.hasText(keywordCond)) {
             return null;
@@ -49,7 +52,7 @@ public class MentorRepositoryImpl implements MentorRepositoryCustom {
 
 
     private BooleanExpression nationEq(String nationCond) {
-        return nationCond != null ? mentor.nation.eq(nationCond) : null;
+        return StringUtils.hasText(nationCond) ? mentor.nation.eq(nationCond) : null;
     }
 
 

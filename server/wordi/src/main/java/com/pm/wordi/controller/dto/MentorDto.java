@@ -12,6 +12,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -180,7 +181,9 @@ public class MentorDto {
             this.profileImageUrl = mentor.getProfileImageUrl();
             this.nickname = mentor.getUser().getNickname();
             this.mentorNation = mentor.getNation();
-            this.monthPeriod = ChronoUnit.MONTHS.between(mentor.getStartDate(), mentor.getEndDate());
+            this.monthPeriod = mentor.getEndDate() != null ?
+                     ChronoUnit.MONTHS.between(mentor.getStartDate(), mentor.getEndDate()) :
+                     ChronoUnit.MONTHS.between(mentor.getStartDate(), LocalDate.now());
             this.keywordList = mentor.getMentorKeywordList().stream()
                     .map(k -> k.getKeyword())
                     .collect(Collectors.toList());
