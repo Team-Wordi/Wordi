@@ -39,7 +39,7 @@ public class MentorRepositoryImpl implements MentorRepositoryCustom {
 
 
     private BooleanExpression keywordEq(String keywordCond) {
-        if(StringUtils.hasText(keywordCond)) {
+        if(!StringUtils.hasText(keywordCond)) {
             return null;
         }
         return mentor.mentorKeywordList.contains(
