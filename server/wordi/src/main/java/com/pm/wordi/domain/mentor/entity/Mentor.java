@@ -61,9 +61,9 @@ public class Mentor extends BaseTimeEntity {
 
     private Long price;
 
-    private String entryCertification;
+    private String certificationName;
 
-    private String certification;
+    private String certificationUrl;
 
     @Enumerated(EnumType.STRING)
     private MentorLevel mentorLevel;
@@ -84,8 +84,8 @@ public class Mentor extends BaseTimeEntity {
                 && Objects.equals(endDate, mentor.endDate) && Objects.equals(profileImageUrl, mentor.profileImageUrl)
                 && Objects.equals(profileIntroduction, mentor.profileIntroduction)
                 && Objects.equals(introduction, mentor.introduction) && Objects.equals(price, mentor.price)
-                && Objects.equals(entryCertification, mentor.entryCertification)
-                && Objects.equals(certification, mentor.certification) && mentorLevel == mentor.mentorLevel
+                && Objects.equals(certificationName, mentor.certificationName)
+                && Objects.equals(certificationUrl, mentor.certificationUrl) && mentorLevel == mentor.mentorLevel
                 && status == mentor.status;
     }
 
@@ -93,7 +93,7 @@ public class Mentor extends BaseTimeEntity {
     public int hashCode() {
         return Objects.hash(id, user, mentorKeywordList, mentorScheduleList, reviewList, mentoringList,
                 nation, startDate, endDate, isProgress, profileImageUrl, profileIntroduction, introduction,
-                price, entryCertification, certification, mentorLevel, status);
+                price, certificationName, certificationUrl, mentorLevel, status);
     }
 
     // == 연관관계 편의 메서드
@@ -122,7 +122,7 @@ public class Mentor extends BaseTimeEntity {
     @Builder
     public Mentor(User user, String nation, LocalDate startDate, LocalDate endDate, boolean isProgress,
                   String profileImageUrl, String profileIntroduction, String introduction, Long price,
-                  String entryCertification, String certification, MentorLevel mentorLevel, BaseStatus status) {
+                  String certificationName, String certificationUrl, MentorLevel mentorLevel, BaseStatus status) {
         this.user = user;
         this.nation = nation;
         this.startDate = startDate;
@@ -132,8 +132,8 @@ public class Mentor extends BaseTimeEntity {
         this.profileIntroduction = profileIntroduction;
         this.introduction = introduction;
         this.price = price;
-        this.entryCertification = entryCertification;
-        this.certification = certification;
+        this.certificationName = certificationName;
+        this.certificationUrl = certificationUrl;
         this.mentorLevel = mentorLevel;
         this.status = status;
     }

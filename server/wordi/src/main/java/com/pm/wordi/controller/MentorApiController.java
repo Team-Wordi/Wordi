@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.websocket.server.PathParam;
@@ -29,10 +30,12 @@ public class MentorApiController {
      * @return ResponseEntity<HttpStatus>
      */
     @PostMapping("")
-    public ResponseEntity<HttpStatus> createMentor(@Validated @RequestBody CreateRequest createRequest,
+    public ResponseEntity<HttpStatus> createMentor(@Validated @RequestPart CreateRequest createRequest,
+                                                   @RequestPart(required = false) MultipartFile profileImage,
+                                                   @RequestPart(required = true) MultipartFile certification,
                                                    HttpServletRequest request) {
         Long userId = (Long)request.getAttribute("userId");
-        mentorService.createMentor(userId, createRequest);
+        mentorService.createMentor(userId, createRequest, profileImage, certification);
         return RESPONSE_CREATED;
     }
 

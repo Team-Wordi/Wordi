@@ -1,5 +1,6 @@
 package com.pm.wordi.service;
 
+import com.pm.wordi.commons.utils.file.FileNameUtils;
 import com.pm.wordi.domain.mentor.entity.Mentor;
 import com.pm.wordi.domain.mentor.entity.MentorKeyword;
 import com.pm.wordi.domain.mentor.repository.MentorKeywordRepository;
@@ -7,14 +8,21 @@ import com.pm.wordi.domain.mentor.repository.MentorRepository;
 import com.pm.wordi.domain.mentor.repository.MentorScheduleRepository;
 import com.pm.wordi.domain.user.entity.User;
 import com.pm.wordi.domain.user.repository.UserRepository;
+import com.pm.wordi.exception.file.CertificationFileSaveFailedException;
+import com.pm.wordi.exception.file.ImageSaveFailedException;
 import com.pm.wordi.exception.mentor.ExistMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentoringProfileException;
 import com.pm.wordi.exception.user.NoExistUserException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,13 +34,16 @@ import static com.pm.wordi.domain.BaseStatus.*;
 @Transactional
 public class MentorService {
 
+    @Value("${file.path}")
+    private String filePath;
+
     private final UserRepository userRepository;
     private final MentorRepository mentorRepository;
     private final MentorKeywordRepository mentorKeywordRepository;
     private final MentorScheduleRepository mentorScheduleRepository;
 
     @Transactional
-    public void createMentor(Long userId, CreateRequest createRequest) {
+    public void createMentor(Long userId, CreateRequest createRequest, @Nullable MultipartFile profileImage, MultipartFile certification) {
 
         User user = userRepository.findByIdAndStatus(userId, ACTIVE)
                 .orElseThrow(() -> new NoExistUserException("접속한 회원 정보와 일치하는 회원 정보가 없습니다."));
@@ -41,6 +52,30 @@ public class MentorService {
             throw new ExistMentorException("이미 가입하신 멘토 정보가 있습니다.");
         }
 
+        // 프로필 이미지 파일 저장
+        if(!profileImage.isEmpty()) {
+            String saveImgFileName = FileNameUtils.fileNameConvert(profileImage.getOriginalFilename());
+            String fullPath = filePath + saveImgFileName;
+            try {
+                profileImage.transferTo(new File(fullPath));
+            } catch (IOException e) {
+                throw new ImageSaveFailedException("이미지 저장에 실패하였습니다.");
+            }
+            createRequest.updateImageUrl(fullPath);
+        }
+
+        // 멘토 증명서 파일 저장
+        String saveCerFileName = FileNameUtils.fileNameConvert(certification.getOriginalFilename());
+        String certificationFullPath = filePath + saveCerFileName;
+        try {
+            certification.transferTo(new File(certificationFullPath));
+        } catch (IOException e) {
+            throw new CertificationFileSaveFailedException("증명서 파일 저장에 실패하였습니다.");
+        }
+        createRequest.updateCertificationUrl(certification.getOriginalFilename(), certificationFullPath);
+
+
+        // 멘토 정보 저장
         Mentor mentor = mentorRepository.save(createRequest.toEntity(user));
 
         // 멘토 키워드 저장

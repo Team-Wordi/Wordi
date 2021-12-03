@@ -2,6 +2,8 @@ package com.pm.wordi.commons.advice;
 
 import com.pm.wordi.exception.certification.DecryptException;
 import com.pm.wordi.exception.certification.EncryptException;
+import com.pm.wordi.exception.file.CertificationFileSaveFailedException;
+import com.pm.wordi.exception.file.ImageSaveFailedException;
 import com.pm.wordi.exception.mentor.ExistMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentoringProfileException;
@@ -113,6 +115,8 @@ public class ExceptionAdvice {
 
 
 
+
+
     // == client ==
 
     // 검증 에러
@@ -135,6 +139,17 @@ public class ExceptionAdvice {
     public ResponseEntity<String> exception(Exception e) {
         e.printStackTrace();
         return new ResponseEntity<>("등록되지 않은 에러입니다.", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    // 파일 업로드 관련
+    @ExceptionHandler(ImageSaveFailedException.class)
+    public ResponseEntity<String> imageRoadFailedException(ImageSaveFailedException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(CertificationFileSaveFailedException.class)
+    public ResponseEntity<String> certificationFileSaveFailedException(CertificationFileSaveFailedException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
 

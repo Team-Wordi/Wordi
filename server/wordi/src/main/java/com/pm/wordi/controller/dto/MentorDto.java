@@ -7,6 +7,8 @@ import com.pm.wordi.domain.mentor.entity.MentorSchedule;
 import com.pm.wordi.domain.review.entity.Review;
 import com.pm.wordi.domain.user.entity.User;
 import lombok.*;
+import org.springframework.lang.Nullable;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -25,8 +27,6 @@ public class MentorDto {
     @AllArgsConstructor
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class CreateRequest {
-
-        private String profileImageUrl;
 
         @NotBlank(message = "멘토 관심 국가를 입력해 주세요.")
         private String mentorNation;
@@ -54,11 +54,12 @@ public class MentorDto {
         @NotNull(message = "가격을 입력해 주세요.")
         private Long price;
 
-        @NotBlank(message = "워킹홀리데이 최종 비자 합격 증명서는 필수사항입니다.")
-        private String entryCertification;
 
-        @NotBlank(message = "입국증명서는 필수사항입니다.")
-        private String certification;
+        private String profileImageUrl;
+
+        private String certificationName;
+        private String certificationUrl;
+
 
         public Mentor toEntity(User user) {
             return Mentor.builder()
@@ -71,11 +72,20 @@ public class MentorDto {
                     .profileIntroduction(this.profileIntroduction)
                     .introduction(this.introduction)
                     .price(this.price)
-                    .entryCertification(this.entryCertification)
-                    .certification(this.certification)
+                    .certificationName(this.certificationName)
+                    .certificationUrl(this.certificationUrl)
                     .mentorLevel(MentorLevel.대기)
                     .status(BaseStatus.ACTIVE)
                     .build();
+        }
+
+        public void updateImageUrl(String imageUrl) {
+            this.profileImageUrl = imageUrl;
+        }
+
+        public void updateCertificationUrl(String certificationName, String certificationUrl) {
+            this.certificationName = certificationName;
+            this.certificationUrl = certificationUrl;
         }
 
     }
