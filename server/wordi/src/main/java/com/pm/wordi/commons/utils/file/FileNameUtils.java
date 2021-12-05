@@ -1,5 +1,7 @@
 package com.pm.wordi.commons.utils.file;
 
+import com.pm.wordi.exception.file.IllegalMimeTypeException;
+
 import java.util.UUID;
 
 public class FileNameUtils {
@@ -27,4 +29,10 @@ public class FileNameUtils {
         return path.substring(idx + 1);
     }
 
+    public static void checkMimeType(String mimeType) {
+        if (!(mimeType.equals("image/jpg") || mimeType.equals("image/jpeg")
+                || mimeType.equals("image/png") || mimeType.equals("image/gif"))) {
+            throw new IllegalMimeTypeException("잘못된 파일 형식입니다.");
+        }
+    }
 }

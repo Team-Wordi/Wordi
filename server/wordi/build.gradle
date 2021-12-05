@@ -43,6 +43,10 @@ dependencies {
 
 	//aws s3
 	implementation('org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE')
+
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+	implementation group: 'org.apache.tika', name: 'tika-parsers', version: '1.25'
 }
 
 test {

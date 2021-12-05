@@ -3,6 +3,8 @@ package com.pm.wordi.commons.advice;
 import com.pm.wordi.exception.certification.DecryptException;
 import com.pm.wordi.exception.certification.EncryptException;
 import com.pm.wordi.exception.file.CertificationFileSaveFailedException;
+import com.pm.wordi.exception.file.FileRoadFailedException;
+import com.pm.wordi.exception.file.IllegalMimeTypeException;
 import com.pm.wordi.exception.file.ImageSaveFailedException;
 import com.pm.wordi.exception.mentor.ExistMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentorException;
@@ -151,6 +153,17 @@ public class ExceptionAdvice {
     public ResponseEntity<String> certificationFileSaveFailedException(CertificationFileSaveFailedException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(IllegalMimeTypeException.class)
+    public ResponseEntity<String> illegalMimeTypeException(IllegalMimeTypeException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(FileRoadFailedException.class)
+    public ResponseEntity<String> fileRoadFailedException(FileRoadFailedException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
 
 
     // DB
