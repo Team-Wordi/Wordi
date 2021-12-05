@@ -14,6 +14,7 @@ import com.pm.wordi.exception.mentor.ExistMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentoringProfileException;
 import com.pm.wordi.exception.user.NoExistUserException;
+import com.pm.wordi.service.storage.AwsS3Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.lang.Nullable;
@@ -42,6 +43,8 @@ public class MentorService {
     private final MentorKeywordRepository mentorKeywordRepository;
     private final MentorScheduleRepository mentorScheduleRepository;
 
+    private final AwsS3Service awsS3Service;
+
     @Transactional
     public void createMentor(Long userId, CreateRequest createRequest, @Nullable MultipartFile profileImage, MultipartFile certification) {
 
@@ -53,27 +56,16 @@ public class MentorService {
         }
 
         // 프로필 이미지 파일 저장
-        if(!profileImage.isEmpty()) {
-            String saveImgFileName = FileNameUtils.fileNameConvert(profileImage.getOriginalFilename());
-            String fullPath = filePath + saveImgFileName;
-            try {
-                profileImage.transferTo(new File(fullPath));
-            } catch (IOException e) {
-                throw new ImageSaveFailedException("이미지 저장에 실패하였습니다.");
-            }
-            createRequest.updateImageUrl(fullPath);
+        if (!profileImage.isEmpty()) {
+            String s3FilePath = awsS3Service.uploadBucket(profileImage);
+            createRequest.updateImageUrl(s3FilePath);
         }
 
         // 멘토 증명서 파일 저장
-        String saveCerFileName = FileNameUtils.fileNameConvert(certification.getOriginalFilename());
-        String certificationFullPath = filePath + saveCerFileName;
-        try {
-            certification.transferTo(new File(certificationFullPath));
-        } catch (IOException e) {
-            throw new CertificationFileSaveFailedException("증명서 파일 저장에 실패하였습니다.");
+        if (!certification.isEmpty()) {
+            String s3FilePath = awsS3Service.uploadBucket(certification);
+            createRequest.updateCertificationUrl(certification.getOriginalFilename(), s3FilePath);
         }
-        createRequest.updateCertificationUrl(certification.getOriginalFilename(), certificationFullPath);
-
 
         // 멘토 정보 저장
         Mentor mentor = mentorRepository.save(createRequest.toEntity(user));

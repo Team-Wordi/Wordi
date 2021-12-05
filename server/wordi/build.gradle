@@ -40,6 +40,13 @@ dependencies {
 
 	runtimeOnly ('mysql:mysql-connector-java') // mysql8
 	runtimeOnly 'com.h2database:h2' // h2
+
+	//aws s3
+	implementation('org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE')
+
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+	implementation group: 'org.apache.tika', name: 'tika-parsers', version: '1.25'
 }
 
 test {
