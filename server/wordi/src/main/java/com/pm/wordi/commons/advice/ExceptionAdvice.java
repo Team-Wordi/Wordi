@@ -2,10 +2,8 @@ package com.pm.wordi.commons.advice;
 
 import com.pm.wordi.exception.certification.DecryptException;
 import com.pm.wordi.exception.certification.EncryptException;
-import com.pm.wordi.exception.file.CertificationFileSaveFailedException;
 import com.pm.wordi.exception.file.FileRoadFailedException;
 import com.pm.wordi.exception.file.IllegalMimeTypeException;
-import com.pm.wordi.exception.file.ImageSaveFailedException;
 import com.pm.wordi.exception.mentor.ExistMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentoringProfileException;
@@ -144,16 +142,6 @@ public class ExceptionAdvice {
     }
 
     // 파일 업로드 관련
-    @ExceptionHandler(ImageSaveFailedException.class)
-    public ResponseEntity<String> imageRoadFailedException(ImageSaveFailedException e) {
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler(CertificationFileSaveFailedException.class)
-    public ResponseEntity<String> certificationFileSaveFailedException(CertificationFileSaveFailedException e) {
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-    }
-
     @ExceptionHandler(IllegalMimeTypeException.class)
     public ResponseEntity<String> illegalMimeTypeException(IllegalMimeTypeException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);

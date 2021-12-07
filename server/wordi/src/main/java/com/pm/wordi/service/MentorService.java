@@ -1,6 +1,5 @@
 package com.pm.wordi.service;
 
-import com.pm.wordi.commons.utils.file.FileNameUtils;
 import com.pm.wordi.domain.mentor.entity.Mentor;
 import com.pm.wordi.domain.mentor.entity.MentorKeyword;
 import com.pm.wordi.domain.mentor.repository.MentorKeywordRepository;
@@ -8,8 +7,6 @@ import com.pm.wordi.domain.mentor.repository.MentorRepository;
 import com.pm.wordi.domain.mentor.repository.MentorScheduleRepository;
 import com.pm.wordi.domain.user.entity.User;
 import com.pm.wordi.domain.user.repository.UserRepository;
-import com.pm.wordi.exception.file.CertificationFileSaveFailedException;
-import com.pm.wordi.exception.file.ImageSaveFailedException;
 import com.pm.wordi.exception.mentor.ExistMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentoringProfileException;
@@ -22,8 +19,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
