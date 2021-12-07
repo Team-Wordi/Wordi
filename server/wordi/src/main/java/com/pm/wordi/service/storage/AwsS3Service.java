@@ -61,6 +61,6 @@ public class AwsS3Service implements StorageService{
             throw new FileRoadFailedException("파일 저장에 실패하였습니다.");
         }
 
-        return s3Client.getUrl(bucket, convertedFileName).toString();
+        return convertedFileName;
     }
 }
