@@ -1,6 +1,5 @@
 package com.pm.wordi.service;
 
-import com.pm.wordi.commons.utils.file.FileNameUtils;
 import com.pm.wordi.domain.mentor.entity.Mentor;
 import com.pm.wordi.domain.mentor.entity.MentorKeyword;
 import com.pm.wordi.domain.mentor.repository.MentorKeywordRepository;
@@ -8,8 +7,6 @@ import com.pm.wordi.domain.mentor.repository.MentorRepository;
 import com.pm.wordi.domain.mentor.repository.MentorScheduleRepository;
 import com.pm.wordi.domain.user.entity.User;
 import com.pm.wordi.domain.user.repository.UserRepository;
-import com.pm.wordi.exception.file.CertificationFileSaveFailedException;
-import com.pm.wordi.exception.file.ImageSaveFailedException;
 import com.pm.wordi.exception.mentor.ExistMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentoringProfileException;
@@ -22,11 +19,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.pm.wordi.commons.utils.constants.CloudFrontConstants.CLOUD_FRONT_DOMAIN_NAME;
 import static com.pm.wordi.controller.dto.MentorDto.*;
 import static com.pm.wordi.domain.BaseStatus.*;
 
@@ -57,14 +53,16 @@ public class MentorService {
 
         // 프로필 이미지 파일 저장
         if (!profileImage.isEmpty()) {
-            String s3FilePath = awsS3Service.uploadBucket(profileImage);
-            createRequest.updateImageUrl(s3FilePath);
+            String s3SaveFileName = awsS3Service.uploadBucket(profileImage);
+            String fileFullPath = "https://" + CLOUD_FRONT_DOMAIN_NAME + "/" + s3SaveFileName;
+            createRequest.updateImageUrl(fileFullPath);
         }
 
         // 멘토 증명서 파일 저장
         if (!certification.isEmpty()) {
-            String s3FilePath = awsS3Service.uploadBucket(certification);
-            createRequest.updateCertificationUrl(certification.getOriginalFilename(), s3FilePath);
+            String s3SaveFileName = awsS3Service.uploadBucket(certification);
+            String fileFullPath = "https://" + CLOUD_FRONT_DOMAIN_NAME + "/" + s3SaveFileName;
+            createRequest.updateCertificationUrl(certification.getOriginalFilename(), fileFullPath);
         }
 
         // 멘토 정보 저장
