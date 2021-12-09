@@ -128,4 +128,24 @@ public class MentorService {
                 .map(MentoringProfileRes::new)
                 .orElseThrow(() -> new NoExistMentoringProfileException("해당 멘토 프로필이 존재하지 않습니다."));
     }
+
+    @Transactional
+    public void updateProfileImage(Long userId, @Nullable MultipartFile profileImage) {
+        Mentor mentor = mentorRepository.findByUserIdAndStatus(userId, ACTIVE)
+                .orElseThrow(() -> new NoExistMentorException("해당 회원의 멘토 정보가 존재하지 않습니다."));
+
+        // 프로필 이미지 미첨부
+        if (profileImage.isEmpty()) {
+            mentor.updateProfileImage(null);
+        }
+
+        // 프로필 이미지 첨부
+        if (!profileImage.isEmpty()) {
+            String s3SaveFileName = awsS3Service.uploadBucket(profileImage);
+            String fileFullPath = "https://" + CLOUD_FRONT_DOMAIN_NAME + "/" + s3SaveFileName;
+            mentor.updateProfileImage(fileFullPath);
+        }
+
+
+    }
 }
