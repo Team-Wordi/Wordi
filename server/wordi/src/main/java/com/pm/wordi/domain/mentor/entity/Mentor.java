@@ -148,5 +148,9 @@ public class Mentor extends BaseTimeEntity {
         this.price = profileReq.getPrice();
     }
 
+    public void updateProfileImage(String profileImageUrl) {
+        this.profileImageUrl = profileImageUrl;
+    }
+
 
 }

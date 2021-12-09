@@ -86,6 +86,21 @@ public class MentorApiController {
         return ResponseEntity.ok(mentorService.getMentoringProfile(mentorId));
     }
 
+    /**
+     * 멘토 프로필 사진 수정 API
+     * [PATCH] /app/mentors/profile/image
+     * @return ResponseEntity<HttpStatus>
+     */
+    @PatchMapping("/profile/image")
+    public ResponseEntity<HttpStatus> updateProfileImage(@RequestPart(required = false) MultipartFile profileImage,
+                                                         HttpServletRequest request) {
+
+        Long userId = (Long)request.getAttribute("userId");
+        mentorService.updateProfileImage(userId, profileImage);
+        return RESPONSE_OK;
+    }
+
+
 
 
 }
