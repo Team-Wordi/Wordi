@@ -152,7 +152,11 @@ public class Mentor extends BaseTimeEntity {
         this.profileImageUrl = profileImageUrl;
     }
 
-    public void updateDeleteStatus() {
+    public void updateOnStatus() {
+        this.status = BaseStatus.ACTIVE;
+    }
+
+    public void updateOffStatus() {
         this.status = BaseStatus.INACTIVE;
     }
 }
