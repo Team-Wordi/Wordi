@@ -100,7 +100,19 @@ public class MentorApiController {
         return RESPONSE_OK;
     }
 
+    /**
+     * 멘토 ON, OFF API
+     * [PATCH] /app/mentors?status=
+     * @return ResponseEntity<HttpStatus>
+     */
+    @PatchMapping("")
+    public ResponseEntity<HttpStatus> updateStatus(@RequestParam String status,
+                                                   HttpServletRequest request) {
 
+        Long userId = (Long)request.getAttribute("userId");
+        mentorService.updateStatus(userId, status);
+        return RESPONSE_OK;
+    }
 
 
 }

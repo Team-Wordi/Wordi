@@ -5,9 +5,11 @@ import com.pm.wordi.domain.mentor.entity.MentorKeyword;
 import com.pm.wordi.domain.mentor.repository.MentorKeywordRepository;
 import com.pm.wordi.domain.mentor.repository.MentorRepository;
 import com.pm.wordi.domain.mentor.repository.MentorScheduleRepository;
+import com.pm.wordi.domain.mentoring.repository.MentoringRepository;
 import com.pm.wordi.domain.user.entity.User;
 import com.pm.wordi.domain.user.repository.UserRepository;
 import com.pm.wordi.exception.mentor.ExistMentorException;
+import com.pm.wordi.exception.mentor.ExistNotFinishMentoringByMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentoringProfileException;
 import com.pm.wordi.exception.user.NoExistUserException;
@@ -38,6 +40,7 @@ public class MentorService {
     private final MentorRepository mentorRepository;
     private final MentorKeywordRepository mentorKeywordRepository;
     private final MentorScheduleRepository mentorScheduleRepository;
+    private final MentoringRepository mentoringRepository;
 
     private final AwsS3Service awsS3Service;
 
@@ -147,5 +150,24 @@ public class MentorService {
         }
 
 
+    }
+
+    @Transactional
+    public void updateStatus(Long userId, String status) {
+        Mentor mentor = mentorRepository.findByUserIdAndStatus(userId, ACTIVE)
+                .orElseThrow(() -> new NoExistMentorException("해당 회원의 멘토 정보가 존재하지 않습니다."));
+
+        if(status.equals("ACTIVE")) {
+            mentor.updateOnStatus();
+        }
+
+        if(status.equals("INACTIVE")) {
+
+            if(!mentoringRepository.findAllToCheckMentorOff(mentor).isEmpty()) {
+                throw new ExistNotFinishMentoringByMentorException("아직 처리하지 않은 멘토 멘토링 서비스가 남아있습니다.");
+            }
+
+            mentor.updateOffStatus();
+        }
     }
 }

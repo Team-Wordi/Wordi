@@ -145,7 +145,7 @@ public class UserService {
                 throw new ExistNotFinishMentoringByMentorException("아직 처리하지 않은 멘토 멘토링 서비스가 남아있습니다.");
             }
 
-            mentor.updateDeleteStatus();
+            mentor.updateOffStatus();
         }
 
         if(!mentoringRepository.findAllToCheckUserDelete(user).isEmpty()) {
