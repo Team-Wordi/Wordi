@@ -2,10 +2,16 @@ package com.pm.wordi.service;
 
 import com.pm.wordi.commons.utils.certification.AES128;
 import com.pm.wordi.commons.utils.certification.Secret;
+import com.pm.wordi.domain.mentor.entity.Mentor;
+import com.pm.wordi.domain.mentor.repository.MentorRepository;
+import com.pm.wordi.domain.mentoring.repository.MentoringRepository;
 import com.pm.wordi.domain.user.entity.User;
 import com.pm.wordi.domain.user.entity.UserKeyword;
 import com.pm.wordi.domain.user.repository.UserKeywordRepository;
 import com.pm.wordi.domain.user.repository.UserRepository;
+import com.pm.wordi.exception.mentor.ExistNotFinishMentoringByMentorException;
+import com.pm.wordi.exception.mentor.NoExistMentorException;
+import com.pm.wordi.exception.user.ExistNotFinishMentoringByUserException;
 import com.pm.wordi.exception.user.NoExistEmailException;
 import com.pm.wordi.exception.user.NoExistUserException;
 import com.pm.wordi.exception.user.NotMatchPasswordException;
@@ -25,7 +31,8 @@ public class UserService {
     private final JwtService jwtService;
     private final UserRepository userRepository;
     private final UserKeywordRepository userKeywordRepository;
-
+    private final MentorRepository mentorRepository;
+    private final MentoringRepository mentoringRepository;
 
     @Transactional
     public ResponseTokens save(CreateRequest createRequest) {
@@ -123,5 +130,28 @@ public class UserService {
         profileReq.getUserKeywordList()
                 .stream().forEach(k -> userKeywordRepository.save(new UserKeyword(user, k)));
 
+    }
+
+    @Transactional
+    public void deleteUser(Long userId) {
+        User user = userRepository.findByIdAndStatus(userId, ACTIVE)
+                .orElseThrow(() -> new NoExistUserException("접속한 회원 정보와 일치하는 회원 정보가 없습니다."));
+
+        if(mentorRepository.findByUserIdAndStatus(user.getId(), ACTIVE).isPresent()) {
+            Mentor mentor = mentorRepository.findByUserIdAndStatus(user.getId(), ACTIVE)
+                    .orElseThrow(() -> new NoExistMentorException("접속한 회원 정보와 일치하는 멘토 정보가 없습니다."));
+
+            if(!mentoringRepository.findAllToCheckMentorOff(mentor).isEmpty()) {
+                throw new ExistNotFinishMentoringByMentorException("아직 처리하지 않은 멘토 멘토링 서비스가 남아있습니다.");
+            }
+
+            mentor.updateDeleteStatus();
+        }
+
+        if(!mentoringRepository.findAllToCheckUserDelete(user).isEmpty()) {
+            throw new ExistNotFinishMentoringByUserException("아직 처리하지 않은 유저 멘토링 서비스가 남아있습니다.");
+        }
+
+        user.updateDeleteStatus();
     }
 }

@@ -5,6 +5,7 @@ import com.pm.wordi.exception.certification.EncryptException;
 import com.pm.wordi.exception.file.FileRoadFailedException;
 import com.pm.wordi.exception.file.IllegalMimeTypeException;
 import com.pm.wordi.exception.mentor.ExistMentorException;
+import com.pm.wordi.exception.mentor.ExistNotFinishMentoringByMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentorException;
 import com.pm.wordi.exception.mentor.NoExistMentoringProfileException;
 import com.pm.wordi.exception.mentoring.EqualUserMentorException;
@@ -67,6 +68,12 @@ public class ExceptionAdvice {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.FORBIDDEN);
     }
 
+    @ExceptionHandler(ExistNotFinishMentoringByUserException.class)
+    public ResponseEntity<String> existNotFinishMentoringByUserException(ExistNotFinishMentoringByUserException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+    }
+
+
 
     // == Mentor ==
 
@@ -84,6 +91,13 @@ public class ExceptionAdvice {
     public ResponseEntity<String> noExistMentoringProfileException(NoExistMentoringProfileException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
     }
+
+    @ExceptionHandler(ExistNotFinishMentoringByMentorException.class)
+    public ResponseEntity<String> existNotFinishMentoringException(ExistNotFinishMentoringByMentorException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+    }
+
+
 
     // == Mentoring ==
     @ExceptionHandler(EqualUserMentorException.class)

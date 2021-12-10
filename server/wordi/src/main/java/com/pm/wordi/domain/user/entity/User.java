@@ -127,4 +127,8 @@ public class User extends BaseTimeEntity {
         this.nation3 = profileReq.getNation3();
     }
 
+    public void updateDeleteStatus() {
+        this.status = BaseStatus.INACTIVE;
+    }
+
 }
