@@ -131,5 +131,18 @@ public class UserApiController {
         return RESPONSE_OK;
     }
 
+    /**
+     * 회원탈퇴 API
+     * [DELETE] /app/users/account
+     * @return ResponseEntity<HttpStatus>
+     */
+    @DeleteMapping("/account")
+    public ResponseEntity<HttpStatus> deleteUser(HttpServletRequest request) {
+        Long userId = (Long)request.getAttribute("userId");
+        userService.deleteUser(userId);
+        return RESPONSE_OK;
+    }
+
+
 
 }
