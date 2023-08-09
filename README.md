@@ -29,6 +29,13 @@
 - 🎇 [트러블 슈팅](https://github.com/Team-Wordi/Wordi/wiki/%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85-%5BBE%5D)
 
 
+#### **🧾 Blog** 
+- [수범: QueryDSL을 활용한 동적 쿼리 구현](https://willco.tistory.com/9)
+- [수범: SpringBoot 파일업로드 구현](https://willco.tistory.com/10)
+- [수범: AWS S3에 파일업로드 구현](https://willco.tistory.com/12)
+- [수범: CloudFront 설정](https://willco.tistory.com/14)
+
+
 <br>
 
 ## 💡 주요 기능 💡
